@@ -510,6 +510,53 @@ async def _(event):
     await zq_lo.send_message(event.chat_id, "**⎉╎تم الانتهـاء مـن تجميـع النقـاط .. حاول من جديد في وقت آخر ✓**")
 
 
+@zq_lo.rep_cmd(pattern="بوت المهدوي$")
+async def _(event):
+    await event.edit('@MHDN313bot')
+
+# Copyright (C) 2022 Repthon . All Rights Reserved
+@zq_lo.rep_cmd(pattern="المهدوي(?: |$)(.*)")
+async def _(event):
+    con = event.pattern_match.group(1).lower()
+    await event.edit("**⎉╎حسنـاً .. تأكـد من انك مشتـرك بـ قنـوات الاشتـراك الاجبـاري لتجنب الأخطـاء @EEOBot**")
+    channel_entity = await zq_lo.get_entity('@MHDN313bot')
+    await zq_lo.send_message('@MHDN313bot', '/start')
+    await asyncio.sleep(3)
+    msg0 = await zq_lo.get_messages('@MHDN313bot', limit=1)
+    await msg0[0].click(2)
+    await asyncio.sleep(3)
+    msg1 = await zq_lo.get_messages('@MHDN313bot', limit=1)
+    await msg1[0].click(0)
+    chs = 1
+    for i in range(100):
+        await asyncio.sleep(2)
+        list = await zq_lo(GetHistoryRequest(peer=channel_entity, limit=1, offset_date=None, offset_id=0, max_id=0, min_id=0, add_offset=0, hash=0))
+        msgs = list.messages[0]
+        if msgs.message.find('**⎉╎لا يوجد قنوات في الوقت الحالي .. قم يتجميع النقاط بطريقه مختلفه**') != -1:
+            await zq_lo.send_message(event.chat_id, "**⎉╎مـافي قنـوات بالبـوت حاليـاً ...**")
+            break
+        if con == "ايقاف": #Code by T.me/E_7_V
+            await zq_lo.send_message(event.chat_id, "**⎉╎تم إيقـاف تجميـع النقـاط .. بنجـاح☑️**")
+            break
+        url = msgs.reply_markup.rows[0].buttons[0].url
+        try:
+            try:
+                await zq_lo(JoinChannelRequest(url))
+            except:
+                bott = url.split('/')[-1]
+                await zq_lo(ImportChatInviteRequest(bott))
+            msg2 = await zq_lo.get_messages('@MHDN313bot', limit=1)
+            await msg2[0].click(text='تحقق')
+            chs += 1
+            await event.edit(f"**⎉╎تم الاشتـراك في القنـاة  {chs} ...✓**")
+        except: #Code by T.me/E_7_V
+            msg2 = await zq_lo.get_messages('@MHDN313bot', limit=1)
+            await msg2[0].click(text='التالي')
+            chs += 1
+            await event.edit(f"**⎉╎القنـاة رقـم {chs} .. يمكـن تبنـدت**")
+    await zq_lo.send_message(event.chat_id, "**⎉╎تم الانتهـاء مـن تجميـع النقـاط .. حاول من جديد في وقت آخر ✓**")
+
+
 
 # Code by @r0r77 & @Dar4k
 @zq_lo.rep_cmd(pattern="بخشيش وعد(?:\s|$)([\s\S]*)")
