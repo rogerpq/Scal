@@ -105,14 +105,14 @@ Baqir_vars_cmd = (
 )
 
 
-# Copyright (C) 2022 Zed-Thon . All Rights Reserved
+# Copyright (C) 2022 RepthonArabic . All Rights Reserved
 @zq_lo.rep_cmd(pattern=r"اضف (.*)")
 async def variable(event):
     input_str = event.pattern_match.group(1)
     reply = await event.get_reply_message()
     vinfo = reply.text
     zed = await edit_or_reply(event, "**⎉╎جـاري اضـافة الفـار الـى بـوتك ...**")
-    # All Rights Reserved for "Zed-Thon" "زلـزال الهيبـه"
+    # All Rights Reserved for "Repthon" "بـاقـر"
     if input_str == "كليشة الفحص" or input_str == "كليشه الفحص":
         variable = "ALIVE_TEMPLATE"
         await asyncio.sleep(1.5)
@@ -236,18 +236,18 @@ async def variable(event):
                         \n**- القنـاة {input_str} تم اضافتهـا في قاعده البيانات ..بنجـاح ✓**",
             )
     elif input_str == "زاجل" or input_str == "قائمة زاجل" or input_str == "قائمه زاجل" or input_str == "يوزرات":
-        variable = "ZAGL_Zed"
+        variable = "ZAGL_Rep"
         await asyncio.sleep(1.5)
-        if gvarstatus("ZAGL_Zed") is None:
+        if gvarstatus("ZAGL_Rep") is None:
             addgvar(variable, vinfo)
             await zed.edit("**⎉╎تم اضافـة {} بنجـاح ☑️**\n**⎉╎اليـوزرات المضـافة** \n {} \n\n**⎉╎الان قـم بـ ارسـال الامـر ↶** `.زاجل` **بالـرد ع نـص او ميديـا بنـص . .**".format(input_str, vinfo))
         else:
             addgvar(variable, vinfo)
             await zed.edit("**⎉╎تم اضافـة {} بنجـاح ☑️**\n**⎉╎اليـوزرات المضـافة** \n {} \n\n**⎉╎الان قـم بـ ارسـال الامـر ↶** `.زاجل` **بالـرد ع نـص او ميديـا بنـص . .**".format(input_str, vinfo))
     elif input_str == "بوت التجميع" or input_str == "بوت النقاط" or input_str == "النجميع" or input_str == "النقاط":
-        variable = "Z_Point"
+        variable = "R_Point"
         await asyncio.sleep(1.5)
-        if gvarstatus("Z_Point") is None:
+        if gvarstatus("R_Point") is None:
             addgvar(variable, vinfo)
             await zed.edit("**⎉╎تم تغييـر {} بنجـاح ☑️**\n**⎉╎البـوت المضـاف** \n {} \n\n**⎉╎الان قـم بـ ارسـال الامـر ↶** `.تجميع` **لـ البـدء بتجميـع النقـاط من البـوت الجـديـد . .**".format(input_str, vinfo))
         else:
@@ -1404,7 +1404,7 @@ def resize_image(image):
     im.save(image, "PNG")
 
 
-# Copyright (C) 2022 Zed-Thon . All Rights Reserved
+# Copyright (C) 2022 RepthonArabic . All Rights Reserved
 @zq_lo.rep_cmd(pattern="اوامر الفارات")
 async def cmd(roger):
     await edit_or_reply(roger, Baqir_vars_cmd)
@@ -1415,4 +1415,4 @@ async def cmd(roger):
 
 @zq_lo.rep_cmd(pattern="التخصيص")
 async def cmd(roger):
-    await edit_or_reply(roger, Baair_vars_cmd)
+    await edit_or_reply(roger, Baqir_vars_cmd)
