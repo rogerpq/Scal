@@ -133,7 +133,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
     else:
         remote = repo.create_remote("heroku", heroku_git_url)
     try:
-        remote.push(refspec="HEAD:refs/heads/lite", force=True)
+        remote.push(refspec="HEAD:refs/heads/baqir", force=True)
     except Exception as error:
         await event.edit(f"{txt}\n**Error log:**\n`{error}`")
         return repo.__del__()
@@ -187,7 +187,7 @@ async def upstream(event):
         repo = Repo.init()
         origin = repo.create_remote("upstream", off_repo)
         origin.fetch()
-        repo.create_head("lite", origin.refs.lite)
+        repo.create_head("baqir", origin.refs.lite)
         repo.heads.lite.set_tracking_branch(origin.refs.lite)
         repo.heads.lite.checkout(True)
     with contextlib.suppress(BaseException):
