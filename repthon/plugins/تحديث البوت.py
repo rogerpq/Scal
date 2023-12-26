@@ -39,7 +39,7 @@ UPSTREAM_REPO_BRANCH = "master"
 REPO_REMOTE_NAME = "temponame"
 IFFUCI_ACTIVE_BRANCH_NAME = "baqir"
 NO_HEROKU_APP_CFGD = "no heroku application found, but a key given? 😕 "
-HEROKU_GIT_REF_SPEC = "HEAD:refs/heads/lite"
+HEROKU_GIT_REF_SPEC = "HEAD:refs/heads/baqir"
 RESTARTING_APP = "re-starting heroku application"
 IS_SELECTED_DIFFERENT_BRANCH = (
     "looks like a custom branch {branch_name} "
@@ -187,9 +187,9 @@ async def upstream(event):
         repo = Repo.init()
         origin = repo.create_remote("upstream", off_repo)
         origin.fetch()
-        repo.create_head("baqir", origin.refs.lite)
-        repo.heads.lite.set_tracking_branch(origin.refs.lite)
-        repo.heads.lite.checkout(True)
+        repo.create_head("baqir", origin.refs.baqir)
+        repo.heads.baqir.set_tracking_branch(origin.refs.baqir)
+        repo.heads.baqir.checkout(True)
     with contextlib.suppress(BaseException):
         repo.create_remote("upstream", off_repo)
     bbb1 = await event.edit(f"ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗥𝗘𝗣𝗧𝗛𝗢𝗡 - تحـديثـات السـورس\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت ريبـــثون .. انتظـر . . .🌐**")
