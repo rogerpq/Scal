@@ -3,7 +3,7 @@
 #< https://t.me/Repthon >
 # This file is a part of < https://github.com/RepthonArabic/RepthonAr/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/RepthonArabic/RepthonAr/blob/master/LICENSE/>.
+# <https://www.github.com/Repthon-Arabic/RepthonAr/blob/master/LICENSE/>.
 
 import time
 import asyncio
