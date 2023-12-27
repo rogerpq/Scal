@@ -17,7 +17,7 @@ async def on_plug_in_callback_query_handler(event):
     try:
         rrr = await zq_lo.get_entity(ussr)
     except ValueError:
-        rrr = await zedub(GetUsersRequest(ussr))
+        rrr = await zq_lo(GetUsersRequest(ussr))
     if os.path.exists("./repthon/secret.txt"):
         jsondata = json.load(open("./repthon/secret.txt"))
         try:
