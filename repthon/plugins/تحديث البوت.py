@@ -34,7 +34,7 @@ Heroku = heroku3.from_key(Config.HEROKU_API_KEY)
 OLDZED = Config.OLDZED
 heroku_api = "https://api.heroku.com"
 
-UPSTREAM_REPO_BRANCH = "master"
+UPSTREAM_REPO_BRANCH = "baqir"
 
 REPO_REMOTE_NAME = "temponame"
 IFFUCI_ACTIVE_BRANCH_NAME = "baqir"
