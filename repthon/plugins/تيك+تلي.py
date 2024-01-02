@@ -7,6 +7,7 @@
 # <https://www.github.com/RepthonArabic/RepthonAr/blob/master/LICENSE/>.
 
 
+import base64
 import requests
 import asyncio
 import os
