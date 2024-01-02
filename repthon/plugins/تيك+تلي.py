@@ -77,9 +77,9 @@ async def _(event):
         return
     j_link = event.pattern_match.group(1)
     if ".me" not in j_link:
-        await event.edit("**▾∮ يجب وضع رابط الستوري مع الامر اولا **")
+        await event.edit("**⎉╎ يجب وضع رابط الستوري مع الامر اولا **")
     else:
-        await event.edit("**▾∮ يتم الان تنزيل الستوري انتظر قليلا**")
+        await event.edit("**⎉╎ يتم الان تنزيل الستوري انتظر قليلا**")
     chat = "@msaver_bot"
     async with zq_lo.conversation(chat) as conv:
         try:
@@ -96,5 +96,5 @@ async def _(event):
             await event.client(TAIBA)
         except BaseException:
             pass
-        await zq_lo.send_file(event.chat_id, video, caption="**⎉╎ BY : @Repthon 🎀**",parse_mode="html")
+        await zq_lo.send_file(event.chat_id, video, caption=f"<b>⎉╎ BY : @Repthon 🎀</b>",parse_mode="html")
         await event.delete()
