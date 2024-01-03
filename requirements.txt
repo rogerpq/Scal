@@ -55,7 +55,6 @@ py-tgcalls==1.0.1
 qrcode
 randomstuff.py
 regex
-requests
 search-engine-parser
 selenium
 ShazamAPI
@@ -76,7 +75,7 @@ wikipedia
 wget
 youtube-search-python==1.4.9
 youtube-search
-yt-dlp==2023.09.24
+yt-dlp==2023.11.9
 youtube_dl
 git+https://github.com/buddhhu/img2html.git
 git+https://github.com/sandy1709/py-googletrans
