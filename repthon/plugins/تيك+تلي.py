@@ -31,6 +31,7 @@ from ..helpers import media_type
 from ..helpers.utils import reply_id
 
 
+bot = zq_lo
 
 #Code by T.me/E_7_V
 @zq_lo.rep_cmd(pattern=f"تيك(?: |$)(.*)")
@@ -81,12 +82,12 @@ async def _(event):
     else:
         await event.edit("**⎉╎ يتم الان تنزيل الستوري انتظر قليلا**")
     chat = "@msaver_bot"
-    async with zq_lo.conversation(chat) as conv:
+    async with bot.conversation(chat) as conv:
         try:
             msg = await conv.send_message(j_link)
             video = await conv.get_response()
             """ تم تحميل الستوري بنجاح من قبل @Repthon """
-            await zq_lo.send_read_acknowledge(conv.chat_id)
+            await bot.send_read_acknowledge(conv.chat_id)
         except YouBlockedUserError:
             await event.edit("**⎉╎ الغـي حـظر هـذا البـوت و حـاول مجـددا @msaver_bot**")
             return
@@ -96,5 +97,5 @@ async def _(event):
             await event.client(TAIBA)
         except BaseException:
             pass
-        await zq_lo.send_file(event.chat_id, video, caption=f"<b>⎉╎ BY : @Repthon 🎀</b>",parse_mode="html")
+        await bot.send_file(event.chat_id, video, caption=f"<b>⎉╎ BY : @Repthon 🎀</b>",parse_mode="html")
         await event.delete()
