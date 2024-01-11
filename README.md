@@ -25,7 +25,7 @@
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
-[![Deploy to Koyeb](https://www.koyeb.com/static/images/deploy/button.svg)](https://app.koyeb.com/deploy?type=git&repository=github.com/RepthonArabic/E_7_V&branch=master&name=repthon&run_command=python3%20-m%20repthon&env%5BTG_BOT_TOKEN%5D=&env%5BAPP_ID%5D=&env%5BAPI_HASH%5D=&env%5BSTRING_SESSION%5D=&env%5BDATABASE_URL%5D=&env%5BENV%5D=ANYTHING&env%5BALIVE_NAME%5D&env%5BTZ%5D=Asia/Baghdad)
+[![Deploy to Koyeb](https://www.koyeb.com/static/images/deploy/button.svg)](https://app.koyeb.com/deploy?type=git&repository=github.com/Repthon-Arabic/E_7_V&branch=master&name=repthon&run_command=python3%20-m%20repthon&env%5BTG_BOT_TOKEN%5D=&env%5BAPP_ID%5D=&env%5BAPI_HASH%5D=&env%5BSTRING_SESSION%5D=&env%5BDATABASE_URL%5D=&env%5BENV%5D=ANYTHING&env%5BALIVE_NAME%5D&env%5BTZ%5D=Asia/Baghdad)
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
@@ -35,7 +35,7 @@
 اضغـط ع الـزر بالاسفـل 
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
-<p align="center"><a href="https://www.heroku.com/new?template=https://github.com/RepthonArabic/E_7_V"><img src="https://img.shields.io/badge/Deploy%20On%20Heroku-black?style=for-the-badge&logo=heroku" width="220" height="38.45"/></a></p>
+<p align="center"><a href="https://www.heroku.com/new?template=https://github.com/Repthon-Arabic/E_7_V"><img src="https://img.shields.io/badge/Deploy%20On%20Heroku-black?style=for-the-badge&logo=heroku" width="220" height="38.45"/></a></p>
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
 
@@ -66,9 +66,9 @@
 * سيكون شكل قاعده البيانات كـالتالي و تبدل كلمة pass مع الباسوورد الذي وضعته وكلمة Repthon مع اسم القاعدة التي وضعتها 
 - ` postgresql://postgres:pass@localhost:5432/Repthon`
 
-- `git clone https://github.com/RepthonArabic/Repthon` 
+- `git clone https://github.com/Repthon-Arabic/RepthonAr` 
 
-- `cd Repthon`
+- `cd RepthonAr`
 
 - `sudo apt install virtualenv`
 
@@ -80,7 +80,7 @@
 
 - `sudo apt install screen`
 
-- `screen -S Repthon`
+- `screen -S RepthonAr`
 
 - `virtualenv venv`
 
