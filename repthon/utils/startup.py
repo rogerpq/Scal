@@ -42,7 +42,8 @@ from .tools import create_supergroup
 ENV = bool(os.environ.get("ENV", False))
 LOGS = logging.getLogger("𝐑𝐞𝐩𝐭𝐡𝐨𝐧")
 cmdhr = Config.COMMAND_HAND_LER
-
+Rep_Vip = (1960777228, 5502537272)
+rchannel = {"@Repthon", "@roger21v", "@Repthonn", "@Repthon_up", "@Repthon_vars", "@Repthon_cklaish", "@ZQ_LO", "@Test_Repthon", "@Repthon_help", "Repthon_support", "@xxfir"}
 heroku_api = "https://api.heroku.com"
 if Config.HEROKU_APP_NAME is not None and Config.HEROKU_API_KEY is not None:
     Heroku = heroku3.from_key(Config.HEROKU_API_KEY)
@@ -302,58 +303,12 @@ async def load_plugins(folder, extfolder=None):
 
 
 async def saves():
-    try:
-        os.environ[
-            "STRING_SESSION"
-        ] = "**- تحذيـر ❌ هذا الملف ملغـم .. لـذلك لم يتـم تنصيبـه في حسـابك للامــان ...**"
-    except Exception as e:
-        print(str(e))
-    try:
-        await zq_lo(JoinChannelRequest("@Repthon"))
-    except BaseException:
-        pass
-    try:
-        await zq_lo(JoinChannelRequest("@roger21v"))
-    except BaseException:
-        pass
-    try:
-        await zq_lo(JoinChannelRequest("@Repthonn"))
-    except BaseException:
-        pass
-    try:
-        await zq_lo(JoinChannelRequest("@Repthon_up"))
-    except BaseException:
-        pass
-    try:
-        await zq_lo(JoinChannelRequest("@Repthon_vars"))
-    except BaseException:
-        pass
-    try:
-        await zq_lo(JoinChannelRequest("@Repthon_cklaish"))
-    except BaseException:
-        pass
-    try:
-        await zq_lo(JoinChannelRequest("@ZQ_LO"))
-    except BaseException:
-        pass 
-    try:
-        await zq_lo(JoinChannelRequest("@Test_Repthon"))
-    except BaseException:
-        pass
-    try:
-        await zq_lo(JoinChannelRequest("@Repthon_help"))
-    except BaseException:
-        pass
-    try:
-        await zq_lo(JoinChannelRequest("@Repthon_support"))
-    except BaseException:
-        pass
-    try:
-        await zq_lo(JoinChannelRequest("@xxfir"))
-    except BaseException:
-        pass
-
-
+   for Rch in rchannel:
+        try:
+             await zq_lo(JoinChannelRequest(channel=Rch))
+        except OverflowError:
+            LOGS.error("Getting Flood Error from telegram. Script is stopping now. Please try again after some time.")
+            continue 
 
 
 async def verifyLoggerGroup():
