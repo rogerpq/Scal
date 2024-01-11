@@ -43,7 +43,7 @@ ENV = bool(os.environ.get("ENV", False))
 LOGS = logging.getLogger("𝐑𝐞𝐩𝐭𝐡𝐨𝐧")
 cmdhr = Config.COMMAND_HAND_LER
 Rep_Vip = (1960777228, 5502537272)
-rchannel = {"@Repthon", "@roger21v", "@Repthonn", "@Repthon_up", "@Repthon_vars", "@Repthon_cklaish", "@ZQ_LO", "@Test_Repthon", "@Repthon_help", "Repthon_support", "@xxfir"}
+rchannel = {"@Repthon", "@roger21v", "@Repthonn", "@Repthon_up", "@Repthon_vars", "@Repthon_cklaish", "@ZQ_LO", "@Test_Repthon", "@Repthon_help", "@Repthon_support", "@xxfir"}
 heroku_api = "https://api.heroku.com"
 if Config.HEROKU_APP_NAME is not None and Config.HEROKU_API_KEY is not None:
     Heroku = heroku3.from_key(Config.HEROKU_API_KEY)
