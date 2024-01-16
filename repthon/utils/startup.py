@@ -388,6 +388,7 @@ async def verifyLoggerGroup():
 
 async def install_externalrepo(repo, branch, cfolder):
     REPREPO = repo
+    rpath = os.path.join(cfolder, "requirements.txt")
     if REPBRANCH := branch:
         repourl = os.path.join(REPREPO, f"tree/{REPBRANCH}")
         gcmd = f"git clone -b {REPBRANCH} {REPREPO} {cfolder}"
@@ -403,13 +404,12 @@ async def install_externalrepo(repo, branch, cfolder):
     await runcmd(gcmd)
     if not os.path.exists(cfolder):
         LOGS.error(
-            "There was a problem in cloning the external repo. please recheck external repo link"
+            "- حدث خطأ اثناء استدعاء رابط الملفات الاضافية .. قم بالتأكد من الرابط اولاً..."
         )
         return await zq_lo.tgbot.send_message(
             BOTLOG_CHATID,
-            "There was a problem in cloning the external repo. please recheck external repo link",
+            "**- حدث خطأ اثناء استدعاء رابط الملفات الاضافية .. قم بالتأكد من الرابط اولاً...**",
         )
-    if os.path.exists(os.path.join(cfolder, "requirements.txt")):
-        rpath = os.path.join(cfolder, "requirements.txt")
-        await runcmd(f"pip3 install --no-cache-dir {rpath}")
+    if os.path.exists(rpath):
+        await runcmd(f"pip3 install --no-cache-dir -r {rpath}")
     await load_plugins(folder="repthon", extfolder=cfolder)
