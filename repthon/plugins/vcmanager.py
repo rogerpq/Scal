@@ -1,4 +1,4 @@
-#الملف تابع لـ سورس ريــبــثــون
+# تعريب وتحديث فريق ريبـــثون
 from telethon import functions
 from telethon.errors import ChatAdminRequiredError, UserAlreadyInvitedError
 from telethon.tl.types import Channel, Chat, User
@@ -36,8 +36,8 @@ async def parse_entity(entity):
 
 
 @zq_lo.rep_cmd(
-    pattern="بدء",
-    command=("بدء", plugin_category),
+    pattern="بدء مكالمه$",
+    command=("بدء مكالمه", plugin_category),
     info={
         "header": "لـ بـدء المحادثـه الصـوتيـه",
         "الاستخـدام": "{tr}بدء",
@@ -53,7 +53,7 @@ async def start_vc(event):
         await zq_lo(
             functions.phone.CreateGroupCallRequest(
                 peer=vc_chat,
-                title="مكالمة ســورس ريبـــثون",
+                title="Rep VC",
             )
         )
         await edit_delete(event, "**- جـارِ بـدء محـادثـه صـوتيـه ...**")
@@ -62,8 +62,8 @@ async def start_vc(event):
 
 
 @zq_lo.rep_cmd(
-    pattern="انهاء",
-    command=("انهاء", plugin_category),
+    pattern="انهاء مكالمه$",
+    command=("انهاء مكالمه", plugin_category),
     info={
         "header": "لـ انهـاء المحادثـه الصـوتيـه",
         "الاستخـدام": "{tr}انهاء",
@@ -158,7 +158,7 @@ async def info_vc(event):
     info={
         "header": "لـ تغييـر عنـوان المكالمـه",
         "الاستخـدام": "{tr}عنوان + نـص",
-        "مثــال :": "{tr}عنوان زدثون",
+        "مثــال :": "{tr}عنوان ريبثون",
     },
 )
 async def title_vc(event):
@@ -175,16 +175,16 @@ async def title_vc(event):
 
 
 @zq_lo.rep_cmd(
-    pattern="اكتم ([\s\S]*)",
-    command=("اكتم", plugin_category),
+    pattern="(|الغاء )اسكت ([\s\S]*)",
+    command=("اسكت", plugin_category),
     info={
         "header": "لـ كتم شخص في المكالمـه",
         "الاستخـدام": [
-            "{tr}اكتم + معـرف/ايـدي الشخـص او بالـرد ع الشخـص",
+            "{tr}اسكت + معـرف/ايـدي الشخـص او بالـرد ع الشخـص",
         ],
         "مثــال :": [
-            "{tr}اكتم @angelpro",
-            "{tr}اكتم + ايـدي الشخـص الاول + ايـدي الشخص الثانـي ... الـخ",
+            "{tr}اسكت @angelpro",
+            "{tr}اسكت + ايـدي الشخـص الاول + ايـدي الشخص الثانـي ... الـخ",
         ],
     },
 )
@@ -193,11 +193,11 @@ async def mute_vc(event):
     cmd = event.pattern_match.group(1)
     users = event.pattern_match.group(2)
     reply = await event.get_reply_message()
-    vc_chat = await zq_lo.get_entity(event.chat_id)
+    vc_chat = await zq_lo.tgbot.get_me .get_entity(event.chat_id)
     gc_call = await chat_vc_checker(event, vc_chat)
     if not gc_call:
         return
-    check = "Unmute" if cmd else "اكتم"
+    check = "الغاء اسكت" if cmd else "اسكت"
     if not users:
         if not reply:
             return await edit_delete(f"Whom Should i {check}")
@@ -222,7 +222,7 @@ async def mute_vc(event):
 
 
 @zq_lo.rep_cmd(
-    command=("الغاء الكتم", plugin_category),
+    command=("الغاء اسكت", plugin_category),
     info={
         "header": "لـ الغـاء كتـم شخـص في المكالمـه",
         "الاستخـدام": [
