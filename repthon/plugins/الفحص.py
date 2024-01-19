@@ -48,8 +48,8 @@ async def amireallyalive(event):
     else:
         repda = f"{bt.year}/{bt.month}/{bt.day}"
     R_EMOJI = gvarstatus("ALIVE_EMOJI") or "𓃰┊"
-    ALIVE_TEXT = gvarstatus("ALIVE_TEXT") or "**بـوت ريبـــثون 𝗥𝗘𝗣𝗧𝗛𝗢𝗡  يعمـل .. بنجـاح ☑️ 𓆩 **"
-    REP_IMG = gvarstatus("ALIVE_PIC")
+    ALIVE_TEXT = gvarstatus("ALIVE_TEXT") or "**بـوت ريبـــثون 𝗥𝗘𝗣𝗧𝗛𝗢𝗡 يعمـل .. بنجـاح ☑️ 𓆩**"
+    REP_IMG = gvarstatus("ALIVE_PIC") or "https://graph.org/file/fb87a7d1836e0d1c6a55b.mp4"
     rep_caption = gvarstatus("ALIVE_TEMPLATE") or rep_temp
     caption = rep_caption.format(
         ALIVE_TEXT=ALIVE_TEXT,
@@ -73,7 +73,7 @@ async def amireallyalive(event):
             await repevent.delete()
         except (WebpageMediaEmptyError, MediaEmptyError, WebpageCurlFailedError):
             return await edit_or_reply(
-                zedevent,
+                repevent,
                 f"**⌔∮ عـذراً عليـك الـرد ع صـوره او ميـديـا  ⪼  `.اضف صورة الفحص` <بالرد ع الصـوره او الميـديـا> ",
             )
     else:
