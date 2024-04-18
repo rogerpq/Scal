@@ -193,9 +193,12 @@ async def inline_handler(event):  # sourcery no-metrics
                     ]
                 )
         elif string == "pmpermit":
-            buttons = [
-                Button.inline(text="عـرض الخيـارات", data="show_pmpermit_options"),
-            ]
+            controlpmch = gvarstatus("pmchannel") or None
+            if controlpmch is not None:
+                rchannel = controlpmch.replace("@", "")
+                buttons = [[Button.url("⌔ قنـاتـي ⌔", f"https://t.me/{rchannel}")]]
+            else:
+                buttons = [[Button.url("𝗥𝗲𝗽𝘁𝗵𝗼𝗻", "https://t.me/Repthon")]]
             PM_PIC = gvarstatus("pmpermit_pic")
             if PM_PIC:
                 CAT = [x for x in PM_PIC.split()]
