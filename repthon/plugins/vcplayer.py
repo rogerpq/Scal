@@ -1,4 +1,4 @@
-# تعريب وتحديث فريق ريبـــثون 
+# تعريب وتحديث فريق ريبـــثون
 # Repthon UsetBot T.me/Repthon
 # Devolper Baqir T.me/E_7_V
 import asyncio
