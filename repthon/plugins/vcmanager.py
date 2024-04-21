@@ -1,4 +1,6 @@
 # تعريب وتحديث فريق ريبـــثون
+# Repthon UsetBot T.me/Repthon
+# Devolper Baqir T.me/E_7_V
 from telethon import functions
 from telethon.errors import ChatAdminRequiredError, UserAlreadyInvitedError
 from telethon.tl.types import Channel, Chat, User
@@ -53,7 +55,7 @@ async def start_vc(event):
         await zq_lo(
             functions.phone.CreateGroupCallRequest(
                 peer=vc_chat,
-                title="Rep VC",
+                title="RepVC",
             )
         )
         await edit_delete(event, "**- جـارِ بـدء محـادثـه صـوتيـه ...**")
@@ -193,7 +195,7 @@ async def mute_vc(event):
     cmd = event.pattern_match.group(1)
     users = event.pattern_match.group(2)
     reply = await event.get_reply_message()
-    vc_chat = await zq_lo.tgbot.get_me .get_entity(event.chat_id)
+    vc_chat = await zq_lo.get_entity(event.chat_id)
     gc_call = await chat_vc_checker(event, vc_chat)
     if not gc_call:
         return
