@@ -11,6 +11,7 @@ from validators.url import url
 
 class Config(object):
     LOGGER = True
+    # don't play that🫵🏻
     PORT = os.environ.get("PORT", None)
     # MUST NEEDED VARS
     # set this value with your name
@@ -31,7 +32,7 @@ class Config(object):
     TZ = os.environ.get("TZ", "Asia/Baghdad")
     # set this with required zed repo link
     UPSTREAM_REPO = os.environ.get(
-        "UPSTREAM_REPO", "https://github.com/RepthonArabic/Repthon"
+        "UPSTREAM_REPO", "https://github.com/Repthon-Arabic/RepthonAr"
     )
     # External plugins repo
     EXTERNAL_REPO = os.environ.get("EXTERNAL_REPO", None)
@@ -190,8 +191,8 @@ class Config(object):
     if OLDZED_REPO and not url(OLDZED_REPO):
         OLDZED_REPO = "https://github.com/RepthonArabic/RepthonAr"
     OLDZED_REPOBRANCH = os.environ.get("OLDZED_REPOBRANCH", "oldzed")
-    VC_REPO = os.environ.get("VC_REPO", "https://github.com/RepthonArabic/RepVcPlayer")
-    VC_REPOBRANCH = os.environ.get("VC_REPOBRANCH", "zvcplayer")
+    VC_REPO = os.environ.get("VC_REPO", "https://github.com/Repthon-Arabic/RepVC")
+    VC_REPOBRANCH = os.environ.get("VC_REPOBRANCH", "main")
 
 
 class Production(Config):
