@@ -1,9 +1,9 @@
-# Zed-Thon - ZelZal ~ Baqir Repthon
-# Copyright (C) 2022 Zedthon . All Rights Reserved
+# ~ Baqir Repthon
+# Copyright (C) 2022 Repthon. All Rights Reserved
 #
-# This file is a part of < https://github.com/Zed-Thon/ZelZal/ >
+# This file is a part of < https://github.com/Repthon-Arabic/RepthonAr/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/Zed-Thon/ZelZal/blob/master/LICENSE/>.
+# <https://www.github.com/Repthon-Arabic/RepthonAr/blob/master/LICENSE/>.
 # الملــف محمــي بحقــوق النشـــر والملـكيـه
 # تخمــط بــدون ذكــر المصــدر ابلــع حســابـك بانـــد
 """ 
@@ -29,13 +29,13 @@ from ..core.managers import edit_or_reply
 plugin_category = "البوت"
 
 
-# code by t.me/zzzzl1l
+# code by t.me/E_7_V
 @zq_lo.rep_cmd(pattern="cc(?:\s|$)([\s\S]*)")
 async def song2(event):
     song = event.pattern_match.group(1)
-    chat = "@SDBB_Bot" # code by t.me/zzzzl1l
+    chat = "@SDBB_Bot" # code by t.me/E_7_V
     reply_id_ = await reply_id(event)
-    zed = await edit_or_reply(event, "**⎉╎جـارِ فحص البطـاقـه ...**")
+    rep = await edit_or_reply(event, "**⎉╎جـارِ فحص البطـاقـه ...**")
     async with event.client.conversation(chat) as conv:
         try:
             gool = "/chk {}".format(song)
@@ -47,21 +47,21 @@ async def song2(event):
         await asyncio.sleep(22)
         response = await conv.get_response()
         if response.text.startswith("ANTI_SPAM:"):
-        	return await zed.edit("**- حاول مجـدداً ولا تستخـدم سبـام ...**")
+        	return await rep.edit("**- حاول مجـدداً ولا تستخـدم سبـام ...**")
         if response.text.startswith("RISK:"):
-        	return await zed.edit("**- خطـأ :**\n**أعد محاولة فحص هذه البطاقه ...لاحقًا**")
+        	return await rep.edit("**- خطـأ :**\n**أعد محاولة فحص هذه البطاقه ...لاحقًا**")
         await event.client.send_read_acknowledge(conv.chat_id)
         await event.client.send_message(event.chat_id, response.message)
-        await zed.delete()
+        await rep.delete()
 
 
-# code by t.me/zzzzl1l
+# code by t.me/E_7_V
 @zq_lo.rep_cmd(pattern="كومبو(?:\s|$)([\s\S]*)")
-async def song2(event): # code by t.me/zzzzl1l
+async def song2(event): # code by t.me/E_7_V
     been = event.pattern_match.group(1)
     chat = "@SDBB_Bot"
     reply_id_ = await reply_id(event)
-    zed = await edit_or_reply(event, f"**⎉╎جـارِ جلب كومبـو لـ البين {been}  ...**\n**⎉╎عـدد 10 بطاقـات 💳**")
+    rep = await edit_or_reply(event, f"**⎉╎جـارِ جلب كومبـو لـ البين {been}  ...**\n**⎉╎عـدد 10 بطاقـات 💳**")
     async with event.client.conversation(chat) as conv:
         try:
             gool = "/gen {}".format(been)
@@ -73,21 +73,21 @@ async def song2(event): # code by t.me/zzzzl1l
         await asyncio.sleep(5)
         response = await conv.get_response()
         if response.text.startswith("ANTI_SPAM:"):
-        	return await zed.edit("**- حاول مجـدداً ولا تستخـدم سبـام ...**")
+        	return await rep.edit("**- حاول مجـدداً ولا تستخـدم سبـام ...**")
         if response.text.startswith("RISK:"):
-        	return await zed.edit("**- خطـأ :**\n**أعد محاولة فحص هذه البطاقه ...لاحقًا**")
+        	return await rep.edit("**- خطـأ :**\n**أعد محاولة فحص هذه البطاقه ...لاحقًا**")
         await event.client.send_read_acknowledge(conv.chat_id)
         await event.client.send_message(event.chat_id, response.message)
-        await zed.delete()
+        await rep.delete()
 
 
-# code by t.me/zzzzl1l
+# code by t.me/E_7_V
 @zq_lo.rep_cmd(pattern="توليد(?:\s|$)([\s\S]*)")
 async def song2(event):
     been = event.pattern_match.group(1)
-    chat = "@SDBB_Bot" # code by t.me/zzzzl1l
+    chat = "@SDBB_Bot" # code by t.me/E_7_V
     reply_id_ = await reply_id(event)
-    zed = await edit_or_reply(event, f"**⎉╎جـارِ جلب كومبـو لـ البين {been}  ...**\n**⎉╎عـدد 10 بطاقـات 💳**")
+    rep = await edit_or_reply(event, f"**⎉╎جـارِ جلب كومبـو لـ البين {been}  ...**\n**⎉╎عـدد 10 بطاقـات 💳**")
     async with event.client.conversation(chat) as conv:
         try:
             gool = "/gen {}".format(been)
@@ -99,21 +99,21 @@ async def song2(event):
         await asyncio.sleep(5)
         response = await conv.get_response()
         if response.text.startswith("ANTI_SPAM:"):
-        	return await zed.edit("**- حاول مجـدداً ولا تستخـدم سبـام ...**")
+        	return await rep.edit("**- حاول مجـدداً ولا تستخـدم سبـام ...**")
         if response.text.startswith("RISK:"):
-        	return await zed.edit("**- خطـأ :**\n**أعد محاولة فحص هذه البطاقه ...لاحقًا**")
+        	return await rep.edit("**- خطـأ :**\n**أعد محاولة فحص هذه البطاقه ...لاحقًا**")
         await event.client.send_read_acknowledge(conv.chat_id)
         await event.client.send_message(event.chat_id, response.message)
-        await zed.delete()
+        await rep.delete()
 
 
-# code by t.me/zzzzl1l
+# code by t.me/E_7_V
 @zq_lo.rep_cmd(pattern="فيزا(?:\s|$)([\s\S]*)")
 async def song2(event):
-    been = "410039xxxxxxxxxx|xx|xxxx|xxx" # code by t.me/zzzzl1l
-    chat = "@SDBB_Bot" # code by t.me/zzzzl1l
+    been = "410039xxxxxxxxxx|xx|xxxx|xxx" # code by t.me/E_7_V
+    chat = "@SDBB_Bot" # code by t.me/E_7_V
     reply_id_ = await reply_id(event)
-    zed = await edit_or_reply(event, f"**⎉╎جـارِ تولـيد 𝚅𝙸𝚂𝙴💲...**\n**⎉╎لـ البين {been}  ...**\n**⎉╎عـدد 10 بطاقـات 💳**")
+    rep = await edit_or_reply(event, f"**⎉╎جـارِ تولـيد 𝚅𝙸𝚂𝙴💲...**\n**⎉╎لـ البين {been}  ...**\n**⎉╎عـدد 10 بطاقـات 💳**")
     async with event.client.conversation(chat) as conv:
         try:
             gool = "/gen {}".format(been)
@@ -125,21 +125,21 @@ async def song2(event):
         await asyncio.sleep(5)
         response = await conv.get_response()
         if response.text.startswith("ANTI_SPAM:"):
-        	return await zed.edit("**- حاول مجـدداً ولا تستخـدم سبـام ...**")
+        	return await rep.edit("**- حاول مجـدداً ولا تستخـدم سبـام ...**")
         if response.text.startswith("RISK:"):
-        	return await zed.edit("**- خطـأ :**\n**أعد محاولة فحص هذه البطاقه ...لاحقًا**")
+        	return await rep.edit("**- خطـأ :**\n**أعد محاولة فحص هذه البطاقه ...لاحقًا**")
         await event.client.send_read_acknowledge(conv.chat_id)
         await event.client.send_message(event.chat_id, response.message)
-        await zed.delete()
+        await rep.delete()
 
 
-# code by t.me/zzzzl1l
+# code by t.me/E_7_V
 @zq_lo.rep_cmd(pattern="ماستر(?:\s|$)([\s\S]*)")
 async def song2(event):
-    been = "524447000053xxxx|xx|xxxx|xxx" # code by t.me/zzzzl1l
-    chat = "@SDBB_Bot" # code by t.me/zzzzl1l
+    been = "524447000053xxxx|xx|xxxx|xxx" # code by t.me/E_7_V
+    chat = "@SDBB_Bot" # code by t.me/E_7_V
     reply_id_ = await reply_id(event)
-    zed = await edit_or_reply(event, f"**⎉╎جـارِ تولـيد بن 𝙼𝙰𝚂𝚃𝙴𝚁𝙲𝙰𝚁𝙳 💳...**\n**⎉╎لـ البين {been}  ...**\n**⎉╎عـدد 10 بطاقـات 💳**")
+    rep = await edit_or_reply(event, f"**⎉╎جـارِ تولـيد بن 𝙼𝙰𝚂𝚃𝙴𝚁𝙲𝙰𝚁𝙳 💳...**\n**⎉╎لـ البين {been}  ...**\n**⎉╎عـدد 10 بطاقـات 💳**")
     async with event.client.conversation(chat) as conv:
         try:
             gool = "/gen {}".format(been)
@@ -151,21 +151,21 @@ async def song2(event):
         await asyncio.sleep(5)
         response = await conv.get_response()
         if response.text.startswith("ANTI_SPAM:"):
-        	return await zed.edit("**- حاول مجـدداً ولا تستخـدم سبـام ...**")
+        	return await rep.edit("**- حاول مجـدداً ولا تستخـدم سبـام ...**")
         if response.text.startswith("RISK:"):
-        	return await zed.edit("**- خطـأ :**\n**أعد محاولة فحص هذه البطاقه ...لاحقًا**")
+        	return await rep.edit("**- خطـأ :**\n**أعد محاولة فحص هذه البطاقه ...لاحقًا**")
         await event.client.send_read_acknowledge(conv.chat_id)
         await event.client.send_message(event.chat_id, response.message)
-        await zed.delete()
+        await rep.delete()
 
 
-# code by t.me/zzzzl1l
+# code by t.me/E_7_V
 @zq_lo.rep_cmd(pattern="اماكس(?:\s|$)([\s\S]*)")
 async def song2(event):
-    been = "373352589xxxxxx|xx|xxxx|xxxx" # code by t.me/zzzzl1l
-    chat = "@SDBB_Bot" # code by t.me/zzzzl1l
+    been = "373352589xxxxxx|xx|xxxx|xxxx" # code by t.me/E_7_V
+    chat = "@SDBB_Bot" # code by t.me/E_7_V
     reply_id_ = await reply_id(event)
-    zed = await edit_or_reply(event, f"**⎉╎جـارِ تولـيد بن 🇧🇷 𝙰𝙼𝙴𝚇...**\n**⎉╎لـ البين {been}  ...**\n**⎉╎عـدد 10 بطاقـات 💳**")
+    rep = await edit_or_reply(event, f"**⎉╎جـارِ تولـيد بن 🇧🇷 𝙰𝙼𝙴𝚇...**\n**⎉╎لـ البين {been}  ...**\n**⎉╎عـدد 10 بطاقـات 💳**")
     async with event.client.conversation(chat) as conv:
         try:
             gool = "/gen {}".format(been)
@@ -177,9 +177,9 @@ async def song2(event):
         await asyncio.sleep(5)
         response = await conv.get_response()
         if response.text.startswith("ANTI_SPAM:"):
-        	return await zed.edit("**- حاول مجـدداً ولا تستخـدم سبـام ...**")
+        	return await rep.edit("**- حاول مجـدداً ولا تستخـدم سبـام ...**")
         if response.text.startswith("RISK:"):
-        	return await zed.edit("**- خطـأ :**\n**أعد محاولة فحص هذه البطاقه ...لاحقًا**")
+        	return await rep.edit("**- خطـأ :**\n**أعد محاولة فحص هذه البطاقه ...لاحقًا**")
         await event.client.send_read_acknowledge(conv.chat_id)
         await event.client.send_message(event.chat_id, response.message)
-        await zed.delete()
+        await rep.delete()
