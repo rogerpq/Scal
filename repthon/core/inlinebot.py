@@ -9,11 +9,9 @@ from platform import python_version
 from telethon import Button, types, version
 from telethon.errors import QueryIdInvalidError
 from telethon.events import CallbackQuery, InlineQuery
-from youtubesearchpython import VideosSearch
 from repthon import zq_lo, repversion, StartTime
 from ..Config import Config
 from ..helpers.functions import rand_key, repalive, check_data_base_heal_th, get_readable_time
-from ..helpers.functions.utube import download_button, get_yt_video_id, get_ytthumb, result_formatter, ytsearch_data
 from ..plugins import mention
 from ..sql_helper.globals import gvarstatus
 from . import CMD_INFO, GRP_INFO, PLG_INFO, check_owner
@@ -124,81 +122,13 @@ async def inline_handler(event):  # sourcery no-metrics
                 json.dump(jsondata, open(old_msg, "w"))
             else:
                 json.dump(new_msg, open(old_msg, "w"))
-        elif str_y[0].lower() == "ytdl" and len(str_y) == 2:
-            link = get_yt_video_id(str_y[1].strip())
-            found_ = True
-            if link is None:
-                search = VideosSearch(str_y[1].strip(), limit=15)
-                resp = (search.result()).get("result")
-                if len(resp) == 0:
-                    found_ = False
-                else:
-                    outdata = await result_formatter(resp)
-                    key_ = rand_key()
-                    ytsearch_data.store_(key_, outdata)
-                    buttons = [
-                        Button.inline(
-                            f"1 / {len(outdata)}",
-                            data=f"ytdl_next_{key_}_1",
-                        ),
-                        Button.inline(
-                            "القائمـة 📜",
-                            data=f"ytdl_listall_{key_}_1",
-                        ),
-                        Button.inline(
-                            "⬇️  تحميـل",
-                            data=f'ytdl_download_{outdata[1]["video_id"]}_0',
-                        ),
-                    ]
-                    caption = outdata[1]["message"]
-                    photo = await get_ytthumb(outdata[1]["video_id"])
-            else:
-                caption, buttons = await download_button(link, body=True)
-                photo = await get_ytthumb(link)
-            if found_:
-                markup = event.client.build_reply_markup(buttons)
-                photo = types.InputWebDocument(
-                    url=photo, size=0, mime_type="image/jpeg", attributes=[]
-                )
-                text, msg_entities = await event.client._parse_message_text(
-                    caption, "html"
-                )
-                result = types.InputBotInlineResult(
-                    id=str(uuid4()),
-                    type="photo",
-                    title=link,
-                    description="⬇️ اضغـط للتحميـل",
-                    thumb=photo,
-                    content=photo,
-                    send_message=types.InputBotInlineMessageMediaAuto(
-                        reply_markup=markup, message=text, entities=msg_entities
-                    ),
-                )
-            else:
-                result = builder.article(
-                    title="Not Found",
-                    text=f"No Results found for `{str_y[1]}`",
-                    description="INVALID",
-                )
-            try:
-                await event.answer([result] if result else None)
-            except QueryIdInvalidError:
-                await event.answer(
-                    [
-                        builder.article(
-                            title="Not Found",
-                            text=f"No Results found for `{str_y[1]}`",
-                            description="INVALID",
-                        )
-                    ]
-                )
         elif string == "pmpermit":
             controlpmch = gvarstatus("pmchannel") or None
             if controlpmch is not None:
                 rchannel = controlpmch.replace("@", "")
                 buttons = [[Button.url("⌔ قنـاتـي ⌔", f"https://t.me/{rchannel}")]]
             else:
-                buttons = [[Button.url("𝗥𝗲𝗽𝘁𝗵𝗼𝗻", "https://t.me/Repthon")]]
+                buttons = [[Button.url("𝗦𝗼𝘂𝗿𝗰𝗲 𝗥𝗲𝗽𝘁𝗵𝗼𝗻", "https://t.me/Repthon")]]
             PM_PIC = gvarstatus("pmpermit_pic")
             if PM_PIC:
                 CAT = [x for x in PM_PIC.split()]
@@ -210,7 +140,7 @@ async def inline_handler(event):  # sourcery no-metrics
             if CAT_IMG and CAT_IMG.endswith((".jpg", ".jpeg", ".png")):
                 result = builder.photo(
                     CAT_IMG,
-                    # title="Alive zed",
+                    # title="Alive rep",
                     text=query,
                     buttons=buttons,
                 )
