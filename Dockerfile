@@ -6,6 +6,6 @@ WORKDIR /root/repthon
 
 RUN pip3 install --no-cache-dir -r requirements.txt
 
-ENV PATH="/home/zelz/bin:$PATH"
+ENV PATH="/home/repthon/bin:$PATH"
 
 CMD ["python3","-m","repthon"]
