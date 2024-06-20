@@ -23,6 +23,7 @@ import requests
 
 from telethon import Button, functions, types, utils
 from telethon.tl.functions.channels import JoinChannelRequest
+from telethon.tl.functions.contacts import UnblockRequest
 
 from repthon import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID
 
@@ -62,25 +63,33 @@ bot = zq_lo
 DEV = 5502537272
 
 async def autovars(): #Code by T.me/E_7_V
-    if "ENV" in heroku_var:
+    if "ENV" in heroku_var and "TZ" in heroku_var:
         return
-    LOGS.info("جـارِ اضافـة بقيـة الفـارات .. تلقائيـاً")
-    rrenv = "ANYTHING"
-    rrcom = "."
-    rrrtz = "Asia/Baghdad"
-    heroku_var["ENV"] = rrenv
-    heroku_var["COMMAND_HAND_LER"] = rrcom
-    heroku_var["TZ"] = rrrtz
-    LOGS.info("تم اضافـة بقيـة الفـارات .. بنجـاح")
+    if "ENV" in heroku_var and "TZ" not in heroku_var:
+        LOGS.info("جـارِ اضافـة بقيـة الفـارات .. تلقائيـاً")
+        rrcom = "."
+        rrrtz = "Asia/Baghdad"
+        heroku_var["COMMAND_HAND_LER"] = rrcom
+        heroku_var["TZ"] = rrrtz
+        LOGS.info("تم اضافـة بقيـة الفـارات .. بنجـاح")
+    if "ENV" not in heroku_var and "TZ" not in heroku_var:
+        LOGS.info("جـارِ اضافـة بقيـة الفـارات .. تلقائيـاً")
+        rrenv = "ANYTHING"
+        rrcom = "."
+        rrrtz = "Asia/Baghdad"
+        heroku_var["ENV"] = rrenv
+        heroku_var["COMMAND_HAND_LER"] = rrcom
+        heroku_var["TZ"] = rrrtz
+        LOGS.info("تم اضافـة بقيـة الفـارات .. بنجـاح")
 
 async def autoname(): #Code by T.me/E_7_V
-    if Config.ALIVE_NAME:
+    if gvarstatus("ALIVE_NAME"):
         return
     await bot.start()
     await asyncio.sleep(15)
     LOGS.info("جـارِ اضافة فـار الاسـم التلقـائـي .. انتظـر قليـلاً")
     baqir = await bot.get_me()
-    rrname = f"{baqir.first_name}"
+    rrname = f"{baqir.first_name} {baqir.last_name}" if baqir.last_name else f"{baqie.first_name}"
     tz = Config.TZ
     tzDateTime = dt.now(timezone(tz))
     rdate = tzDateTime.strftime('%Y/%m/%d')
@@ -91,10 +100,11 @@ async def autoname(): #Code by T.me/E_7_V
     if gvarstatus("r_date") is None:
         rd = "r_date"
         rt = "r_time"
+        rn = "ALIVE_NAME"
         addgvar(rd, rrd)
         addgvar(rt, rrt)
+        addgvar(rn, rrname)
     LOGS.info(f"تم اضافـة اسـم المستخـدم {rrname} .. بنجـاح")
-    heroku_var["ALIVE_NAME"] = rrname
 
 async def setup_bot():
     """
