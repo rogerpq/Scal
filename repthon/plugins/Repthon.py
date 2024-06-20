@@ -64,9 +64,9 @@ async def inline_handler(event):  # sourcery no-metrics
                     text=query,
                     buttons=buttons,
                 )
-            elif ZZZ_IMG:
+            elif RRR_IMG:
                 result = builder.document(
-                    ZZZ_IMG,
+                    RRR_IMG,
                     title="Alive rrr",
                     text=query,
                     buttons=buttons,
