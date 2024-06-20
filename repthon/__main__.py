@@ -1,85 +1,75 @@
-import sys
+import sys, asyncio
 import repthon
-from repthon import BOTLOG_CHATID, PM_LOGGER_GROUP_ID
+from repthon import BOTLOG_CHATID, HEROKU_APP, PM_LOGGER_GROUP_ID
+from telethon import functions
 from .Config import Config
 from .core.logger import logging
 from .core.session import zq_lo
-from .utils import mybot, autoname, autovars
-from .utils import (
-    add_bot_to_logger_group,
-    load_plugins,
-    setup_bot,
-    saves,
-    startupmessage,
-    verifyLoggerGroup,
-)
+from .utils import mybot, saves, autoname
+from .utils import add_bot_to_logger_group, load_plugins, setup_bot, startupmessage, verifyLoggerGroup
+from .sql_helper.globals import addgvar, delgvar, gvarstatus
 
 LOGS = logging.getLogger("𝐑𝐞𝐩𝐭𝐡𝐨𝐧")
-
-print(repthon.__copyright__)
-print(f"المرخصة بموجب شروط  {repthon.__license__}")
-
 cmdhr = Config.COMMAND_HAND_LER
 
-try:
-    LOGS.info("⌭ جـاري تحميـل الملحقـات ⌭")
-    zq_lo.loop.run_until_complete(autovars())
-    LOGS.info("✓ تـم تحميـل الملحقـات .. بنجـاح ✓")
-except Exception as e:
-    LOGS.error(f"{e}")
-    sys.exit()
-
-if not Config.ALIVE_NAME:
-    try: #Code by T.me/E_7_V
+if gvarstatus("ALIVE_NAME") is None: #Code by T.me/E_7_V
+    try:
         LOGS.info("⌭ بـدء إضافة الاسـم التلقـائـي ⌭")
         zq_lo.loop.run_until_complete(autoname())
         LOGS.info("✓ تـم إضافة فار الاسـم .. بـنجـاح ✓")
     except Exception as e:
-        LOGS.error(f"- {e}")
+        LOGS.error(f"- The AutoName {e}")
 
-try: #Code by T.me/E_7_V
+try:
     LOGS.info("⌭ بـدء تنزيـل ريبـــثون ⌭")
     zq_lo.loop.run_until_complete(setup_bot())
-    LOGS.info("⌭ بـدء تشغيل البـوت ⌭")
+    LOGS.info("✓ تـم تنزيـل ريبـــثون .. بـنجـاح ✓")
 except Exception as e:
-    LOGS.error(f"- {e}")
+    LOGS.error(f"{str(e)}")
+    sys.exit()
+
+class RCheck:
+    def __init__(self):
+        self.sucess = True
+Rcheck = RCheck()
 
 try:
-    LOGS.info("⌭ جـار تفعيـل وضـع الانـلاين ⌭")
+    LOGS.info("⌭ بـدء إنشـاء البـوت التلقـائـي ⌭")
     zq_lo.loop.run_until_complete(mybot())
-    LOGS.info("✓ تـم تفعيـل الانـلاين .. بـنجـاح ✓")
+    LOGS.info("✓ تـم إنشـاء البـوت .. بـنجـاح ✓")
 except Exception as e:
     LOGS.error(f"- {e}")
 
 try:
-    LOGS.info("⌭ جـار تفعـيـل وضـع حمــاية الحـسـاب من الاختـراق ⌭")
-    zq_lo.loop.run_until_complete(saves())
-    LOGS.info("✓ تـم تفعـيل .. وضـع حـمايـة الحـسـاب بنجــاح ✓")
+    LOGS.info("⌭ جـارِ تفعيـل الاشتـراك ⌭")
+    zq_lo.loop.create_task(saves())
+    LOGS.info("✓ تـم تفعيـل الاشتـراك .. بنجـاح ✓")
 except Exception as e:
     LOGS.error(f"- {e}")
-
 
 
 async def startup_process():
     await verifyLoggerGroup()
     await load_plugins("plugins")
     await load_plugins("assistant")
-    print("➖➖➖➖➖ 𝐑𝐞𝐩𝐭𝐡𝐨𝐧™ ➖➖➖➖➖")
-    print("تـم التنصـيب .. بنجـاح ✓")
-    print(
-        f"⌔┊تـم تنصيـب ريبثون يـوزربـوت . . بنجـاح 🧸♥️ \n\n⌔┊تحيـاتي ..  روجر\n⌔┊قنـاة السـورس ↶.\n🌐┊@Repthon"
-    )
-    print("➖➖➖➖➖ 𝐑𝐞𝐩𝐭𝐡𝐨𝐧™ ➖➖➖➖➖")
+    LOGS.info(f"⌔ تـم تنصيـب ريبـــثون . . بنجـاح ✓ \n⌔ لـ إظهـار الاوامـر ارسـل (.الاوامر)")
     await verifyLoggerGroup()
     await add_bot_to_logger_group(BOTLOG_CHATID)
     if PM_LOGGER_GROUP_ID != -100:
         await add_bot_to_logger_group(PM_LOGGER_GROUP_ID)
     await startupmessage()
+    Rcheck.sucess = True
     return
+
 
 zq_lo.loop.run_until_complete(startup_process())
 if len(sys.argv) not in (1, 3, 4):
     zq_lo.disconnect()
+elif not Rcheck.sucess:
+    try:
+        zq_lo.run_until_disconnected()
+    except ConnectionError:
+        pass
 else:
     try:
         zq_lo.run_until_disconnected()
