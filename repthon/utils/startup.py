@@ -132,7 +132,7 @@ async def setup_bot():
         await app.setup()
         bind_address = "0.0.0.0"
         baqirport = Config.PORT
-        await web.TCPsite(app, bind_address, baqirport).start()
+        await web.TCPSite(app, bind_address, baqirport).start()
         zq_lo.me = await zq_lo.get_me()
         zq_lo.uid = zq_lo.tgbot.uid = utils.get_peer_id(zq_lo.me)
         if Config.OWNER_ID == 0:
