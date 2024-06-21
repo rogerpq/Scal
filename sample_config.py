@@ -69,7 +69,7 @@ class Config(object):
     CUSTOM_ALIVE_EMOJI = os.environ.get("CUSTOM_ALIVE_EMOJI", None)
     CUSTOM_ALIVE_EMZED = os.environ.get("CUSTOM_ALIVE_EMZED", None)
     CUSTOM_PMPERMIT = os.environ.get("CUSTOM_PMPERMIT", None)
-    BAQIR_A = int(os.environ.get("BAQIR_A", -1001526282589)
+    BAQIR_A = int(os.environ.get("BAQIR_A") or -1001526282589)
     ALIVE_PIC = os.environ.get("ALIVE_PIC", None)
     BOT_PIC = os.environ.get("BOT_PIC", None)
     REP_MEDIA = os.environ.get("REP_MEDIA", None)
