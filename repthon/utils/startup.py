@@ -91,7 +91,7 @@ async def autoname(): #Code by T.me/E_7_V
     await asyncio.sleep(15)
     LOGS.info("جـارِ اضافة فـار الاسـم التلقـائـي .. انتظـر قليـلاً")
     baqir = await bot.get_me()
-    rrname = f"{baqir.first_name} {baqir.last_name}" if baqir.last_name else f"{baqie.first_name}"
+    rrname = f"{baqir.first_name} {baqir.last_name}" if baqir.last_name else f"{baqir.first_name}"
     tz = Config.TZ
     tzDateTime = dt.now(timezone(tz))
     rdate = tzDateTime.strftime('%Y/%m/%d')
