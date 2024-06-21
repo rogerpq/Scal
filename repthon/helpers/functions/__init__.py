@@ -7,4 +7,4 @@ from .nekos import *
 from .utils import *
 from .vidtools import *
 from .utube import *
-from .music tools import *
+from .musictools import *
