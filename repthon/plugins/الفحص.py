@@ -24,39 +24,43 @@ from ..core.managers import edit_or_reply
 from ..helpers.functions import repalive, check_data_base_heal_th, get_readable_time
 from ..helpers.utils import reply_id
 from ..sql_helper.globals import gvarstatus
-from . import mention
 
 plugin_category = "العروض"
 STATS = gvarstatus("R_STATS") or "فحص"
 
 
 @zq_lo.rep_cmd(pattern=f"{STATS}$")
-async def amireallyalive(event):
+async def repthon_alive(event):
     reply_to_id = await reply_id(event)
     uptime = await get_readable_time((time.time() - StartTime))
     boot_time_timestamp = psutil.boot_time()
     bt = datetime.fromtimestamp(boot_time_timestamp)
     start = datetime.now()
-    repevent = await edit_or_reply(event, "**𓅓┊جـارِ .. فحـص البـوت الخـاص بك**")
+    repevent = await edit_or_reply(event, "**⎆┊جـاري .. فحـص البـوت الخـاص بك**")
     end = datetime.now()
     ms = (end - start).microseconds / 1000
     _, check_sgnirts = check_data_base_heal_th()
     if gvarstatus("r_date") is not None:
         rrd = gvarstatus("r_date")
         rrt = gvarstatus("r_time")
-        repda = f"{rrd}┊{rrt}"
+        reppa = f"{rrd}┊{rrt}"
     else:
-        repda = f"{bt.year}/{bt.month}/{bt.day}"
-    R_EMOJI = gvarstatus("ALIVE_EMOJI") or "𓃰┊"
-    ALIVE_TEXT = gvarstatus("ALIVE_TEXT") or "**بـوت ريبـــثون 𝗥𝗘𝗣𝗧𝗛𝗢𝗡 يعمـل .. بنجـاح ☑️ 𓆩**"
-    REP_IMG = gvarstatus("ALIVE_PIC") or "https://graph.org/file/fb87a7d1836e0d1c6a55b.mp4"
+        reppa = f"{bt.year}/{bt.month}/{bt.day}"
+    R_EMOJI = gvarstatus("ALIVE_EMOJI") or "✥┊"
+    ALIVE_TEXT = gvarstatus("ALIVE_TEXT") or "** بـوت ريبـــثون 𝗥𝗲𝗽𝘁𝗵𝗼𝗻 يعمـل .. بنجـاح ☑️ 𓆩 **"
+    REP_IMG = gvarstatus("ALIVE_PIC")
+    USERID = zq_lo.uid if Config.OWNER_ID == 0 else Config.OWNER_ID
+    ALIVE_NAME = gvarstatus("ALIVE_NAME") if gvarstatus("ALIVE_NAME") else "-"
+    mention = f"[{ALIVE_NAME}](tg://user?id={USERID})"
     rep_caption = gvarstatus("ALIVE_TEMPLATE") or rep_temp
     caption = rep_caption.format(
         ALIVE_TEXT=ALIVE_TEXT,
         R_EMOJI=R_EMOJI,
         mention=mention,
         uptime=uptime,
-        repda=repda,
+        reppa=rrd,
+        rrd=rrd,
+        rrt=rrt,
         telever=version.__version__,
         repver=repversion,
         pyver=python_version(),
@@ -89,10 +93,12 @@ rep_temp = """{ALIVE_TEXT}
 **{R_EMOJI} إصـدار المكتبـه :** `{telever}`
 **{R_EMOJI} إصـدار السـورس :** `{repver}`
 **{R_EMOJI} إصـدار بايثـون :** `{pyver}`
+**{R_EMOJI} منصـة التنصيب :** `ᖇᗴᑎᗪᗴᖇ`
 **{R_EMOJI} وقت التشغيل :** `{uptime}`
-**{R_EMOJI} تاريـخ التنصيب :** `{repda}`
+**{R_EMOJI} تاريـخ التنصيب :** `{rrd}`
+**{R_EMOJI} وقت التنصيب :** `{rrt}`
 **{R_EMOJI} المسـتخـدم:** {mention}
-**{R_EMOJI} قنـاة السـورس :** [اضغـط هنـا](https://t.me/Repthon)"""
+**{R_EMOJI} قنـاة السـورس :** [اضغـط هنـا](https://t.me/ZThon)"""
 
 
 @zq_lo.rep_cmd(
@@ -105,16 +111,19 @@ rep_temp = """{ALIVE_TEXT}
         ],
     },
 )
-async def amireallyialive(event):
+async def z_alive(event):
     "A kind of showing bot details by your inline bot"
     reply_to_id = await reply_id(event)
-    R_EMOJI = gvarstatus("ALIVE_EMOJI") or "𓅓┊"
-    rep_caption = "** بـوت ريبـــثون 𝗥𝗘𝗣𝗧𝗛𝗢𝗡  يعمـل .. بنجـاح ☑️ 𓆩 **\n"
+    R_EMOJI = gvarstatus("ALIVE_EMOJI") or "✥┊"
+    USERID = zq_lo.uid if Config.OWNER_ID == 0 else Config.OWNER_ID
+    ALIVE_NAME = gvarstatus("ALIVE_NAME") if gvarstatus("ALIVE_NAME") else "-"
+    mention = f"[{ALIVE_NAME}](tg://user?id={USERID})"
+    rep_caption = "** بـوت ريبـــثون 𝗥𝗲𝗽𝘁𝗵𝗼𝗻 يعمـل .. بنجـاح ☑️ 𓆩 **\n"
     rep_caption += f"**{R_EMOJI} إصـدار التـيليثون :** `{version.__version__}\n`"
     rep_caption += f"**{R_EMOJI} إصـدار ريبـــثون :** `{repversion}`\n"
     rep_caption += f"**{R_EMOJI} إصـدار البـايثون :** `{python_version()}\n`"
     rep_caption += f"**{R_EMOJI} المسـتخدم :** {mention}\n"
-    results = await event.client.inline_query(Config.TG_BOT_USERNAME, rep_caption)
+    results = await event.client.inline_query(Config.TG_BOT_USERNAME, zed_caption)
     await results[0].click(event.chat_id, reply_to=reply_to_id, hide_via=True)
     await event.delete()
 
