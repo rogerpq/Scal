@@ -34,12 +34,12 @@ Heroku = heroku3.from_key(Config.HEROKU_API_KEY)
 OLDZED = Config.OLDZED
 heroku_api = "https://api.heroku.com"
 
-UPSTREAM_REPO_BRANCH = "baqir"
+UPSTREAM_REPO_BRANCH = "web"
 
 REPO_REMOTE_NAME = "temponame"
-IFFUCI_ACTIVE_BRANCH_NAME = "baqir"
+IFFUCI_ACTIVE_BRANCH_NAME = "web"
 NO_HEROKU_APP_CFGD = "no heroku application found, but a key given? 😕 "
-HEROKU_GIT_REF_SPEC = "HEAD:refs/heads/baqir"
+HEROKU_GIT_REF_SPEC = "HEAD:refs/heads/web"
 RESTARTING_APP = "re-starting heroku application"
 IS_SELECTED_DIFFERENT_BRANCH = (
     "looks like a custom branch {branch_name} "
@@ -133,7 +133,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
     else:
         remote = repo.create_remote("heroku", heroku_git_url)
     try:
-        remote.push(refspec="HEAD:refs/heads/baqir", force=True)
+        remote.push(refspec="HEAD:refs/heads/web", force=True)
     except Exception as error:
         await event.edit(f"{txt}\n**Error log:**\n`{error}`")
         return repo.__del__()
@@ -143,7 +143,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
             event, "`Build failed!\n" "Cancelled or there were some errors...`"
         )
     try:
-        remote.push("baqir:main", force=True)
+        remote.push("web:main", force=True)
     except Exception as error:
         await event.edit(f"{txt}\n**Here is the error log:**\n`{error}`")
         return repo.__del__()
@@ -187,9 +187,9 @@ async def upstream(event):
         repo = Repo.init()
         origin = repo.create_remote("upstream", off_repo)
         origin.fetch()
-        repo.create_head("baqir", origin.refs.baqir)
-        repo.heads.baqir.set_tracking_branch(origin.refs.baqir)
-        repo.heads.baqir.checkout(True)
+        repo.create_head("web", origin.refs.baqir)
+        repo.heads.web.set_tracking_branch(origin.refs.web)
+        repo.heads.web.checkout(True)
     with contextlib.suppress(BaseException):
         repo.create_remote("upstream", off_repo)
     bbb1 = await event.edit(f"ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗥𝗘𝗣𝗧𝗛𝗢𝗡 - تحـديثـات السـورس\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت ريبـــثون .. انتظـر . . .🌐**")
