@@ -1,4 +1,4 @@
-#ZThon Userbot
+#Repthon Userbot
 import os
 import io
 import sys
