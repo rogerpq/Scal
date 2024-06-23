@@ -1,5 +1,5 @@
 # بس ابن الزنة وابن الحرام الي يغير حقوق
-# ابن الكحبة الي يغير حقوقنا - @E_7_V - @rNrYr
+# ابن الكحبة الي يغير حقوقنا - @E_7_V
 # خصيمة يوم القيامة تبقى ذمة غير مسامح بها يوم الدين
 import random
 import re
@@ -111,7 +111,7 @@ rep_temp = """{ALIVE_TEXT}
         ],
     },
 )
-async def z_alive(event):
+async def r_alive(event):
     "A kind of showing bot details by your inline bot"
     reply_to_id = await reply_id(event)
     R_EMOJI = gvarstatus("ALIVE_EMOJI") or "✥┊"
