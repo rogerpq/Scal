@@ -12,7 +12,7 @@ from telethon.tl.types import InputPeerChannel, InputMessagesFilterDocument
 from . import zq_lo
 from ..Config import Config
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus
-from ..helpers.utils import install_pip, _zedtools, _zedutils, _format, parse_pre, reply_id
+from ..helpers.utils import install_pip, _reptools, _reputils, _format, parse_pre, reply_id
 from ..utils import lload_module, inst_done
 
 LOGS = logging.getLogger(__name__)
