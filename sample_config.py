@@ -189,8 +189,8 @@ class Config(object):
     # extra plugins realted vars below  4
     EXTERNAL_REPOBRANCH = os.environ.get("EXTERNAL_REPOBRANCH", "web")
     OLDREP_REPO = os.environ.get("OLDREP_REPO", "https://github.com/RepthonArabic/RepthonAr")
-    if OLDZED_REPO and not url(OLDREP_REPO):
-        OLDZED_REPO = "https://github.com/RepthonArabic/RepthonAr"
+    if OLDREP_REPO and not url(OLDREP_REPO):
+        OLDREP_REPO = "https://github.com/RepthonArabic/RepthonAr"
     OLDREP_REPOBRANCH = os.environ.get("OLDREP_REPOBRANCH", "master")
     VC_REPO = os.environ.get("VC_REPO", "https://github.com/Repthon-Arabic/RepVC")
     VC_REPOBRANCH = os.environ.get("VC_REPOBRANCH", "main")
