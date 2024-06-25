@@ -17,7 +17,7 @@ plugin_category = "الادوات"
 
 LOGS = logging.getLogger(__name__)
 
-REPV = gvarstatus("sudoenable") or "true"
+RDEV = gvarstatus("sudoenable") or "true"
 
 BaqirDV_cmd = (
     "[ᯓ 𝗦𝗢𝗨𝗥𝗖𝗘 𝗥𝗘𝗣𝗧𝗛𝗢𝗡 - اوامــر المطـور المســاعد](t.me/Repthon) .\n\n"
@@ -96,7 +96,7 @@ async def chat_blacklist(event):
 
 
 @zq_lo.rep_cmd(
-    pattern="رفع مطور(?:\s|$)([\s\S]*)",
+    pattern="رفع مطور(?:\\s|$)([\\s\\S]*)",
     command=("رفع مطور", plugin_category),
     info={
         "header": "لـ رفـع مطـورين فـي بـوتك",
@@ -143,7 +143,7 @@ async def add_sudo_user(event):
 
 
 @zq_lo.rep_cmd(
-    pattern="تنزيل مطور(?:\s|$)([\s\S]*)",
+    pattern="تنزيل مطور(?:\\s|$)([\\s\\S]*)",
     command=("تنزيل مطور", plugin_category),
     info={
         "header": "لـ تنزيـل مطـور مـن بـوتك",
@@ -209,7 +209,7 @@ async def _(event):
 
 
 @zq_lo.rep_cmd(
-    pattern="تحكم(s)?(?:\s|$)([\s\S]*)",
+    pattern="تحكم(s)?(?:\\s|$)([\\s\\S]*)",
     command=("تحكم", plugin_category),
     info={
         "header": "To enable cmds for sudo users.",
@@ -236,12 +236,10 @@ async def _(event):  # sourcery no-metrics
     errors = ""
     sudocmds = sudo_enabled_cmds()
     if not input_str:
-        return await edit_or_reply(
-            event, "__Which command should i enable for sudo users . __"
-        )
+        return
     input_str = input_str.split()
     if input_str[0] == "آمن":
-        zedevent = await edit_or_reply(event, "**⎉╎تـم تفعيـل التحكـم للمطـوريـن لـ الاوامـر الآمـنـه .. بنجـاح🧑🏻‍💻✅**")
+        repevent = await edit_or_reply(event, "**⎉╎تـم تفعيـل التحكـم للمطـوريـن لـ الاوامـر الآمـنـه .. بنجـاح🧑🏻‍💻✅**")
         totalcmds = CMD_INFO.keys()
         flagcmds = (
             PLG_INFO["botcontrols"]
@@ -263,14 +261,14 @@ async def _(event):  # sourcery no-metrics
         if len(sudocmds) > 0:
             sqllist.del_keyword_list("sudo_enabled_cmds")
     elif input_str[0] == "كامل" or input_str[0] == "الكل":
-        zedevent = await edit_or_reply(
+        repevent = await edit_or_reply(
             event, "**⎉╎تـم تفعيـل التحكـم الكـامـل للمطـوريـن لـ جميـع الاوامـر .. بنجـاح🧑🏻‍💻✅**"
         )
         loadcmds = CMD_INFO.keys()
         if len(sudocmds) > 0:
             sqllist.del_keyword_list("sudo_enabled_cmds")
     elif input_str[0] == "ملف":
-        zedevent = event
+        repevent = event
         input_str.remove("ملف")
         loadcmds = []
         for plugin in input_str:
@@ -281,7 +279,7 @@ async def _(event):  # sourcery no-metrics
             else:
                 loadcmds += PLG_INFO[plugin]
     else:
-        zedevent = event
+        repevent = event
         loadcmds = []
         for cmd in input_str:
             if cmd not in CMD_INFO:
@@ -298,12 +296,12 @@ async def _(event):  # sourcery no-metrics
     )
     if errors != "":
         output += "\n**- خطــأ :**\n" + errors
-    msg = await edit_or_reply(zedevent, output)
+    msg = await edit_or_reply(repevent, output)
     await event.client.reload(msg)
 
 
 @zq_lo.rep_cmd(
-    pattern="ايقاف تحكم(s)?(?:\s|$)([\s\S]*)?",
+    pattern="ايقاف تحكم(s)?(?:\\s|$)([\\s\\S]*)?",
     command=("ايقاف تحكم", plugin_category),
     info={
         "header": "To disable given cmds for sudo.",
@@ -335,12 +333,12 @@ async def _(event):  # sourcery no-metrics
         )
     input_str = input_str.split()
     if input_str[0] == "كامل" or input_str[0] == "الكل":
-        zedevent = await edit_or_reply(
+        repevent = await edit_or_reply(
             event, "**⎉╎تـم تعطيـل التحكـم الكـامـل للمطـوريـن لـ جميـع الاوامـر .. بنجـاح🧑🏻‍💻✅**"
         )
         flagcmds = sudocmds
     elif input_str[0] == "آمن":
-        zedevent = await edit_or_reply(
+        repevent = await edit_or_reply(
             event, "**⎉╎تـم تعطيـل التحكـم للمطـوريـن لـ الاوامـر الآمـنـه .. بنجـاح🧑🏻‍💻✅**"
         )
         flagcmds = (
@@ -360,18 +358,18 @@ async def _(event):  # sourcery no-metrics
             + ["greset"]
         )
     elif input_str[0] == "ملف":
-        zedevent = event
+        repevent = event
         input_str.remove("ملف")
         flagcmds = []
         for plugin in input_str:
             if plugin not in PLG_INFO:
                 errors += (
-                    f"`{plugin}` __There is no such plugin in your ZThon__.\n"
+                    f"`{plugin}` __There is no such plugin in your Repthon__.\n"
                 )
             else:
                 flagcmds += PLG_INFO[plugin]
     else:
-        zedevent = event
+        repevent = event
         flagcmds = []
         for cmd in input_str:
             if cmd not in CMD_INFO:
@@ -387,11 +385,11 @@ async def _(event):  # sourcery no-metrics
             sqllist.rm_from_list("sudo_enabled_cmds", cmd)
     result = f"**⎉╎تـم تعطيـل التحكـم الكـامل لـ**  `{count}` **امـر 🧑🏻‍💻✅**\n"
     output = (
-        result + "**⎉╎يتم الان اعـادة تشغيـل بـوت زدثــون انتظـر 2-1 دقيقـه ▬▭ ...**\n"
+        result + "**⎉╎يتم الان اعـادة تشغيـل بـوت ريبـــثون انتظـر 2-1 دقيقـه ▬▭ ...**\n"
     )
     if errors != "":
         output += "\n**- خطــأ :**\n" + errors
-    msg = await edit_or_reply(zedevent, output)
+    msg = await edit_or_reply(repevent, output)
     await event.client.reload(msg)
 
 
