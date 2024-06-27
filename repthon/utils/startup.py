@@ -1,9 +1,9 @@
 # Repthon - @Repthon
-# Copyright (C) 2022 Repthon . All Rights Reserved
+# Copyright (C) 2022 RepthonArabic . All Rights Reserved
 #< https://t.me/Repthon >
-# This file is a part of < https://github.com/RepthonArabic/RepthonAr/ >
+# This file is a part of < https://github.com/Repthon-Arabic/RepthonAr/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/Repthon-Arabic/RepthonAr/blob/master/LICENSE/>.
+# <https://www.github.com/Repthon-Arabic/RepthonAr/blob/web/LICENSE/>.
 
 import time
 import asyncio
@@ -12,7 +12,6 @@ import logging
 import glob
 import os
 import sys
-import heroku3
 import urllib.request
 from datetime import timedelta
 from pathlib import Path
@@ -20,33 +19,33 @@ from random import randint
 from datetime import datetime as dt
 from pytz import timezone
 import requests
+import heroku3
 
 from telethon import Button, functions, types, utils
 from telethon.tl.functions.channels import JoinChannelRequest
 from telethon.tl.functions.contacts import UnblockRequest
 
-from repthon import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID
+from zelz import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID
 
 from ..Config import Config
 from ..core.logger import logging
 from ..core.session import zq_lo
-from ..core.server import web_server
-from aiohttp import web
 from ..helpers.utils import install_pip
 from ..helpers.utils.utils import runcmd
 from ..sql_helper.global_collection import (
     del_keyword_collectionlist,
     get_item_collectionlist,
 )
-from ..sql_helper.globals import addgvar, gvarstatus, delgvar
+from ..sql_helper.globals import addgvar, delgvar, gvarstatus
 from .pluginmanager import load_module
 from .tools import create_supergroup
 
 ENV = bool(os.environ.get("ENV", False))
 LOGS = logging.getLogger("𝐑𝐞𝐩𝐭𝐡𝐨𝐧")
 cmdhr = Config.COMMAND_HAND_LER
-Rep_Vip = (1960777228, 5502537272)
-rchannel = {"@Repthon", "@roger21v", "@Repthonn", "@Repthon_up", "@Repthon_vars", "@Repthon_cklaish", "@ZQ_LO", "@Test_Repthon", "@Repthon_help", "@Repthon_support", "@xxfir"}
+Rep_Vip = (5502537272, 1145818344)
+Rep_Dev = (5502537272, 1145818344)
+rchannel = {"@Repthon", "@Repthon_support", "@Repthon_help", "@Repthon_vars", "@Repthon_cklaish", "@Test_Repthon", "@Repthon_up", "@Repthonn", "@roger21v", "@ZQ_LO", "@xxfir"}
 heroku_api = "https://api.heroku.com"
 if Config.HEROKU_APP_NAME is not None and Config.HEROKU_API_KEY is not None:
     Heroku = heroku3.from_key(Config.HEROKU_API_KEY)
@@ -63,6 +62,7 @@ elif os.path.exists("config.py"):
 
 bot = zq_lo
 DEV = 5502537272
+
 
 async def autovars(): #Code by T.me/E_7_V
     if "ENV" in heroku_var and "TZ" in heroku_var:
@@ -83,6 +83,7 @@ async def autovars(): #Code by T.me/E_7_V
         heroku_var["COMMAND_HAND_LER"] = rrcom
         heroku_var["TZ"] = rrrtz
         LOGS.info("تم اضافـة بقيـة الفـارات .. بنجـاح")
+
 
 async def autoname(): #Code by T.me/E_7_V
     if gvarstatus("ALIVE_NAME"):
@@ -108,23 +109,31 @@ async def autoname(): #Code by T.me/E_7_V
         addgvar(rn, rrname)
     LOGS.info(f"تم اضافـة اسـم المستخـدم {rrname} .. بنجـاح")
 
+
 async def setup_bot():
     """
-    To set up bot for Repthon
+    To set up bot for repthon
     """
     try:
         await zq_lo.connect()
-        config = await zq_lo(functions.help.GetConfigRequest())
-        for option in config.dc_options:
-            if option.ip_address == zq_lo.session.server_address:
-                if zq_lo.session.dc_id != option.id:
-                    LOGS.warning(
-                        f"ايـدي DC ثـابت فـي الجلسـة مـن {zq_lo.session.dc_id}"
-                        f" الـى {option.id}"
-                    )
-                zq_lo.session.set_dc(option.id, option.ip_address, option.port)
-                zq_lo.session.save()
-                break
+        try:
+            config = await zq_lo(functions.help.GetConfigRequest())
+            for option in config.dc_options:
+                if option.ip_address == zq_lo.session.server_address:
+                    if zq_lo.session.dc_id != option.id:
+                        LOGS.warning(
+                            f"ايـدي DC ثـابت فـي الجلسـة مـن {zq_lo.session.dc_id}"
+                            f" الـى {option.id}"
+                        )
+                    zq_lo.session.set_dc(option.id, option.ip_address, option.port)
+                    zq_lo.session.save()
+                    break
+        except Exception as e:
+            if "was used under two different IP addresses" in str(e):
+                pass
+            else:
+                LOGS.error(f"كـود تيرمكس - {str(e)}")
+                sys.exit()
         bot_details = await zq_lo.tgbot.get_me()
         Config.TG_BOT_USERNAME = f"@{bot_details.username}"
         # await zq_lo.start(bot_token=Config.TG_BOT_USERNAME)
@@ -133,8 +142,54 @@ async def setup_bot():
         if Config.OWNER_ID == 0:
             Config.OWNER_ID = utils.get_peer_id(zq_lo.me)
     except Exception as e:
-        LOGS.error(f"STRING_SESSION - {e}")
+        LOGS.error(f"كـود تيرمكس - {str(e)}")
         sys.exit()
+
+
+async def mybot(): #Code by T.me/E_7_V
+    BAQIR = bot.me.first_name
+    tiba = bot.uid
+    ba_qir = f"[{BAQIR}](tg://user?id={tiba})"
+    f"ـ {ba_qir}"
+    f"•⎆┊هــذا البــوت خــاص بـ {ba_qir} يمكـنك التواصــل معـه هـنا 🧸♥️"
+    babot = await zq_lo.tgbot.get_me()
+    bot_name = babot.first_name
+    botname = f"@{babot.username}"
+    if bot_name.startswith("مسـاعـد"):
+        print("تم تشغيل البوت بنجــاح")
+    else:
+        try:
+            await bot.send_message("@BotFather", "/setinline")
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", botname)
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", "ريبـــثون")
+            await asyncio.sleep(3)
+            await bot.send_message("@BotFather", "/setname")
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", botname)
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", f"مسـاعـد - {bot.me.first_name} ")
+            await asyncio.sleep(3)
+            await bot.send_message("@BotFather", "/setuserpic")
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", botname)
+            await asyncio.sleep(1)
+            await bot.send_file("@BotFather", "repthon/baqir/Repthon3.jpg")
+            await asyncio.sleep(3)
+            await bot.send_message("@BotFather", "/setabouttext")
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", botname)
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", f"- بـوت ريبـــثون المسـاعـد ♥️🦾 الخـاص بـ {bot.me.first_name} ")
+            await asyncio.sleep(3)
+            await bot.send_message("@BotFather", "/setdescription")
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", botname)
+            await asyncio.sleep(1)
+            await bot.send_message("@BotFather", f"•⎆┊انـا البــوت المسـاعـد الخــاص بـ {ba_qir} \n•⎆┊بـواسطـتـي يمكـنك التواصــل مـع مـالكـي 🧸♥️\n•⎆┊قنـاة السـورس 🌐 @Repthon 🌐")
+        except Exception as e:
+            print(e)
 
 
 async def startupmessage():
@@ -151,7 +206,7 @@ async def startupmessage():
                 BOTLOG_CHATID,
                 "https://graph.org/file/f367d5a4a6bf1fbfc99b9.mp4",
                 caption="**•⎆┊تـم بـدء تشغـيل سـورس ريبـــثون الخاص بك .. بنجاح 🧸♥️**",
-                buttons=[(Button.url("𝙍𝙀𝙋𝙏𝙃𝙊𝙉", "https://t.me/Repthon"),)],
+                buttons=[(Button.url("𝙍𝙀𝙋𝙏𝙃𝙊𝙉 ✓", "https://t.me/Repthon"),)],
             )
     except Exception as e:
         LOGS.error(e)
@@ -182,53 +237,6 @@ async def startupmessage():
         return None
 
 
-async def mybot():
-    ROGER = bot.me.first_name
-    Narcissus = bot.uid
-    ba_roger = f"[{ROGER}](tg://user?id={Narcissus})"
-    f"ـ {ba_roger}"
-    f"•⎆┊هــذا البــوت خــاص بـ {ba_roger} يمكـنك التواصــل معـه هـنا 🧸♥️"
-    babot = await zq_lo.tgbot.get_me()
-    bot_name = babot.first_name
-    botname = f"@{babot.username}"
-    if bot_name.endswith("Assistant"):
-        print("تم تشغيل البوت بنجــاح")
-    else:
-        try:
-            await bot.send_message("@BotFather", "/setinline")
-            await asyncio.sleep(1)
-            await bot.send_message("@BotFather", botname)
-            await asyncio.sleep(1)
-            await bot.send_message("@BotFather", "ريبـــثون")
-            await asyncio.sleep(3)
-            await bot.send_message("@BotFather", "/setname")
-            await asyncio.sleep(1)
-            await bot.send_message("@BotFather", botname)
-            await asyncio.sleep(1)
-            await bot.send_message("@BotFather", f"مسـاعـد - {bot.me.first_name} ")
-            await asyncio.sleep(3)
-            await bot.send_message("@BotFather", "/setuserpic")
-            await asyncio.sleep(1)
-            await bot.send_message("@BotFather", botname)
-            await asyncio.sleep(1)
-            await bot.send_file("@BotFather", "repthon/baqir/Repthon3.jpg")
-            await asyncio.sleep(3)
-            await bot.send_message("@BotFather", "/setabouttext")
-            await asyncio.sleep(1)
-            await bot.send_message("@BotFather", botname)
-            await asyncio.sleep(1)
-            await bot.send_message("@BotFather", f"- بـوت ريبـــثون المسـاعـد ♥️🦾 الخـاص بـ  {bot.me.first_name} ")
-            await asyncio.sleep(3)
-            await bot.send_message("@BotFather", "/setdescription")
-            await asyncio.sleep(1)
-            await bot.send_message("@BotFather", botname)
-            await asyncio.sleep(1)
-            await bot.send_message("@BotFather", f"•⎆┊انـا البــوت المسـاعـد الخــاص بـ {ba_roger} \n•⎆┊بـواسطـتـي يمكـنك التواصــل مـع مـالكـي 🧸♥️\n•⎆┊قنـاة السـورس 🌐 @Repthon 🌐")
-        except Exception as e:
-            print(e)
-
-
-
 async def add_bot_to_logger_group(chat_id):
     """
     To add bot to logger groups
@@ -252,6 +260,15 @@ async def add_bot_to_logger_group(chat_id):
             )
         except Exception as e:
             LOGS.error(str(e))
+
+
+async def saves():
+   for Rch in rchannel:
+        try:
+             await zq_lo(JoinChannelRequest(channel=Rch))
+        except OverflowError:
+            LOGS.error("Getting Flood Error from telegram. Script is stopping now. Please try again after some time.")
+            continue
 
 
 async def load_plugins(folder, extfolder=None):
@@ -314,14 +331,6 @@ async def load_plugins(folder, extfolder=None):
         )
 
 
-async def saves():
-   for Rch in rchannel:
-        try:
-             await zq_lo(JoinChannelRequest(channel=Rch))
-        except OverflowError:
-            LOGS.error("Getting Flood Error from telegram. Script is stopping now. Please try again after some time.")
-            continue 
-
 
 async def verifyLoggerGroup():
     """
@@ -360,9 +369,7 @@ async def verifyLoggerGroup():
             "كـروب السجـل ريبـــثون", zq_lo, Config.TG_BOT_USERNAME, descript, photozed
         )
         addgvar("PRIVATE_GROUP_BOT_API_ID", groupid)
-        print(
-            "المجموعه الخاصه لفار الـ PRIVATE_GROUP_BOT_API_ID تم حفظه بنجاح و اضافه الفار اليه."
-        )
+        print("تم إنشاء مجموعة السجل .. بنجاح ✅")
         flag = True
     if PM_LOGGER_GROUP_ID != -100:
         try:
@@ -386,10 +393,10 @@ async def verifyLoggerGroup():
         descript = "لا تقم بحذف هذه المجموعة أو التغيير إلى مجموعة عامه (وظيفتهـا تخزيـن رسـائل الخـاص.)"
         photozed = await zq_lo.upload_file(file="baqir/taiba/Repthon2.jpg")
         _, groupid = await create_supergroup(
-            "كـروب التخـزين", zq_lo, Config.TG_BOT_USERNAME, descript, photozed
+            "مجمـوعـة التخـزيـن", zq_lo, Config.TG_BOT_USERNAME, descript, photozed
         )
         addgvar("PM_LOGGER_GROUP_ID", groupid)
-        print("تم عمل الكروب التخزين بنجاح واضافة الفارات اليه.")
+        print("تم إنشاء مجموعة التخزين .. بنجاح ✅")
         flag = True
     if flag:
         executable = sys.executable.replace(" ", "\\ ")
@@ -399,16 +406,16 @@ async def verifyLoggerGroup():
 
 
 async def install_externalrepo(repo, branch, cfolder):
-    REPREPO = repo
+    repREPO = repo
     rpath = os.path.join(cfolder, "requirements.txt")
-    if REPBRANCH := branch:
-        repourl = os.path.join(REPREPO, f"tree/{REPBRANCH}")
-        gcmd = f"git clone -b {REPBRANCH} {REPREPO} {cfolder}"
-        errtext = f"There is no branch with name `{REPBRANCH}` in your external repo {REPREPO}. Recheck branch name and correct it in vars(`EXTERNAL_REPO_BRANCH`)"
+    if repBRANCH := branch:
+        repourl = os.path.join(repREPO, f"tree/{repBRANCH}")
+        gcmd = f"git clone -b {repBRANCH} {repREPO} {cfolder}"
+        errtext = f"There is no branch with name `{repBRANCH}` in your external repo {repREPO}. Recheck branch name and correct it in vars(`EXTERNAL_REPO_BRANCH`)"
     else:
-        repourl = REPREPO
-        gcmd = f"git clone {REPREPO} {cfolder}"
-        errtext = f"The link({REPREPO}) you provided for `EXTERNAL_REPO` in vars is invalid. please recheck that link"
+        repourl = repREPO
+        gcmd = f"git clone {repREPO} {cfolder}"
+        errtext = f"The link({repREPO}) you provided for `EXTERNAL_REPO` in vars is invalid. please recheck that link"
     response = urllib.request.urlopen(repourl)
     if response.code != 200:
         LOGS.error(errtext)
