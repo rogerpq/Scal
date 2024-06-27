@@ -1,3 +1,4 @@
+import contextlib
 import sys, asyncio
 import repthon
 from repthon import BOTLOG_CHATID, HEROKU_APP, PM_LOGGER_GROUP_ID
@@ -28,10 +29,10 @@ except Exception as e:
     LOGS.error(f"{str(e)}")
     sys.exit()
 
-class RCheck:
+class RPCheck:
     def __init__(self):
         self.sucess = True
-Rcheck = RCheck()
+RPcheck = RPCheck()
 
 try:
     LOGS.info("⌭ بـدء إنشـاء البـوت التلقـائـي ⌭")
@@ -58,20 +59,17 @@ async def startup_process():
     if PM_LOGGER_GROUP_ID != -100:
         await add_bot_to_logger_group(PM_LOGGER_GROUP_ID)
     await startupmessage()
-    Rcheck.sucess = True
+    RPcheck.sucess = True
     return
 
 
 zq_lo.loop.run_until_complete(startup_process())
+
 if len(sys.argv) not in (1, 3, 4):
-    zq_lo.disconnect()
-elif not Rcheck.sucess:
-    try:
+    with contextlib.suppress(ConnectionError):
         zq_lo.run_until_disconnected()
-    except ConnectionError:
-        pass
+elif not RPcheck.sucess:
+    with contextlib.suppress(ConnectionError):
+        zq_lo.run_until_disconnected()
 else:
-    try:
-        zq_lo.run_until_disconnected()
-    except ConnectionError:
-        pass
+    zq_lo.disconnect()
