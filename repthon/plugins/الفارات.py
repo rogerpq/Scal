@@ -1438,9 +1438,9 @@ async def cmd(baqir):
     await edit_or_reply(baqir, BaqirVP_cmd)
 
 @zq_lo.rep_cmd(pattern="اوامر الوقت")
-async def cmd(baqir)
+async def cmd(baqir):
     await edit_or_reply(baqir, BaqirTZ_cmd)
 
 @zq_lo.rep_cmd(pattern="الوقت")
-async def cmd(baqir)
+async def cmd(baqir):
     await edit_or_reply(baqir, BaqirTZ_cmd)
