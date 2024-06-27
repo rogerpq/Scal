@@ -8,12 +8,6 @@ import traceback
 from pathlib import Path
 from typing import Dict, List, Union
 
-try:
-    import marshal
-except ModuleNotFoundError:
-    os.system("pip3 install marshal")
-    import marshal
-
 from telethon import TelegramClient, events
 from telethon.errors import (
     AlreadyInConversationError,
@@ -42,7 +36,7 @@ from .managers import edit_delete
 from .pluginManager import get_message_link, restart_script
 
 LOGS = logging.getLogger(__name__)
-REPV = (5502537272, 5502537272)
+RDEV = (5502537272)
 
 class REGEX:
     def __init__(self):
@@ -103,8 +97,10 @@ class RepUserBotClient(TelegramClient):
             ):
                 REGEX_.regex1 = REGEX_.regex2 = re.compile(pattern)
             else:
-                reg1 = "\\" + Config.COMMAND_HAND_LER
-                reg2 = "\\" + Config.SUDO_COMMAND_HAND_LER
+                COMMAND_HAND_LER = gvarstatus("COMMAND_HAND_LER") if gvarstatus("COMMAND_HAND_LER") else Config.COMMAND_HAND_LER
+                SUDO_COMMAND_HAND_LER = gvarstatus("SUDO_COMMAND_HAND_LER") if gvarstatus("SUDO_COMMAND_HAND_LER") else Config.SUDO_COMMAND_HAND_LER
+                reg1 = "\\" + COMMAND_HAND_LER
+                reg2 = "\\" + SUDO_COMMAND_HAND_LER
                 REGEX_.regex1 = re.compile(reg1 + pattern)
                 REGEX_.regex2 = re.compile(reg2 + pattern)
 
@@ -159,7 +155,7 @@ class RepUserBotClient(TelegramClient):
                 except BaseException as e:
                     LOGS.exception(e)
                     if not disable_errors:
-                        if check.sender_id not in REPV:
+                        if check.sender_id not in RDEV:
                             return
                         if Config.PRIVATE_GROUP_BOT_API_ID == 0:
                             return
@@ -188,7 +184,7 @@ class RepUserBotClient(TelegramClient):
                         pastelink = await paste_message(
                             ftext, pastetype="s", markdown=False
                         )
-                        link = "[𐇮 𓆩✗ ¦ ↱𝐺𝑜𝑙 𝐷. 𝑅𝑜𝑔𝑒𝑟↲ ¦ ✗𖠚𓆪 𐇮](https://t.me/E_7_V)"
+                        link = "[𐇮 ℡𓆩✗ ¦ ↱𝐺𝑜𝑙 𝐷. 𝑅𝑜𝑔𝑒𝑟↲ ¦ ✗𖠚卐𓆪 𐇮](https://t.me/E_7_V)"
                         text = (
                             "**✘ تقـريـر اشعـار ريبـــثون 𝗥𝗲𝗽𝘁𝗵𝗼𝗻 ✘**\n\n"
                             + "- يمكنك الإبـلاغ عن هـذا الاشعـار .. "
@@ -282,7 +278,7 @@ class RepUserBotClient(TelegramClient):
                     # Check if we have to disable error logging.
                     LOGS.exception(e)  # Log the error in console
                     if not disable_errors:
-                        if check.sender_id not in REPV:
+                        if check.sender_id not in RDEV:
                             return
                         if Config.PRIVATE_GROUP_BOT_API_ID == 0:
                             return
@@ -312,7 +308,7 @@ class RepUserBotClient(TelegramClient):
                             ftext, pastetype="s", markdown=False
                         )
                         text = "**✘ تقـريـر اشعـار ريبـــثون 𝗥𝗲𝗽𝘁𝗵𝗼𝗻 ✘**\n\n "
-                        link = "[𐇮 𓆩✗ ¦ ↱𝐺𝑜𝑙 𝐷. 𝑅𝑜𝑔𝑒𝑟↲ ¦ ✗𖠚𓆪 𐇮](https://t.me/E_7_V)"
+                        link = "[𐇮 ℡𓆩✗ ¦ ↱𝐺𝑜𝑙 𝐷. 𝑅𝑜𝑔𝑒𝑟↲ ¦ ✗𖠚卐𓆪 𐇮](https://t.me/E_7_V)"
                         text += "- يمكنك الإبـلاغ عن هـذا الاشعـار .. "
                         text += f"- فقط قم بإعـادة توجيـه هـذه الرسـالة إلى مطـور السـورس {link}.\n"
                         text += (
@@ -351,7 +347,7 @@ class RepUserBotClient(TelegramClient):
 
 
 RepUserBotClient.fast_download_file = download_file
-RepUserBotClient.fast_upload_file = upload_file
+RepUserBotClient.fast_upload_file = upload_filer
 RepUserBotClient.reload = restart_script
 RepUserBotClient.get_msg_link = get_message_link
 RepUserBotClient.check_testcases = checking
