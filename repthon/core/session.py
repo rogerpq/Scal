@@ -1,6 +1,8 @@
 import sys
+import time
 
 from telethon.network.connection.tcpabridged import ConnectionTcpAbridged
+from telethon.errors.rpcerrorlist import FloodWaitError
 from telethon.errors import AccessTokenExpiredError, AccessTokenInvalidError
 from ..Config import Config
 from .bothseesion import bothseesion
@@ -8,7 +10,7 @@ from .client import RepUserBotClient
 from .logger import logging
 
 LOGS = logging.getLogger("ريبـــثون")
-__version__ = "2.10.6"
+__version__ = "3.10.3"
 
 loop = None
 
@@ -34,6 +36,7 @@ except Exception as e:
     )
     sys.exit()
 
+
 try:
     zq_lo.tgbot = tgbot = RepUserBotClient(
         session="RepTgbot",
@@ -45,7 +48,8 @@ try:
         auto_reconnect=True,
         connection_retries=None,
     ).start(bot_token=Config.TG_BOT_TOKEN)
-except AccessTokenExpiredError:
+except FloodWaitError as e:
+    LOGS.error(f"FloodWaitError: فلود وايت - يرجى الانتظار لـ {e.seconds} ثانية.")
+    time.sleep(e.seconds)
+except (AccessTokenExpiredError, AccessTokenInvalidError):
     LOGS.error("توكن البوت غير صالح قم باستبداله بتوكن جديد من بوت فاذر")
-except AccessTokenInvalidError:
-    LOGS.error("توكن البوت غير صحيح قم باستبداله بتوكن جديد من بوت فاذر")
