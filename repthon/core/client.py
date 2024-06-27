@@ -347,7 +347,7 @@ class RepUserBotClient(TelegramClient):
 
 
 RepUserBotClient.fast_download_file = download_file
-RepUserBotClient.fast_upload_file = upload_filer
+RepUserBotClient.fast_upload_file = upload_file
 RepUserBotClient.reload = restart_script
 RepUserBotClient.get_msg_link = get_message_link
 RepUserBotClient.check_testcases = checking
