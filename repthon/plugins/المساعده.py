@@ -1,13 +1,22 @@
 import re
+import random
+import time
+import psutil
+from datetime import datetime
+from platform import python_version
 
-from telethon import Button, events
+import requests
+from telethon import Button, events, version
 from telethon.events import CallbackQuery
-from ..core import check_owner, pool
 
-from . import zq_lo
+from . import StartTime, zq_lo, repversion, mention
 
 from ..Config import Config
-from . import mention
+from ..core.managers import edit_or_reply
+from ..core import check_owner, pool
+from ..helpers.functions import repalive, check_data_base_heal_th, get_readable_time
+from ..helpers.utils import reply_id
+from ..sql_helper.globals import gvarstatus
 
 HELP = f"**🧑🏻‍💻┊مـࢪحبـاً عـزيـزي {mention}**\n**🛂┊في قائمـة المسـاعـده والشـروحـات\n🛃┊من هنـا يمكنـك ايجـاد شـرح لكـل اوامـر السـورس**\n\n[ᯓ 𝗥𝗲𝗽𝘁𝗵𝗼𝗻 ♥️](t.me/Repthon)\n\n"
 
