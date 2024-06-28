@@ -69,6 +69,10 @@ if Config.TG_BOT_USERNAME is not None and tgbot is not None:
                 [
                     Button.inline("الذكـاء الاصطنـاعـي 🛸", data="zchatgpt"),
                 ],
+                [
+                    Button.inline("السوبـرات 🎡", data="superrrr"),
+                    Button.inline("التجميـع 🛗", data="pointrrr"),
+                ],
             ]
             result = builder.article(
                 title="zq_lo",
