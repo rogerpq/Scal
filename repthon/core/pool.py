@@ -12,12 +12,12 @@ _LOG_STR = "<<<!  ||||  %s  ||||  !>>>"
 
 
 def submit_thread(func: Callable[[Any], Any], *args: Any, **kwargs: Any) -> Future:
-    """إرسال الموضوع إلى تجمع"""
+    """submit thread to thread pool"""
     return _EXECUTOR.submit(func, *args, **kwargs)
 
 
 def run_in_thread(func: Callable[[Any], Any]) -> Callable[[Any], Any]:
-    """تشغيل في موضوع"""
+    """run in a thread"""
 
     @wraps(func)
     async def wrapper(*args: Any, **kwargs: Any) -> Any:
@@ -34,8 +34,8 @@ def _get() -> ThreadPoolExecutor:
 def _stop():
     _EXECUTOR.shutdown()
     # pylint: disable=protected-access
-    _LOG.info(_LOG_STR, f"اووبس لم يتم تنصيب جميع مكاتب ريبـــثون : {_EXECUTOR._max_workers} ")
+    _LOG.info(_LOG_STR, f"اووبس لم يتم تنصيب جميع مكاتب ريبـــثون : {_EXECUTOR._max_workers}")
 
 
 # pylint: disable=protected-access
-_LOG.info(_LOG_STR, f" تم بنجـاح تنصيب جميع مكاتب ريبـــثون : {_EXECUTOR._max_workers} ")
+_LOG.info(_LOG_STR, f"تم بنجـاح تنصيب جميع مكاتب ريبـــثون : {_EXECUTOR._max_workers}")
