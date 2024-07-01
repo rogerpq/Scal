@@ -9,7 +9,7 @@ So تخمـط الملـف اهينك واطشك للناس خماط واوثق 
 Copyright (C) 2023 RepthonArabic. All Rights Reserved
 Credit: https://github.com/RepthonArabic/Repthon
 Devloper: https://telegram.dog/E_7_V"""
-import json
+"""import json
 import math
 import asyncio
 import os
@@ -120,3 +120,4 @@ async def inline_handler(event):
                 ),
             )
             await event.answer(results)
+"""
