@@ -25,9 +25,9 @@ rep_temp = """
 │ ◉ sᴏʀᴄᴇ ʀᴇᴘᴛʜᴏɴ ɪs ʀᴜɴɴɪɴɢ ɴᴏᴡ
 ┣───────────────┫
 │ ● ɴᴀᴍᴇ ➪  {mention}
-│ ● ʀᴇᴘᴛʜᴏɴ ➪ {telever}
+│ ● ʀᴇᴘᴛʜᴏɴ ➪ {repver}
 │ ● ᴘʏᴛʜᴏɴ ➪ {pyver}
-│ ● ᴘʟᴀᴛғᴏʀᴍ ➪ 𐌺᧐yᥱδ/ᖇᗴᑎᗪᗴᖇ
+│ ● ᴘʟᴀᴛғᴏʀᴍ ➪ 𐌺᧐yᥱδ
 │ ● ᴘɪɴɢ ➪ {ping}
 │ ● ᴜᴘ ᴛɪᴍᴇ ➪ {uptime}
 │ ● ᴀʟɪᴠᴇ sɪɴᴇᴄ ➪ {reppa}
@@ -108,7 +108,7 @@ if Config.TG_BOT_USERNAME is not None and tgbot is not None:
                 rrd=rrd,
                 rrt=rrt,
                 telever=version.__version__,
-                repver=zedversion,
+                repver=repversion,
                 pyver=python_version(),
                 dbhealth=check_sgnirts,
                 ping=ms,
