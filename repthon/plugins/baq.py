@@ -55,15 +55,15 @@ async def inline_handler(event):
     else:
         baqir = f"[{full_name}](tg://user?id={user_id})"
     if query_user_id == Config.OWNER_ID or query_user_id in Config.SUDO_USERS:  # Code by T.me/E_7_V
-        malathid = Config.OWNER_ID
+        taibaid = Config.OWNER_ID
     elif query_user_id == user_id or query_user_id == int(user_id):
-        malathid = user_id
+        taibaid = user_id
     if query_user_id == Config.OWNER_ID or query_user_id == user_id or query_user_id == int(user_id) or query_user_id in Config.SUDO_USERS:  # Code by T.me/E_7_V
         inf = re.compile("secret (.*) (.*)")
         match2 = re.findall(inf, query)
         if match2:
             user_list = []
-            baqir = ""
+            baqqir = ""
             query = query[7:]
             info_type = [hmm, ymm, fmm]
             if "|" in query:
@@ -79,12 +79,12 @@ async def inline_handler(event):
                 except ValueError:
                     u = await zq_lo(GetUsersRequest(usr))
                 if u.username:
-                    baqir += f"@{u.username}"
+                    baqqir += f"@{u.username}"
                 else:
-                    baqir += f"[{u.first_name}](tg://user?id={u.id})"
+                    baqqir += f"[{u.first_name}](tg://user?id={u.id})"
                 user_list.append(u.id)
-                baqir += " "
-            baqie = zilzal[:-1]
+                baqqir += " "
+            baqqir = baqqir[:-1]
             old_msg = os.path.join("./repthon", f"{scc}.txt")
             try:
                 jsondata = json.load(open(old_msg))
@@ -96,9 +96,9 @@ async def inline_handler(event):
             }  # Code by T.me/E_7_V
             buttons = [[Button.inline(info_type[2], data=f"{scc}_{timestamp}")],[Button.switch_inline(bmm, query=f"secret {malathid} \nهلو", same_peer=True)]]
             result = builder.article(
-                title=f"{hmm} {baqir}",
+                title=f"{hmm} {baqqir}",
                 description=f"{dss}",
-                text=f"{hss} {baqir} \n**{dss}**",
+                text=f"{hss} {baqqir} \n**{dss}**",
                 buttons=buttons,
                 link_preview=False,
             )
