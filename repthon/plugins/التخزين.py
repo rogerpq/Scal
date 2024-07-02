@@ -107,7 +107,7 @@ async def log_tagged_messages(event):
 
 
 @zq_lo.rep_cmd(
-    pattern="خزن(?:\s|$)([\s\S]*)",
+    pattern="خزن(?:\\s|$)([\\s\\S]*)",
     command=("خزن", plugin_category),
     info={
         "header": "To log the replied message to bot log group so you can check later.",
