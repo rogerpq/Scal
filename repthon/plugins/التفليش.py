@@ -82,22 +82,22 @@ async def _(event):
     await event.reply(f"**⎉╎البـوت المسـاعد الخـاص بك هـو** \n {TG_BOT_USERNAME}")
 
 @zq_lo.rep_cmd(pattern="حالتي ?(.*)")
-async def zze(event):
+async def rep(event):
     await event.edit("**- جـارِ التحقـق انتظـر قليـلاً . . .**")
-    async with bot.conversation("@SpamBot") as zdd:
+    async with bot.conversation("@SpamBot") as tiba:
         try:
-            dontTag = zdd.wait_event(
+            dontTag = tiba.wait_event(
                 events.NewMessage(incoming=True, from_users=178220800))
-            await zdd.send_message("/start")
+            await tiba.send_message("/start")
             dontTag = await dontTag
-            await bot.send_read_acknowledge(zdd.chat_id)
+            await bot.send_read_acknowledge(tiba.chat_id)
         except YouBlockedUserError:
             await zq_lo(unblock("SpamBot"))
-            dontTag = zdd.wait_event(
+            dontTag = tiba.wait_event(
                 events.NewMessage(incoming=True, from_users=178220800))
-            await zdd.send_message("/start")
+            await tiba.send_message("/start")
             dontTag = await dontTag
-            await bot.send_read_acknowledge(zdd.chat_id)
+            await bot.send_read_acknowledge(tiba.chat_id)
         await event.edit(f"**⎉╎حالة حسابـك حاليـاً هـي :**\n\n~ {dontTag.message.message}")    
 
 
@@ -111,7 +111,7 @@ async def _(event):
 @zq_lo.on(events.NewMessage(pattern="منو عمك؟"))
 async def _(event):
     user = await event.get_sender()
-    rep_dev = (5502537272, 1619973202)
+    rep_dev = (5502537272, 5502537272)
     if user.id in rep_dev:
         await event.reply(f"**- انت عمي و تاج راسي @E_7_V**")
 

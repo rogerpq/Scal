@@ -36,13 +36,14 @@ def admin_cmd(pattern=None, command=None, **args):  # sourcery no-metrics
             except BaseException:
                 CMD_LIST.update({file_test: [cmd]})
         else:
-            if len(Config.COMMAND_HAND_LER) == 2:
-                zedreg = "^" + Config.COMMAND_HAND_LER
-                reg = Config.COMMAND_HAND_LER[1]
-            elif len(Config.COMMAND_HAND_LER) == 1:
-                zedreg = "^\\" + Config.COMMAND_HAND_LER
-                reg = Config.COMMAND_HAND_LER
-            args["pattern"] = re.compile(zedreg + pattern)
+            COMMAND_HAND_LER = gvarstatus("COMMAND_HAND_LER") if gvarstatus("COMMAND_HAND_LER") else Config.COMMAND_HAND_LER
+            if len(COMMAND_HAND_LER) == 2:
+                repreg = "^" + COMMAND_HAND_LER
+                reg = COMMAND_HAND_LER[1]
+            elif len(COMMAND_HAND_LER) == 1:
+                repreg = "^\\" + COMMAND_HAND_LER
+                reg = COMMAND_HAND_LER
+            args["pattern"] = re.compile(repreg + pattern)
             if command is not None:
                 cmd = reg + command
             else:
@@ -88,13 +89,14 @@ def sudo_cmd(pattern=None, command=None, **args):  # sourcery no-metrics
             except BaseException:
                 SUDO_LIST.update({file_test: [cmd]})
         else:
-            if len(Config.SUDO_COMMAND_HAND_LER) == 2:
-                zedreg = "^" + Config.SUDO_COMMAND_HAND_LER
-                reg = Config.SUDO_COMMAND_HAND_LER[1]
-            elif len(Config.SUDO_COMMAND_HAND_LER) == 1:
-                zedreg = "^\\" + Config.SUDO_COMMAND_HAND_LER
-                reg = Config.COMMAND_HAND_LER
-            args["pattern"] = re.compile(zedreg + pattern)
+            SUDO_COMMAND_HAND_LER = gvarstatus("SUDO_COMMAND_HAND_LER") if gvarstatus("SUDO_COMMAND_HAND_LER") else Config.SUDO_COMMAND_HAND_LER
+            if len(SUDO_COMMAND_HAND_LER) == 2:
+                repreg = "^" + SUDO_COMMAND_HAND_LER
+                reg = SUDO_COMMAND_HAND_LER[1]
+            elif len(SUDO_COMMAND_HAND_LER) == 1:
+                repreg = "^\\" + SUDO_COMMAND_HAND_LER
+                reg = SUDO_COMMAND_HAND_LER
+            args["pattern"] = re.compile(repreg + pattern)
             if command is not None:
                 cmd = reg + command
             else:
@@ -157,7 +159,7 @@ def errors_handler(func):
             ftext += result
             pastelink = await paste_message(ftext)
             text = "**هنالك مشكله معينه لديك**\n\n"
-            link = "[𐇮 ✗ ¦ ↱𝐺𝑜𝑙 𝐷. 𝑅𝑜𝑔𝑒𝑟↲ ¦ ✗  𐇮](https://t.me/E_7_V)"
+            link = "[𐇮 ℡𓆩✗ ¦ ↱𝐺𝑜𝑙 𝐷. 𝑅𝑜𝑔𝑒𝑟↲ ¦ ✗𖠚卐𓆪 𐇮](https://t.me/E_7_V)"
             text += "اذا اردت يمكنك التبليغ عن المشكله"
             text += f"- فقط قم بتوجيه الرسالة الى  {link}.\n"
             text += f"**التقرير عن الخطأ : ** [{new['error']}]({pastelink})"

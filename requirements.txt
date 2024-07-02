@@ -2,10 +2,14 @@ telethon==1.36.0
 telethon-session-sqlalchemy
 setuptools
 wheel
+gunicorn
+flask
+flask_restful
 aiocsv
 aiofiles
 aiohttp
 aiosqlite
+arabic_reshaper
 beautifulsoup4
 cloudscraper
 colour
@@ -41,6 +45,7 @@ Pillow
 prettytable
 psutil
 psycopg2-binary
+psycopg2
 py-tgcalls==2.0.2
 pyfiglet
 PyGithub
@@ -55,6 +60,7 @@ python-dotenv
 pytz
 qrcode
 regex
+requests
 search-engine-parser
 selenium
 spamwatch
@@ -71,7 +77,9 @@ validators
 vcsi
 wand
 wget==3.2
+youtube-search-python==1.4.9
+youtube-search
+youtube_dl
+yt-dlp==2024.05.27
 img2html
 googletrans-py
-git+https://github.com/rogerpq/bbbb
-git+https://github.com/alexmercerind/youtube-search-python

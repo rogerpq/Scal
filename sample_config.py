@@ -39,8 +39,8 @@ class Config(object):
     if EXTERNAL_REPO and (EXTERNAL_REPO.lower() != "no") and not url(EXTERNAL_REPO):
         EXTERNAL_REPO = "https://github.com/TgCatUB/CatPlugins"
     # if you need badcat plugins use the following vars
-    OLDZED = os.environ.get("OLDZED", "no")
-    OLDZED = bool(OLDZED and (OLDZED.lower() != "no"))
+    OLDREP = os.environ.get("OLDREP", "no")
+    OLDREP = bool(OLDREP and (OLDREP.lower() != "no"))
     # BASIC and MAIN CONFIG VARS
     # for profile default name
     # Set this value with group id of private group(can be found this value by .id)
@@ -67,7 +67,7 @@ class Config(object):
     #فـارات ريبـــثون
     CUSTOM_ALIVE_TEXT = os.environ.get("CUSTOM_ALIVE_TEXT", None)
     CUSTOM_ALIVE_EMOJI = os.environ.get("CUSTOM_ALIVE_EMOJI", None)
-    CUSTOM_ALIVE_EMZED = os.environ.get("CUSTOM_ALIVE_EMZED", None)
+    CUSTOM_ALIVE_EMREP = os.environ.get("CUSTOM_ALIVE_EMREP", None)
     CUSTOM_PMPERMIT = os.environ.get("CUSTOM_PMPERMIT", None)
     BAQIR_A = int(os.environ.get("BAQIR_A") or -1001526282589)
     ALIVE_PIC = os.environ.get("ALIVE_PIC", None)
@@ -180,18 +180,18 @@ class Config(object):
     COUNTRY = str(os.environ.get("COUNTRY", ""))
     TZ_NUMBER = int(os.environ.get("TZ_NUMBER", 1))
     # For updater plugin
-    UPSTREAM_REPO_BRANCH = os.environ.get("UPSTREAM_REPO_BRANCH", "master")
+    UPSTREAM_REPO_BRANCH = os.environ.get("UPSTREAM_REPO_BRANCH", "web")
     # dont touch this at all
     SUDO_USERS: Set[int] = set()
     ZQ_LOLOGO = None
     BOTLOG = False
     BOTLOG_CHATID = 0
     # extra plugins realted vars below  4
-    EXTERNAL_REPOBRANCH = os.environ.get("EXTERNAL_REPOBRANCH", "main")
-    OLDZED_REPO = os.environ.get("OLDZED_REPO", "https://github.com/RepthonArabic/RepthonAr")
-    if OLDZED_REPO and not url(OLDZED_REPO):
-        OLDZED_REPO = "https://github.com/RepthonArabic/RepthonAr"
-    OLDZED_REPOBRANCH = os.environ.get("OLDZED_REPOBRANCH", "oldzed")
+    EXTERNAL_REPOBRANCH = os.environ.get("EXTERNAL_REPOBRANCH", "web")
+    OLDREP_REPO = os.environ.get("OLDREP_REPO", "https://github.com/RepthonArabic/RepthonAr")
+    if OLDREP_REPO and not url(OLDREP_REPO):
+        OLDREP_REPO = "https://github.com/RepthonArabic/RepthonAr"
+    OLDREP_REPOBRANCH = os.environ.get("OLDREP_REPOBRANCH", "master")
     VC_REPO = os.environ.get("VC_REPO", "https://github.com/Repthon-Arabic/RepVC")
     VC_REPOBRANCH = os.environ.get("VC_REPOBRANCH", "main")
 

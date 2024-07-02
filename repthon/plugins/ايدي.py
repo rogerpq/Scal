@@ -1,25 +1,49 @@
+# Repthon - Baqir
+# Copyright (C) 2022 RepthonArabic . All Rights Reserved
+#
+# This file is a part of < https://github.com/Repthon-Arabic/RepthonAr/ >
+# PLease read the GNU Affero General Public License in
+# <https://www.github.com/Repthon-Arabic/RepthonAr/blob/web/LICENSE/>.
+
+"""
+Repthon - Baqir
+- كتـابـة الاضـافـات
+بـاقـر - @E_7_V
+- حقـوق ريبـــثون @Repthon
+- تخمـط صيـر مطـور كفــوو واذكــر المصــدر لو اطشـك لـ النـاس
+"""
+import contextlib
 import html
+import shutil
 import os
+import base64
+
+from telethon.tl.functions.messages import ImportChatInviteRequest as Get
+from telethon.tl.types import MessageEntityMentionName
 
 from requests import get
 from telethon.tl.functions.photos import GetUserPhotosRequest
 from telethon.tl.functions.users import GetFullUserRequest
-from telethon.utils import get_input_location
-from ..sql_helper.globals import gvarstatus
 
 from repthon import zq_lo
 from repthon.core.logger import logging
 
 from ..Config import Config
-from ..core.managers import edit_or_reply
-from ..helpers import get_user_from_event, reply_id
-from . import spamwatch
-
-REP_EM = gvarstatus("CUSTOM_ALIVE_EMOJI") or "•❃"
-ID_EDIT = gvarstatus("ID_ET") or "ايدي"
+from ..core.managers import edit_or_reply, edit_delete
+from ..helpers import reply_id
+from ..helpers.utils import _format
+from ..sql_helper.globals import addgvar, delgvar, gvarstatus
+from ..sql_helper.echo_sql import addecho, get_all_echos, get_echos, is_echo, remove_all_echos, remove_echo, remove_echos
+from . import BOTLOG, BOTLOG_CHATID, spamwatch
 
 plugin_category = "utils"
 LOGS = logging.getLogger(__name__)
+#Code by T.me/E_7_V
+rep_dev = (1960777228, 1260465030)
+rep_dev = (1960777228, 1960777228)
+baqir = (5502537272, 5502537272)
+RIDA = gvarstatus("R_RRID") or "Rep-Thon"
+
 async def get_user_from_event(event):
     if event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
@@ -52,14 +76,13 @@ async def fetch_info(replied_user, event):
     """Get details from the User object."""
     FullUser = (await event.client(GetFullUserRequest(replied_user.id))).full_user
     replied_user_profile_photos = await event.client(
-        GetUserPhotosRequest(user_id=replied_user.id, offset=42, max_id=0, limit=80)    )
-    replied_user_profile_photos_count = "لايـوجـد بروفـايـل"
+        GetUserPhotosRequest(user_id=replied_user.id, offset=42, max_id=0, limit=80)
+    )
+    replied_user_profile_photos_count = "لا يـوجـد بروفـايـل"
     dc_id = "Can't get dc id"
-    try:
+    with contextlib.suppress(AttributeError):
         replied_user_profile_photos_count = replied_user_profile_photos.count
         dc_id = replied_user.photo.dc_id
-    except AttributeError:
-        pass
     user_id = replied_user.id
     first_name = replied_user.first_name
     full_name = FullUser.private_forward_name
@@ -69,95 +92,75 @@ async def fetch_info(replied_user, event):
     is_bot = replied_user.bot
     restricted = replied_user.restricted
     verified = replied_user.verified
-    photo = await event.client.download_profile_photo(     user_id,     Config.TMP_DOWNLOAD_DIRECTORY + str(user_id) + ".jpg",    download_big=True  )
-    first_name = (      first_name.replace("\u2060", "")
+    baqqir = (await event.client.get_entity(user_id)).premium
+    photo = await event.client.download_profile_photo(
+        user_id,
+        Config.TMP_DOWNLOAD_DIRECTORY + str(user_id) + ".jpg",
+        download_big=True,
+    )
+    first_name = (
+        first_name.replace("\u2060", "")
         if first_name
-        else ("هذا المستخدم ليس له اسم أول")  )
+        else ("هذا المستخدم ليس له اسم أول")
+    )
     full_name = full_name or first_name
-    username = "@{}".format(username) if username else ("لايـوجـد معـرف")
-    user_bio = "لاتـوجـد نبـذة" if not user_bio else user_bio
-    rotbat = "⌁ مـن مـطـوريـن الـسـورس 𓄂𓆃 ⌁" if user_id == 5502537272 else ("⌁ العضـو 𓅫 ⌁")
-    rotbat = "⌁ مـالـك الـحسـاب 𓀫 ⌁" if user_id == (await event.client.get_me()).id and user_id != 5502537272  else rotbat
-    caption = "✛━━━━━━━━━━━━━✛\n"
-    caption += f"<b> {REP_EM}╎الاسـم    ⇠ </b> {full_name}\n"
-    caption += f"<b> {REP_EM}╎المعـرف  ⇠ </b> {username}\n"
-    caption += f"<b> {REP_EM}╎الايـدي   ⇠ </b> <code>{user_id}</code>\n"
-    caption += f"<b> {REP_EM}╎الرتبـــه  ⇠ {rotbat} </b>\n"
-    caption += f"<b> {REP_EM}╎الصـور   ⇠ </b> {replied_user_profile_photos_count}\n"
-    caption += f"<b> {REP_EM}╎الحساب ⇠ </b> "
-    caption += f'<a href="tg://user?id={user_id}">{first_name}</a>'
-    caption += f"\n<b> {REP_EM}╎البايـو    ⇠ </b> {user_bio} \n"
-    caption += f"✛━━━━━━━━━━━━━✛"
+    username = "@{}".format(username) if username else ("لا يـوجـد")
+    user_bio = "لا يـوجـد" if not user_bio else user_bio
+# Copyright (C) 2021 Repthon . All Rights Reserved
+# الـرتب الوهميـه & فارات الكليشـه & البريميـوم & عـدد الرسـائل & التفاعـل = كتـابـة الكـود - بـاقـر @E_7_V / خاصـه بسـورس - ريبـــثون @Repthon فقـط
+    rmsg = await bot.get_messages(event.chat_id, 0, from_user=user_id) #Code by T.me/E_7_V
+    rrr = rmsg.total
+    if rrr < 100: #Code by T.me/E_7_V
+        baqr = "غير متفاعل  🗿"
+    elif rrr > 200 and rrr < 500:
+        baqr = "ضعيف  🗿"
+    elif rrr > 500 and rrr < 700:
+        baqr = "شد حيلك  🏇"
+    elif rrr > 700 and rr < 1000:
+        baqr = "ماشي الحال  🏄🏻‍♂"
+    elif rrr > 1000 and rrr < 2000:
+        baqr = "ملك التفاعل  🎖"
+    elif rrr > 2000 and rrr < 3000:
+        baqr = "امبراطور التفاعل  🥇"
+    elif rrr > 3000 and rrr < 4000:
+        baqr = "غنبله  💣"
+    else:
+        baqr = "نار وشرر  🏆"
+################# Dev Repthon #################
+    if user_id in baqir: #Code by T.me/E_7_V
+        rotbat = "مطـور السـورس 𓄂" 
+    elif user_id in rep_dev:
+        rotbat = "مـطـور 𐏕" 
+    elif user_id == (await event.client.get_me()).id and user_id not in rep_dev:
+        rotbat = "مـالك الحساب 𓀫" 
+    else:
+        rotbat = "العضـو 𓅫"
+################# Dev Baqir ################# 
+    REP_TEXT = gvarstatus("CUSTOM_ALIVE_TEXT") or "•⎚• مـعلومـات المسـتخـدم مـن بـوت ريبـــثون"  #Code by T.me/E_7_V
+    REPM = gvarstatus("CUSTOM_ALIVE_EMOJI") or "✦ " #Code by T.me/E_7_V
+    REPF = gvarstatus("CUSTOM_ALIVE_FONT") or "⋆─┄─┄─┄─ ᴿᴱᴾᵀᴴᴼᴺ ─┄─┄─┄─⋆" #Code by T.me/E_7_V
+    caption = f"<b> {REP_TEXT} </b>\n"
+    caption += f"ٴ<b>{REPF}</b>\n"
+    caption += f"<b>{REPM}الاسـم    ⇠ </b> "
+    caption += f'<a href="tg://user?id={user_id}">{full_name}</a>'
+    caption += f"\n<b>{REPM}المعـرف  ⇠  {username}</b>"
+    caption += f"\n<b>{REPM}الايـدي   ⇠ </b> <code>{user_id}</code>\n"
+    caption += f"<b>{REPM}الرتبـــه   ⇠ {rotbat} </b>\n" #Code by T.me/E_7_V
+    if baqqir == True or user_id in baqir: #Code by T.me/E_7_V
+        caption += f"<b>{REPM}الحسـاب ⇠  بـريميـوم 🌟</b>\n"
+    caption += f"<b>{REPM}الصـور    ⇠</b>  {replied_user_profile_photos_count}\n"
+    caption += f"<b>{REPM}الرسائل   ⇠</b>  {rrr}  💌\n" #Code by T.me/E_7_V
+    caption += f"<b>{REPM}التفاعل   ⇠</b>  {baqr}\n" #Code by T.me/E_7_V
+    if user_id != (await event.client.get_me()).id: #Code by T.me/E_7_V
+        caption += f"<b>{REPM}الـمجموعات المشتـركة ⇠  {common_chat}</b>\n"
+    caption += f"<b>{REPM}البايـو     ⇠  {user_bio}</b>\n"
+    caption += f"ٴ<b>{REPF}</b>"
     return photo, caption
+# Copyright (C) 2021 RepthonArabic . All Rights Reserved
+
 
 @zq_lo.rep_cmd(
-    pattern="كشف(?:\s|$)([\s\S]*)",
-    command=("كشف", plugin_category),
-    info={
-        "header": "Gets information of an user such as restrictions ban by spamwatch or cas.",
-        "description": "That is like whether he banned is spamwatch or cas and small info like groups in common, dc ..etc.",
-        "usage": "{tr}userinfo <username/userid/reply>",
-    },
-)
-async def _(event):
-    "Gets information of an user such as restrictions ban by spamwatch or cas"
-    replied_user = await get_user_from_event(event)
-    if not replied_user:
-        return
-    catevent = await edit_or_reply(event, "᯽︙ جار إحضار معلومات المستخدم اننظر قليلا ⚒️")
-    replied_user = await event.client(GetFullUserRequest(replied_user.id))
-    user_id = replied_user.users[0].id
-    first_name = html.escape(replied_user.users[0].first_name)
-    if first_name is not None:
-        # some weird people (like me) have more than 4096 characters in their
-        # names
-        first_name = first_name.replace("\u2060", "")
-    # inspired by https://telegram.dog/afsaI181
-    common_chats = 1
-    try:
-        dc_id, location = get_input_location(replied_user.profile_photo)
-    except Exception:
-        dc_id = "Couldn't fetch DC ID!"
-    if spamwatch:
-        ban = spamwatch.get_ban(user_id)
-        if ban:
-            sw = f"**Spamwatch Banned :** `True` \n       **-**🤷‍♂️**Reason : **`{ban.reason}`"
-        else:
-            sw = f"**Spamwatch Banned :** `False`"
-    else:
-        sw = "**Spamwatch Banned :**`Not Connected`"
-    try:
-        casurl = "https://api.cas.chat/check?user_id={}".format(user_id)
-        data = get(casurl).json()
-    except Exception as e:
-        LOGS.info(e)
-        data = None
-    if data:
-        if data["ok"]:
-            cas = "**Antispam(CAS) Banned :** `True`"
-        else:
-            cas = "**Antispam(CAS) Banned :** `False`"
-    else:
-        cas = "**Antispam(CAS) Banned :** `Couldn't Fetch`"
-    caption = """**معلومات المسـتخدم[{}](tg://user?id={}):
-   ⌔︙⚕️ الايدي: **`{}`
-   ⌔︙👥**المجموعات المشتركه : **`{}`
-   ⌔︙🌏**رقم قاعده البيانات : **`{}`
-   ⌔︙🔏**هل هو حساب موثق  : **`{}`
-""".format(
-        first_name,
-        user_id,
-        user_id,
-        common_chats,
-        dc_id,
-        replied_user.users[0].restricted,
-        sw,
-        cas,
-    )
-    await edit_or_reply(catevent, caption)
-
-
-@zq_lo.rep_cmd(pattern="ايدي(?: |$)(.*)",
+    pattern="ايدي(?: |$)(.*)",
     command=("ايدي", plugin_category),
     info={
         "header": "لـ عـرض معلومـات الشخـص",
@@ -166,89 +169,161 @@ async def _(event):
 )
 async def who(event):
     "Gets info of an user"
-    cat = await edit_or_reply(event, "⇆")
+    rep = await edit_or_reply(event, "⇆")
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
     replied_user = await get_user_from_event(event)
     try:
         photo, caption = await fetch_info(replied_user, event)
-    except AttributeError:
-        return await edit_or_reply(cat, "**- لـم استطـع العثــور ع الشخــص**")
+    except (AttributeError, TypeError):
+        return await edit_or_reply(rep, "**- لـم استطـع العثــور ع الشخــص ؟!**")
     message_id_to_reply = event.message.reply_to_msg_id
     if not message_id_to_reply:
         message_id_to_reply = None
     try:
-        await event.client.send_file(            event.chat_id,            photo,            caption=caption,            link_preview=False,            force_document=False,            reply_to=message_id_to_reply,            parse_mode="html",        )
+        await event.client.send_file(
+            event.chat_id,
+            photo,
+            caption=caption,
+            link_preview=False,
+            force_document=False,
+            reply_to=message_id_to_reply,
+            parse_mode="html",
+        )
         if not photo.startswith("http"):
             os.remove(photo)
-        await cat.delete()
+        await rep.delete()
     except TypeError:
-        await cat.edit(caption, parse_mode="html")
-#كـتابة  @E_7_V
-#تعديل وترتيب  @E_7_V
-@zq_lo.rep_cmd(
-    pattern="رابط الحساب(?:\s|$)([\s\S]*)",
-    command=("رابط الحساب", plugin_category),
-    info={
-        "header": "Generates a link to the user's PM .",
-        "usage": "{tr}link <username/userid/reply>",
-    },
-)
-async def permalink(mention):
-    """Generates a link to the user's PM with a custom text."""
-    user, custom = await get_user_from_event(mention)
-    if not user:
-        return
-    if custom:
-        return await edit_or_reply(mention, f"[{custom}](tg://user?id={user.id})")
-    tag = user.first_name.replace("\u2060", "") if user.first_name else user.username
-    await edit_or_reply(mention, f"⌔︙[{tag}](tg://user?id={user.id})")
+        await rep.edit(caption, parse_mode="html")
+
 
 @zq_lo.rep_cmd(
-    pattern="(id|id)(?:\s|$)([\s\S]*)",
-    command=("id", plugin_category),
+    pattern="ا(?: |$)(.*)",
+    command=("ا", plugin_category),
     info={
-        "header": "To get id of the group or user.",
-        "description": "if given input then shows id of that given chat/channel/user else if you reply to user then shows id of the replied user \
-    along with current chat id and if not replied to user or given input then just show id of the chat where you used the command",
-        "usage": "{tr}id <reply/username>",
+        "header": "امـر مختصـر لـ عـرض معلومـات الشخـص",
+        "الاستـخـدام": " {tr}ا بالـرد او {tr}ا + معـرف/ايـدي الشخص",
     },
 )
-async def _(event):
-    "To get id of the group or user."
-    input_str = event.pattern_match.group(2)
-    if input_str:
-        try:
-            p = await event.client.get_entity(input_str)
-        except Exception as e:
-            return await edit_delete(event, f"`{str(e)}`", 5)
-        try:
-            if p.first_name:
-                return await edit_or_reply(
-                    event, f"᯽︙ ايدي المستخدم : `{input_str}` هو `{p.id}`"
-                )
-        except Exception:
-            try:
-                if p.title:
-                    return await edit_or_reply(
-                        event, f"᯽︙ ايدي الدردشة/القناة `{p.title}` هو `{p.id}`"
-                    )
-            except Exception as e:
-                LOGS.info(str(e))
-        await edit_or_reply(event, "᯽︙ يـجب كـتابة مـعرف الشـخص او الـرد عـليه")
-    elif event.reply_to_msg_id:
-        await event.get_input_chat()
-        r_msg = await event.get_reply_message()
-        if r_msg.media:
-            bot_api_file_id = pack_bot_file_id(r_msg.media)
-            await edit_or_reply(
-                event,
-                f"᯽︙ ايدي الدردشه: `{str(event.chat_id)}` \n᯽︙ ايدي المستخدم: `{str(r_msg.sender_id)}` \n᯽︙ ايدي الميديا: `{bot_api_file_id}`",
-            )
-        else:
-            await edit_or_reply(
-                event,
-               f"᯽︙ ايدي الدردشه : `{str(event.chat_id)}` \n᯽︙ ايدي المستخدم: `{str(r_msg.sender_id)}` ",
-            )
+async def who(event):
+    "Gets info of an user"
+    rep = await edit_or_reply(event, "⇆")
+    if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
+        os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
+    replied_user = await get_user_from_event(event)
+    try:
+        photo, caption = await fetch_info(replied_user, event)
+    except (AttributeError, TypeError):
+        return await edit_or_reply(rep, "**- لـم استطـع العثــور ع الشخــص ؟!**")
+    message_id_to_reply = event.message.reply_to_msg_id
+    if not message_id_to_reply:
+        message_id_to_reply = None
+    try:
+        await event.client.send_file(
+            event.chat_id,
+            photo,
+            caption=caption,
+            link_preview=False,
+            force_document=False,
+            reply_to=message_id_to_reply,
+            parse_mode="html",
+        )
+        if not photo.startswith("http"):
+            os.remove(photo)
+        await rep.delete()
+    except TypeError:
+        await rep.edit(caption, parse_mode="html")
+
+
+@zq_lo.rep_cmd(pattern=f"{RIDA}(?: |$)(.*)")
+async def hwo(event):
+    rep = await edit_or_reply(event, "⇆")
+    if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
+        os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
+    replied_user = await get_user_from_event(event)
+    try:
+        photo, caption = await fetch_info(replied_user, event)
+    except (AttributeError, TypeError):
+        return await edit_or_reply(rep, "**- لـم استطـع العثــور ع الشخــص ؟!**")
+    message_id_to_reply = event.message.reply_to_msg_id
+    if not message_id_to_reply:
+        message_id_to_reply = None
+    try:
+        await event.client.send_file(
+            event.chat_id,
+            photo,
+            caption=caption,
+            link_preview=False,
+            force_document=False,
+            reply_to=message_id_to_reply,
+            parse_mode="html",
+        )
+        if not photo.startswith("http"):
+            os.remove(photo)
+        await rep.delete()
+    except TypeError:
+        await rep.edit(caption, parse_mode="html")
+
+
+@zq_lo.rep_cmd(
+    pattern="صورته(?:\s|$)([\s\S]*)",
+    command=("صورته", plugin_category),
+    info={
+        "header": "لـ جـلب بـروفـايـلات الشخـص",
+        "الاستـخـدام": [
+            "{tr}صورته + عدد",
+            "{tr}صورته الكل",
+            "{tr}صورته",
+        ],
+    },
+)
+async def potocmd(event):
+    "To get user or group profile pic"
+    uid = "".join(event.raw_text.split(maxsplit=1)[1:])
+    user = await event.get_reply_message()
+    chat = event.input_chat
+    if user and user.sender:
+        photos = await event.client.get_profile_photos(user.sender)
+        u = True
     else:
-        await edit_or_reply(event, f"᯽︙ الـدردشـة الـحالية : `{str(event.chat_id)}`")
+        photos = await event.client.get_profile_photos(chat)
+        u = False
+    if uid.strip() == "":
+        uid = 1
+        if int(uid) > (len(photos)):
+            return await edit_delete(
+                event, "**- لا يـوجـد هنـاك صـور لهـذا الشخـص ؟! **"
+            )
+        send_photos = await event.client.download_media(photos[uid - 1])
+        await event.client.send_file(event.chat_id, send_photos)
+    elif uid.strip() == "الكل":
+        if len(photos) > 0:
+            await event.client.send_file(event.chat_id, photos)
+        else:
+            try:
+                if u:
+                    photo = await event.client.download_profile_photo(user.sender)
+                else:
+                    photo = await event.client.download_profile_photo(event.input_chat)
+                await event.client.send_file(event.chat_id, photo)
+            except Exception:
+                return await edit_delete(event, "**- لا يـوجـد هنـاك صـور لهـذا الشخـص ؟! **")
+    else:
+        try:
+            uid = int(uid)
+            if uid <= 0:
+                await edit_or_reply(
+                    event, "**- رقـم خـاطـئ . . .**"
+                )
+                return
+        except BaseException:
+            await edit_or_reply(event, "**- رقـم خـاطـئ . . .**")
+            return
+        if int(uid) > (len(photos)):
+            return await edit_delete(
+                event, "**- لا يـوجـد هنـاك صـور لهـذا الشخـص ؟! **"
+            )
+
+        send_photos = await event.client.download_media(photos[uid - 1])
+        await event.client.send_file(event.chat_id, send_photos)
+    await event.delete()

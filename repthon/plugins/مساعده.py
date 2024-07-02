@@ -8,7 +8,7 @@ from ..core.managers import edit_delete, edit_or_reply
 from ..helpers.utils import reply_id
 
 cmdprefix = Config.COMMAND_HAND_LER
-OLDZED = Config.OLDZED
+OLDREP = Config.OLDREP
 
 plugin_category = "الادوات"
 
