@@ -57,6 +57,7 @@ pySmartDL
 python-barcode
 python-dotenv
 pytz
+pydub
 qrcode
 regex
 requests
