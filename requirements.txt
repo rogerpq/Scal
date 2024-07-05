@@ -2,7 +2,6 @@ telethon==1.36.0
 telethon-session-sqlalchemy
 setuptools
 wheel
-gunicorn
 flask
 flask_restful
 aiocsv
