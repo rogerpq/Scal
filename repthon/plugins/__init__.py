@@ -24,7 +24,7 @@ from repthon.helpers.functions.musictool import song_download
 bot = zq_lo
 LOGS = logging.getLogger(__name__)
 USERID = zq_lo.uid if Config.OWNER_ID == 0 else Config.OWNER_ID
-ALIVE_NAME = Config.ALIVE_NAME
+ALIVE_NAME = gvarstatus("ALIVE_NAME") if gvarstatus("ALIVE_NAME") else "-"
 
 Heroku = heroku3.from_key(Config.HEROKU_API_KEY)
 heroku_api = "https://api.heroku.com"
@@ -34,8 +34,8 @@ HEROKU_API_KEY = Config.HEROKU_API_KEY
 thumb_image_path = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, "thumb_image.jpg")
 
 # mention user
-mention = f"[{Config.ALIVE_NAME}](tg://user?id={USERID})"
-hmention = f"<a href = tg://user?id={USERID}>{Config.ALIVE_NAME}</a>"
+mention = f"[{ALIVE_NAME}](tg://user?id={USERID})"
+hmention = f"<a href = tg://user?id={USERID}>{ALIVE_NAME}</a>"
 
 PM_START = []
 PMMESSAGE_CACHE = {}
