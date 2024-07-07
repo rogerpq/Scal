@@ -1,2 +1,2 @@
-web: python3 baqir.py
+web: python3 -m http.server $PORT
 worker: python3 -m repthon
