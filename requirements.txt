@@ -2,7 +2,6 @@ telethon==1.36.0
 telethon-session-sqlalchemy
 setuptools
 wheel
-gunicorn
 flask
 flask_restful
 aiocsv
@@ -77,9 +76,5 @@ validators
 vcsi
 wand
 wget==3.2
-youtube-search-python==1.4.9
-youtube-search
-youtube_dl
-yt-dlp==2024.05.27
 img2html
 googletrans-py
