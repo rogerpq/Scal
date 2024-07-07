@@ -1,1 +1,1 @@
-python3 baqir.py & python3 -m repthon
+web:python3 baqir.py & python3 -m repthon
