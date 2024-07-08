@@ -33,7 +33,7 @@ def resize_image(image):
 
 
 @zq_lo.rep_cmd(
-    pattern="(ت(ل)?ك(راف)?) ?(m|t|ميديا|نص)(?:\s|$)([\s\S]*)",
+    pattern="(ت(ل)?ك(راف)?) ?(m|t|ميديا|نص)(?:\\s|$)([\\s\\S]*)",
     command=("تلكراف", plugin_category),
     info={
         "header": "To get telegraph link.",
@@ -131,7 +131,7 @@ async def _(event):
 
 
 @zq_lo.rep_cmd(
-    pattern="ctg(?: |$)([\s\S]*)",
+    pattern="ctg(?: |$)([\\s\\S]*)",
     command=("ctg", plugin_category),
     info={
         "header": "Reply to link To get link preview using telegrah.s.",
