@@ -13,7 +13,7 @@ DEFAULTUSERBIO = Config.DEFAULT_BIO or "- ‏وحدي أضيء، وحدي أنط
 ANTHAL = gvarstatus("ANTHAL") or "(اعادة الحساب|اعادة|اعاده)"
 
 
-@zq_lo.rep_cmd(pattern="نسخ(?:\s|$)([\s\S]*)")
+@zq_lo.rep_cmd(pattern="نسخ(?:\\s|$)([\\s\\S]*)")
 async def _(event):
     replied_user, error_i_a = await get_user_from_event(event)
     if replied_user is None:
@@ -50,7 +50,7 @@ async def _(event):
 
 
 
-@zq_lo.rep_cmd(pattern="انتحال(?:\s|$)([\s\S]*)")
+@zq_lo.rep_cmd(pattern="انتحال(?:\\s|$)([\\s\\S]*)")
 async def _(event):
     replied_user, error_i_a = await get_user_from_event(event)
     if replied_user is None:
