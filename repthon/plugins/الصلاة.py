@@ -15,7 +15,7 @@ from ..core.managers import edit_delete, edit_or_reply
 plugin_category = "البحث"
 
 @zq_lo.rep_cmd(
-    pattern="صلاة ([\s\S]*)",
+    pattern="صلاة ([\\s\\S]*)",
     command=("صلاة", plugin_category),
     info={
         "header": "اوقـات الصـلاة لـ عواصـم الـدول العـربيـة",
