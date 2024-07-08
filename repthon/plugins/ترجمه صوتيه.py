@@ -19,7 +19,7 @@ plugin_category = "الخدمات"
 
 
 @zq_lo.rep_cmd(
-    pattern="صوت جوجل(?:\s|$)([\s\S]*)",
+    pattern="صوت جوجل(?:\\s|$)([\\s\\S]*)",
     command=("صوت جوجل", plugin_category),
     info={
         "header": "Text to speech command.",
