@@ -13,7 +13,7 @@ plugin_category = "البوت"
 
 
 @zq_lo.rep_cmd(
-    pattern="استفتاء(?:\s|$)([\s\S]*)",
+    pattern="استفتاء(?:\\s|$)([\\s\\S]*)",
     command=("استفتاء", plugin_category),
     info={
         "header": "To create a poll.",
