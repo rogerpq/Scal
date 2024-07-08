@@ -40,7 +40,7 @@ NO_PERM = "**⎉╎ يبـدو انه ليس لديك صلاحيات كافية 
 repthon_t8ed = "https://graph.org/file/00478b30c7e13bc2a183d.jpg"
 repthon_unt8ed = "https://graph.org/file/3e2ecf7ec1c8d72e34e8a.jpg"
 @zq_lo.rep_cmd(
-    pattern="تقييد_مؤقت(?:\s|$)([\s\S]*)",
+    pattern="تقييد_مؤقت(?:\\s|$)([\\s\\S]*)",
     command=("تقييد_مؤقت", plugin_category),
     info={
         "header": "To stop sending messages permission for that user",
@@ -128,7 +128,7 @@ async def tmuter(event):  # sourcery no-metrics
 
 
 @zq_lo.rep_cmd(
-    pattern="حظر_مؤقت(?:\s|$)([\s\S]*)",
+    pattern="حظر_مؤقت(?:\\s|$)([\\s\\S]*)",
     command=("حظر_مؤقت", plugin_category),
     info={
         "header": "To remove a user from the group for specified time.",
@@ -223,7 +223,7 @@ async def tban(event):  # sourcery no-metrics
             )
 
 @zq_lo.rep_cmd(
-    pattern="تقييد(?:\s|$)([\s\S]*)",
+    pattern="تقييد(?:\\s|$)([\\s\\S]*)",
     command=("تقييد", plugin_category),
     info={
         "header": "لتقييد المستخدم في المجموعة بدون مدة زمنية",
@@ -286,7 +286,7 @@ async def T8ed_Repthon(event):
     except Exception as e:
         return await event.edit(f"`{str(e)}`")
 @zq_lo.rep_cmd(
-    pattern="الغاء تقييد(?:\s|$)([\s\S]*)",
+    pattern="الغاء تقييد(?:\\s|$)([\\s\\S]*)",
     command=("الغاء تقييد", plugin_category),
     info={
         "header": "لالغاء التقيد المستخدم في المجموعة ",
