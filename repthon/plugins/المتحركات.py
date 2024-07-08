@@ -12,7 +12,7 @@ plugin_category = "البحث"
 
 
 @zq_lo.rep_cmd(
-    pattern="متحركه(?:\s|$)([\s\S]*)",
+    pattern="متحركه(?:\\s|$)([\\s\\S]*)",
     command=("متحركه", plugin_category),
     info={
         "header": "Sends random gifs",
