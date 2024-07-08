@@ -8,7 +8,7 @@ plugin_category = "الادمن"
 
 
 @zq_lo.rep_cmd(
-    pattern="(tagall|alll)(?:\s|$)([\s\S]*)",
+    pattern="(tagall|alll)(?:\\s|$)([\\s\\S]*)",
     command=("tagall", plugin_category),
     info={
         "header": "tags recent 50 persons in the group may not work for all",
@@ -53,7 +53,7 @@ async def _(event):
 
 
 @zq_lo.rep_cmd(
-    pattern="men ([\s\S]*)",
+    pattern="men ([\\s\\S]*)",
     command=("mention", plugin_category),
     info={
         "header": "Tags that person with the given custom text.",
