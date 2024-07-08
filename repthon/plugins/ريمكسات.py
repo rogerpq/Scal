@@ -17,7 +17,7 @@ from ..core.managers import edit_delete, edit_or_reply
 plugin_category = "البحث"
 
 @zq_lo.rep_cmd(
-    pattern="ريماكس ([\s\S]*)",
+    pattern="ريماكس ([\\s\\S]*)",
     command=("ريماكس", plugin_category),
     info={
         "header": "ريمكسـات اغـانـي قصيـره",
@@ -42,7 +42,7 @@ async def remaxzedthon(zedrm):
     
 
 @zq_lo.rep_cmd(
-    pattern="ريمكس ([\s\S]*)",
+    pattern="ريمكس ([\\s\\S]*)",
     command=("ريمكس", plugin_category),
     info={
         "header": "ريمكسـات اغـانـي قصيـره",
