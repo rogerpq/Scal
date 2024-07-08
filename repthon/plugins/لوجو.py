@@ -39,7 +39,7 @@ plugin_category = "الترفيه"
 
 
 @zq_lo.rep_cmd(
-    pattern="(|s)لوجو(?: |$)([\s\S]*)",
+    pattern="لوجو(?: |$)(.*)",
     command=("لوجو", plugin_category),
     info={
         "header": "Make a logo in image or sticker",
@@ -135,92 +135,6 @@ async def very(event):  # sourcery no-metrics
         os.remove(file_name)
 
 
-@zq_lo.rep_cmd(
-    pattern="(|c)lbg(?:\s|$)([\s\S]*)",
-    command=("lbg", plugin_category),
-    info={
-        "header": "Change the background of logo",
-        "description": "To change the background on which logo will created, in **bg** there few built-in backgrounds.",
-        "flags": {
-            "c": "Custom background for logo, can set by giving a telegraph link or reply to media.",
-        },
-        "usage": [
-            "{tr}lbg <background color code>",
-            "{tr}clbg <telegraph link / reply to media>",
-        ],
-        "examples": [
-            "{tr}lbg red",
-            "{tr}clbg https://telegra.ph/blablabla.jpg",
-        ],
-    },
-)
-async def bad(event):
-    "To change background of logo"
-    cmd = event.pattern_match.group(1).lower()
-    input_str = event.pattern_match.group(2)
-    source = requests.get("https://github.com/Jisan09/Files/tree/main/backgroud")
-    soup = BeautifulSoup(source.text, features="html.parser")
-    links = soup.find_all("a", class_="js-navigation-open Link--primary")
-    bg_name = []
-    lbg_list = "**Available background names are here:-**\n\n"
-    for i, each in enumerate(links, start=1):
-        cat = os.path.splitext(each.text)[0]
-        bg_name.append(cat)
-        lbg_list += f"**{i}.**  `{cat}`\n"
-    if os.path.exists("./temp/bg_img.jpg"):
-        os.remove("./temp/bg_img.jpg")
-    if cmd == "c":
-        reply_message = await event.get_reply_message()
-        if not input_str and event.reply_to_msg_id and reply_message.media:
-            if not os.path.isdir("./temp"):
-                os.mkdir("./temp")
-            output = await _cattools.media_to_pic(event, reply_message)
-            convert_toimage(output[1], filename="./temp/bg_img.jpg")
-            return await edit_delete(
-                event, "This media is successfully set as background."
-            )
-        if not input_str.startswith("https://t"):
-            return await edit_delete(
-                event, "Give a valid Telegraph picture link, Or reply to a media."
-            )
-        addgvar("LOGO_BACKGROUND", input_str)
-        return await edit_delete(
-            event, f"**Background for logo changed to :-** `{input_str}`"
-        )
-    if not input_str:
-        return await edit_delete(event, lbg_list, time=60)
-    if input_str not in bg_name:
-        zedevent = await edit_or_reply(event, "`Give me a correct background name...`")
-        await asyncio.sleep(1)
-        await edit_delete(zedevent, lbg_list, time=60)
-    else:
-        string = f"https://raw.githubusercontent.com/Jisan09/Files/main/backgroud/{input_str}.jpg"
-        addgvar("LOGO_BACKGROUND", string)
-        await edit_delete(
-            event, f"**Background for logo changed to :-** `{input_str}`", time=10
-        )
-
-
-@zq_lo.rep_cmd(
-    pattern="lf(|c|s|h|w|sc|sw)(?:\s|$)([\s\S]*)",
-    command=("lf", plugin_category),
-    info={
-        "header": "Change text style for logo.",
-        "description": "Customise logo font, font size, font position like text hight or width.",
-        "flags": {
-            "c": "To change color of logo font.",
-            "s": "To change size of logo font.",
-            "h": "To change hight of logo font.",
-            "w": "To change width of logo font.",
-            "sw": "To change stroke width of logo font.",
-            "sc": "To change stroke color of logo font.",
-        },
-        "usage": [
-            "{tr}lf <font name>",
-            "{tr}lfc <logo font color>",
-            "{tr}lfs <1-1000>",
-            "{tr}lfh <10-100>",
-            "{tr}lfw <10-100>",
             "{tr}lfsw <10-100>",
             "{tr}lfsc <logo font stroke color>",
         ],
@@ -355,69 +269,3 @@ async def pussy(event):  # sourcery no-metrics
                     event,
                     f"**Font stroke width size is between 0 - 100, You can't set limit to :** `{input_str}`",
                 )
-
-
-@zq_lo.rep_cmd(
-    pattern="(g|d|r)lvar(?:\s|$)([\s\S]*)",
-    command=("lvar", plugin_category),
-    info={
-        "header": "Manage values which set for logo",
-        "description": "To see which value have been set, or to delete a value , or to reset all values.",
-        "flags": {
-            "g": "Gets the value of the var which you set manually for logo.",
-            "d": "Delete the value of the var which you set manually for logo.",
-            "r": "Delete all the values of the vars which you set manually for logo & reset all changes.",
-        },
-        "usage": [
-            "{tr}glvar <var code>",
-            "{tr}dlvar <var code>",
-            "{tr}rlvar",
-        ],
-        "examples": [
-            "{tr}glvar lbg",
-            "{tr}dlvar lfc",
-        ],
-    },
-)
-async def cat(event):
-    "Manage all values of logo"
-    cmd = event.pattern_match.group(1).lower()
-    input_str = event.pattern_match.group(2)
-    if input_str in vars_list.keys():
-        var = vars_list[input_str]
-        if cmd == "g":
-            var_data = gvarstatus(var)
-            await edit_delete(event, f"📑 Value of **{var}** is  `{var_data}`", time=60)
-        elif cmd == "d":
-            if input_str == "lbg" and os.path.exists("./temp/bg_img.jpg"):
-                os.remove("./temp/bg_img.jpg")
-            if input_str == "lf" and os.path.exists("./temp/logo.ttf"):
-                os.remove("./temp/logo.ttf")
-            delgvar(var)
-            await edit_delete(
-                event, f"📑 Value of **{var}** is now deleted & set to default.", time=60
-            )
-    elif not input_str and cmd == "r":
-        delgvar("LOGO_BACKGROUND")
-        delgvar("LOGO_FONT_COLOR")
-        delgvar("LOGO_FONT")
-        delgvar("LOGO_FONT_SIZE")
-        delgvar("LOGO_FONT_HEIGHT")
-        delgvar("LOGO_FONT_WIDTH")
-        delgvar("LOGO_FONT_STROKE_COLOR")
-        delgvar("LOGO_FONT_STROKE_WIDTH")
-        if os.path.exists("./temp/bg_img.jpg"):
-            os.remove("./temp/bg_img.jpg")
-        if os.path.exists("./temp/logo.ttf"):
-            os.remove("./temp/logo.ttf")
-        await edit_delete(
-            event,
-            "📑 Values for all vars deleted successfully & all settings reset.",
-            time=20,
-        )
-    else:
-        await edit_delete(
-            event,
-            f"**📑 Give correct vars name :**\n__Correct Vars code list is :__\n\n1. `lbg` : **LOGO_BACKGROUND**\n2. `lfc` : **LOGO_FONT_COLOR**\n3. `lf` : **LOGO_FONT**\n4. `lfs` : **LOGO_FONT_SIZE**\n5. `lfh` : **LOGO_FONT_HEIGHT**\n6. `lfw` : **LOGO_FONT_WIDTH**",
-            time=60,
-        )
