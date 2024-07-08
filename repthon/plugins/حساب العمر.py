@@ -6,7 +6,7 @@ from repthon import zq_lo
 from ..core.managers import edit_delete, edit_or_reply
 
 
-@zq_lo.rep_cmd(pattern="حساب العمر(?:\s|$)([\s\S]*)")
+@zq_lo.rep_cmd(pattern="حساب العمر(?:\\s|$)([\\s\\S]*)")
 async def _(event):
     yar = event.text[12:]
     if not yar:
