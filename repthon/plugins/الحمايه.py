@@ -732,7 +732,7 @@ async def pmpermit_on(event):
 
 
 @zq_lo.rep_cmd(
-    pattern="(قبول|سماح)(?:\s|$)([\s\S]*)",
+    pattern="(قبول|سماح)(?:\\s|$)([\\s\\S]*)",
     command=("سماح", plugin_category),
     info={
         "header": "لـ السمـاح لـ شخـص بمـراسلتـك خـاص اثنـاء تفعيـل الحمـايـه",
@@ -808,7 +808,7 @@ async def approve_p_m(event):  # sourcery no-metrics
 
 
 @zq_lo.rep_cmd(
-    pattern="t(emp)?(a|approve)(?:\s|$)([\s\S]*)",
+    pattern="t(emp)?(a|approve)(?:\\s|$)([\\s\\S]*)",
     command=("tapprove", plugin_category),
     info={
         "header": "To approve user to direct message you for temporarily.",
@@ -889,7 +889,7 @@ async def tapprove_pm(event):  # sourcery no-metrics
 
 
 @zq_lo.rep_cmd(
-    pattern="(رف|رفض)(?:\s|$)([\s\S]*)",
+    pattern="(رف|رفض)(?:\\s|$)([\\s\\S]*)",
     command=("رفض", plugin_category),
     info={
         "header": "لـ رفـض الاشخـاص مـن الخـاص اثنـاء تفعيـل الحمـايـه",
@@ -944,7 +944,7 @@ async def disapprove_p_m(event):
         )
 
 
-@zq_lo.rep_cmd(pattern="بلوك(?:\s|$)([\s\S]*)")
+@zq_lo.rep_cmd(pattern="بلوك(?:\\s|$)([\\s\\S]*)")
 async def block_p_m(event):
     if event.is_private:
         user = await event.get_chat()
@@ -984,7 +984,7 @@ async def block_p_m(event):
     )
 
 
-@zq_lo.rep_cmd(pattern="الغاء بلوك(?:\s|$)([\s\S]*)")
+@zq_lo.rep_cmd(pattern="الغاء بلوك(?:\\s|$)([\\s\\S]*)")
 async def unblock_pm(event):
     if event.is_private:
         user = await event.get_chat()
