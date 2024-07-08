@@ -780,7 +780,7 @@ async def zed(mention):
     my_mention = f"[{me.first_name}](tg://user?id={me.id})"
     await edit_or_reply(mention, f"**🚺 ╎ المستخـدم ه ⪼ • ** [{zedth2}](tg://user?id={user.id}) \n☑️ **╎ تم رفعـهـا خطيبتك .. بنجـاح 💍👰🏼‍♀️.** \n**🤵‍♂️ ╎ بواسطـه  :** {my_mention} ")
 @zq_lo.rep_cmd(
-    pattern="مصه(?:\s|$)([\s\S]*)",
+    pattern="مصه(?:\\s|$)([\\s\\S]*)",
     command=("مصه", plugin_category),
 )
 async def zed(mention): 
@@ -863,4 +863,3 @@ async def permalink(mention):
 @zq_lo.rep_cmd(pattern="التحشيش")
 async def cmd(BAQIR):
     await edit_or_reply(BAQIR, BaqirTHS_cmd)
-
