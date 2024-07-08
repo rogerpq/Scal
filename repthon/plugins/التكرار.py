@@ -136,7 +136,7 @@ async def spam_function(event, sandy, rep, sleeptimem, sleeptimet, DelaySpam=Fal
 
 
 @zq_lo.rep_cmd(
-    pattern="كرر ([\s\S]*)",
+    pattern="كرر ([\\s\\S]*)",
     command=("كرر", plugin_category),
     info={
         "header": "لـ تكـرار كلمـه معينـه لعـدد معيـن من المـرات",
@@ -241,7 +241,7 @@ async def stickerpack_spam(event):
 
 
 @zq_lo.rep_cmd(
-    pattern="وسبام ([\s\S]*)",
+    pattern="وسبام ([\\s\\S]*)",
     command=("وسبام", plugin_category),
     info={
         "header": "تكـرار الكلمـه حـرف حـرف",
@@ -275,7 +275,7 @@ async def tmeme(event):
 
 
 @zq_lo.rep_cmd(
-    pattern="سبام ([\s\S]*)",
+    pattern="سبام ([\\s\\S]*)",
     command=("سبام", plugin_category),
     info={
         "header": "تكرار كلمـة او جملـة نصيـه",
@@ -309,7 +309,7 @@ async def tmeme(event):
 
 
 @zq_lo.rep_cmd(
-    pattern=f"{SPAM} ([\s\S]*)",
+    pattern=f"{SPAM} ([\\s\\S]*)",
     command=("مكرر", plugin_category),
     info={
         "header": "لـ تكـرار نص لوقت معين وعدد معين من المـرات",
@@ -403,7 +403,7 @@ async def spammer(event):
 
 
 
-# Copyright (C) 2022 Zed-Thon . All Rights Reserved
+# Copyright (C) 2022 RepthonArabic . All Rights Reserved
 @zq_lo.rep_cmd(pattern="التكرار")
 async def cmd(baqir_shiite_god_is_the_greatest):
     await edit_or_reply(baqir_shiite_god_is_the_greatest, BAQIRSP_cmd)
