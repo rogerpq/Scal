@@ -55,7 +55,6 @@ prettytable
 psutil
 psycopg2-binary
 psycopg2
-py-tgcalls==2.0.2
 pyfiglet
 PyGithub
 pygments
