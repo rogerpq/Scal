@@ -76,7 +76,7 @@ async def sddm(event):
         await zq_lo.send_file("me", pic, caption=f"[ᯓ 𝗦𝗼𝘂𝗿𝗰𝗲 𝗥𝗲𝗽𝘁𝗵𝗼𝗻 - حفـظ الذاتيـه 🧧](t.me/Repthon) .\n\n⋆┄─┄─┄─┄┄─┄─┄─┄─┄┄⋆\n**⌔╎مࢪحبـاً عـزيـزي المـالك 🫂\n⌔╎ تـم حفـظ الذاتيـة تلقائيـاً .. بنجـاح ☑️** ❝\n**⌔╎المـرسـل** {_format.mentionuser(sender.first_name , sender.id)} .")
 
 #Code For T.me/E_7_V
-@zq_lo.rep_cmd(pattern="اعلان (\d*) ([\s\S]*)")
+@zq_lo.rep_cmd(pattern="اعلان (\\d*) ([\\s\\S]*)")
 async def selfdestruct(destroy):
     rep = ("".join(destroy.text.split(maxsplit=1)[1:])).split(" ", 1)
     message = rep[1]
@@ -88,7 +88,7 @@ async def selfdestruct(destroy):
     await smsg.delete()
 
 #Code For T.me/E_7_V
-@zq_lo.rep_cmd(pattern="إعلان (\d*) ([\s\S]*)")
+@zq_lo.rep_cmd(pattern="إعلان (\\d*) ([\\s\\S]*)")
 async def selfdestruct(destroy):
     rep = ("".join(destroy.text.split(maxsplit=1)[1:])).split(" ", 1)
     message = rep[1]
