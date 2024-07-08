@@ -60,7 +60,7 @@ async def install(event):
 
 
 @zq_lo.rep_cmd(
-    pattern="حمل ([\s\S]*)",
+    pattern="حمل ([\\s\\S]*)",
     command=("حمل", plugin_category),
     info={
         "header": "To load a plugin again. if you have unloaded it",
@@ -87,7 +87,7 @@ async def load(event):
 
 
 @zq_lo.rep_cmd(
-    pattern="ارسل ([\s\S]*)",
+    pattern="ارسل ([\\s\\S]*)",
     command=("ارسل", plugin_category),
     info={
         "header": "To upload a plugin file to telegram chat",
@@ -117,7 +117,7 @@ async def send(event):
 
 
 @zq_lo.rep_cmd(
-    pattern="الغاء حمل ([\s\S]*)",
+    pattern="الغاء حمل ([\\s\\S]*)",
     command=("حمل", plugin_category),
     info={
         "header": "To unload a plugin temporarily.",
@@ -137,7 +137,7 @@ async def unload(event):
 
 
 @zq_lo.rep_cmd(
-    pattern="الغاء نصب ([\s\S]*)",
+    pattern="الغاء نصب ([\\s\\S]*)",
     command=("الغاء تنصيب", plugin_category),
     info={
         "header": "To uninstall a plugin temporarily.",
@@ -167,4 +167,3 @@ async def unload(event):
         await edit_or_reply(event, f"**- تـم الغـاء تنصيب المـلف** {shortname} **.. بـ نجـاح ☑️**")
     except Exception as e:
         await edit_or_reply(event, f"**- تـم الغـاء تنصيب المـلف** {shortname} **.. بـ نجـاح ☑️**\n{e}")
-
