@@ -43,7 +43,7 @@ purgetype = {
 
 
 @zq_lo.rep_cmd(
-    pattern="مسح(\\s*| \d+)$",
+    pattern="مسح(\\s*| \\d+)$",
     command=("del", plugin_category),
     info={
         "header": "To delete replied message.",
@@ -201,7 +201,7 @@ async def purgeme(event):
 
 # TODO: only sticker messages.
 @zq_lo.rep_cmd(
-    pattern="تنظيف(?:\s|$)([\s\S]*)",
+    pattern="تنظيف(?:\\s|$)([\\s\\S]*)",
     command=("تنظيف", plugin_category),
     info={
         "header": "To purge messages from the replied message.",
@@ -455,7 +455,7 @@ async def fastpurger(event):  # sourcery no-metrics
 
 
 @zq_lo.rep_cmd(
-    pattern="upurge( -a)?(?:\s|$)([\s\S]*)",
+    pattern="upurge( -a)?(?:\\s|$)([\\s\\S]*)",
     command=("upurge", plugin_category),
     info={
         "header": "To purge messages from the replied message of replied user.",
