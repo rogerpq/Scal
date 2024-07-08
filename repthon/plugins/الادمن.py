@@ -647,7 +647,7 @@ async def unpin(event):
 
 
 @zq_lo.rep_cmd(
-    pattern="الاحداث( م)?(?: |$)(\d*)?",
+    pattern="الاحداث( م)?(?: |$)(\\d*)?",
     command=("الاحداث", plugin_category),
     info={
         "header": "لـ جـلب آخـر الرسـائـل المحـذوفـه مـن الاحـداث بـ العـدد",
