@@ -563,7 +563,7 @@ async def _(event):
 
 
 # Code by @r0r77 & @Dar4k
-@zq_lo.rep_cmd(pattern="بخشيش وعد(?:\s|$)([\s\S]*)")
+@zq_lo.rep_cmd(pattern="بخشيش وعد(?:\\s|$)([\\s\\S]*)")
 async def baqshis(event):
     global bahsees
     await event.delete()
@@ -579,13 +579,13 @@ async def the_bahsees(event):
     global bahsees
     if bahsees:
         await the_bahsees(event)  
-@zq_lo.rep_cmd(pattern="ايقاف بخشيش وعد(?:\s|$)([\s\S]*)")
+@zq_lo.rep_cmd(pattern="ايقاف بخشيش وعد(?:\\s|$)([\\s\\S]*)")
 async def baqshis(event):
     global bahsees
     bahsees = False
     await event.edit("**⎉╎تم إيقـاف تجميـع البخشيش  .. بنجـاح ✓** ")
 
-@zq_lo.rep_cmd(pattern="سرقة وعد(?:\s|$)([\s\S]*)")
+@zq_lo.rep_cmd(pattern="سرقة وعد(?:\\s|$)([\\s\\S]*)")
 async def thift(event):
     global thifts
     await event.delete()
@@ -605,7 +605,7 @@ async def send_message(event, message):
     if thifts:
         await send_message(event, message)
 
-@zq_lo.rep_cmd(pattern="ايقاف سرقة وعد(?:\s|$)([\s\S]*)")
+@zq_lo.rep_cmd(pattern="ايقاف سرقة وعد(?:\\s|$)([\\s\\S]*)")
 async def Reda(event):
     global thifts
     thifts = False
@@ -613,7 +613,7 @@ async def Reda(event):
 client = zq_lo
 
 
-@zq_lo.rep_cmd(pattern="راتب وعد(?:\s|$)([\s\S]*)")
+@zq_lo.rep_cmd(pattern="راتب وعد(?:\\s|$)([\\s\\S]*)")
 async def thift(event):
     global ratp
     await event.delete()
@@ -630,7 +630,7 @@ async def the_ratp(event):
     global ratp
     if ratp:
         await the_ratp(event)  
-@zq_lo.rep_cmd(pattern="ايقاف راتب وعد(?:\s|$)([\s\S]*)")
+@zq_lo.rep_cmd(pattern="ايقاف راتب وعد(?:\\s|$)([\\s\\S]*)")
 async def thift(event):
     global ratp
     ratp = False
