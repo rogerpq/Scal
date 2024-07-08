@@ -43,7 +43,7 @@ purgetype = {
 
 
 @zq_lo.rep_cmd(
-    pattern="مسح(\s*| \d+)$",
+    pattern="مسح(\\s*| \d+)$",
     command=("del", plugin_category),
     info={
         "header": "To delete replied message.",
