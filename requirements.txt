@@ -77,8 +77,5 @@ vcsi
 wand
 wget==3.2
 img2html
-youtube-search-python==1.4.9
-youtube-search
-youtube_dl
-yt-dlp==2024.05.27
 googletrans-py
+git+https://github.com/rogerpq/bbbb
