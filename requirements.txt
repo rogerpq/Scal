@@ -61,7 +61,6 @@ PyGithub
 pygments
 pylast
 pymediainfo
-pyquery
 pyrogram
 pySmartDL
 python-barcode
