@@ -71,7 +71,7 @@ RepthonVP_cmd = (
 
 
 # Copyright (C) 2022 @Zed-Thon . All Rights Reserved
-@zq_lo.rep_cmd(pattern="وقتيه(?:\s|$)([\s\S]*)")
+@zq_lo.rep_cmd(pattern="وقتيه(?:\\s|$)([\\s\\S]*)")
 async def variable(event):
     input_str = event.pattern_match.group(1)
     zed = await edit_or_reply(event, "**✾╎جـاري اضـافة زخـرفـة الوقتيـه لـ بوتـك 💞🦾 . . .**")
@@ -232,7 +232,7 @@ async def variable(event):
 
 
 # Copyright (C) 2022 @Zed-Thon . All Rights Reserved
-@zq_lo.rep_cmd(pattern="الوقتي(?:\s|$)([\s\S]*)")
+@zq_lo.rep_cmd(pattern="الوقتي(?:\\s|$)([\\s\\S]*)")
 async def hhhzelzal(event):
     input_str = event.pattern_match.group(1)
     zed = await edit_or_reply(event, "**✾╎جـاري اضـافة زخـرفـة الوقتيـه لـ بوتـك 💞🦾 . . .**")
@@ -360,7 +360,7 @@ async def cmd(zelzallll):
 
 
 # Copyright (C) 2022 @Repthon . All Rights Reserved
-@zq_lo.rep_cmd(pattern="الخط(?:\s|$)([\s\S]*)")
+@zq_lo.rep_cmd(pattern="الخط(?:\\s|$)([\\s\\S]*)")
 async def variable(event):
     input_str = event.pattern_match.group(1)
     zed = await edit_or_reply(event, "**✾╎جـاري اضـافة زخـرفـة خـط الحقـوق لـ بوتـك 💞🦾 . . .**")
