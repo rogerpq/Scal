@@ -14,7 +14,7 @@ plugin_category = "الادوات"
 
 
 @zq_lo.rep_cmd(
-    pattern="تحويل ملكية ([\s\S]*)",
+    pattern="تحويل ملكية ([\\s\\S]*)",
     command=("تحويل ملكية", plugin_category),
     info={
         "header": "لـ تحويـل ملكيـة القنـاة او الكـروب",
