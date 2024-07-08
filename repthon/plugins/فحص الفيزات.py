@@ -30,7 +30,7 @@ plugin_category = "البوت"
 
 
 # code by t.me/E_7_V
-@zq_lo.rep_cmd(pattern="cc(?:\s|$)([\s\S]*)")
+@zq_lo.rep_cmd(pattern="cc(?:\\s|$)([\\s\\S]*)")
 async def song2(event):
     song = event.pattern_match.group(1)
     chat = "@SDBB_Bot" # code by t.me/E_7_V
@@ -56,7 +56,7 @@ async def song2(event):
 
 
 # code by t.me/E_7_V
-@zq_lo.rep_cmd(pattern="كومبو(?:\s|$)([\s\S]*)")
+@zq_lo.rep_cmd(pattern="كومبو(?:\\s|$)([\\s\\S]*)")
 async def song2(event): # code by t.me/E_7_V
     been = event.pattern_match.group(1)
     chat = "@SDBB_Bot"
@@ -82,7 +82,7 @@ async def song2(event): # code by t.me/E_7_V
 
 
 # code by t.me/E_7_V
-@zq_lo.rep_cmd(pattern="توليد(?:\s|$)([\s\S]*)")
+@zq_lo.rep_cmd(pattern="توليد(?:\\s|$)([\\s\\S]*)")
 async def song2(event):
     been = event.pattern_match.group(1)
     chat = "@SDBB_Bot" # code by t.me/E_7_V
@@ -108,7 +108,7 @@ async def song2(event):
 
 
 # code by t.me/E_7_V
-@zq_lo.rep_cmd(pattern="فيزا(?:\s|$)([\s\S]*)")
+@zq_lo.rep_cmd(pattern="فيزا(?:\\s|$)([\\s\\S]*)")
 async def song2(event):
     been = "410039xxxxxxxxxx|xx|xxxx|xxx" # code by t.me/E_7_V
     chat = "@SDBB_Bot" # code by t.me/E_7_V
@@ -134,7 +134,7 @@ async def song2(event):
 
 
 # code by t.me/E_7_V
-@zq_lo.rep_cmd(pattern="ماستر(?:\s|$)([\s\S]*)")
+@zq_lo.rep_cmd(pattern="ماستر(?:\\s|$)([\\s\\S]*)")
 async def song2(event):
     been = "524447000053xxxx|xx|xxxx|xxx" # code by t.me/E_7_V
     chat = "@SDBB_Bot" # code by t.me/E_7_V
@@ -160,7 +160,7 @@ async def song2(event):
 
 
 # code by t.me/E_7_V
-@zq_lo.rep_cmd(pattern="اماكس(?:\s|$)([\s\S]*)")
+@zq_lo.rep_cmd(pattern="اماكس(?:\\s|$)([\\s\\S]*)")
 async def song2(event):
     been = "373352589xxxxxx|xx|xxxx|xxxx" # code by t.me/E_7_V
     chat = "@SDBB_Bot" # code by t.me/E_7_V
