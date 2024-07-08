@@ -33,7 +33,7 @@ async def wall_download(piclink, query):
 
 
 @zq_lo.rep_cmd(
-    pattern="خلفيات(?:\s|$)([\s\S]*)",
+    pattern="خلفيات(?:\\s|$)([\\s\\S]*)",
     command=("خلفيات", plugin_category),
     info={
         "header": "Searches and uploads wallpaper",
