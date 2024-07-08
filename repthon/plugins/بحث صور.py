@@ -14,7 +14,7 @@ plugin_category = "البحث"
 
 
 @zq_lo.rep_cmd(
-    pattern="صور(?: |$)(\d*)? ?([\s\S]*)",
+    pattern="صور (.*)",
     command=("صور", plugin_category),
     info={
         "header": "لـ بحـث الصـور مـن جـوجــل",
