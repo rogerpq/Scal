@@ -11,7 +11,7 @@ LOGS = logging.getLogger(__name__)
 
 
 @zq_lo.rep_cmd(
-    pattern="(الايدي|id)(?:\s|$)([\s\S]*)",
+    pattern="(الايدي|id)(?:\\s|$)([\\s\\S]*)",
     command=("id", plugin_category),
     info={
         "header": "To get id of the group or user.",
