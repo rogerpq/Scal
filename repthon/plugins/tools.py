@@ -290,7 +290,7 @@ async def _(event):
 
 
 @zq_lo.rep_cmd(
-    pattern="ip(?:\s|$)([\\s\\S]*)",
+    pattern="ip(?:\\s|$)([\\s\\S]*)",
     command=("ip", plugin_category),
     info={
         "header": "Find details of an IP address",
