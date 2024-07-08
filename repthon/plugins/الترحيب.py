@@ -88,7 +88,7 @@ async def _(event):  # sourcery no-metrics
 
 
 @zq_lo.rep_cmd(
-    pattern="ترحيب(?:\s|$)([\s\S]*)",
+    pattern="ترحيب(?:\\s|$)([\\s\\S]*)",
     command=("ترحيب", plugin_category),
     info={
         "header": "To welcome new users in chat.",
