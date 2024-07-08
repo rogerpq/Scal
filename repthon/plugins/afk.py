@@ -159,7 +159,7 @@ async def on_afk(event):
             )
 
 
-@zq_lo.rep_cmd(pattern="سليب(?:\s|$)([\s\S]*)")
+@zq_lo.rep_cmd(pattern="سليب(?:\\s|$)([\\s\\S]*)")
 async def _(event):
     AFK_.USERAFK_ON = {}
     AFK_.afk_time = None
@@ -203,7 +203,7 @@ async def _(event):
                 )
 
 
-@zq_lo.rep_cmd(pattern="سليب_ميديا(?:\s|$)([\s\S]*)")
+@zq_lo.rep_cmd(pattern="سليب_ميديا(?:\\s|$)([\\s\\S]*)")
 async def _(event):
     reply = await event.get_reply_message()
     media_t = media_type(reply)
