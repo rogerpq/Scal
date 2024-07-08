@@ -20,7 +20,7 @@ class Config(object):
     APP_ID = int(os.environ.get("APP_ID", 6))
     API_HASH = os.environ.get("API_HASH") or None
     # Datbase url heroku sets it automatically else get this from elephantsql
-    DB_URI = os.environ.get("DATABASE_URL", None)
+    DB_URI = os.environ.get("SCALINGO_POSTGRESQL_URL", None)
     # Get this value by running python3 stringsetup.py or https://repl.it/@zedthonn/stringsession
     STRING_SESSION = os.environ.get("STRING_SESSION", None)
     # Telegram BOT Token and bot username from @BotFather
@@ -32,7 +32,7 @@ class Config(object):
     TZ = os.environ.get("TZ", "Asia/Baghdad")
     # set this with required zed repo link
     UPSTREAM_REPO = os.environ.get(
-        "UPSTREAM_REPO", "https://github.com/Repthon-Arabic/RepthonAr"
+        "UPSTREAM_REPO", "https://github.com/rogerpq/Scal"
     )
     # External plugins repo
     EXTERNAL_REPO = os.environ.get("EXTERNAL_REPO", None)
@@ -81,10 +81,6 @@ class Config(object):
     DEFAULT_NAME = os.environ.get("DEFAULT_NAME", None)
     BA_FN = os.environ.get("BA_FN", "𝟭𝟮𝟯𝟰𝟱𝟲𝟳𝟴𝟵𝟬")
     CUSTOM_PMPERMIT_TEXT = os.environ.get("CUSTOM_PMPERMIT_TEXT", None)
-    VCMODE = os.environ.get("VCMODE", False)
-    VCMODE = bool(VCMODE and (VCMODE.lower() != "false"))
-    VC_SESSION = os.environ.get("VC_SESSION", None)
-    # فــارات الــمــيــوزكـ
 
     # Custom vars for Repthon
     # set this will channel id of your custom plugins
@@ -192,8 +188,6 @@ class Config(object):
     if OLDREP_REPO and not url(OLDREP_REPO):
         OLDREP_REPO = "https://github.com/RepthonArabic/RepthonAr"
     OLDREP_REPOBRANCH = os.environ.get("OLDREP_REPOBRANCH", "master")
-    VC_REPO = os.environ.get("VC_REPO", "https://github.com/Repthon-Arabic/RepVC")
-    VC_REPOBRANCH = os.environ.get("VC_REPOBRANCH", "main")
 
 
 class Production(Config):
