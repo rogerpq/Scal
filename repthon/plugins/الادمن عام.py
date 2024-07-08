@@ -40,11 +40,11 @@ UNBAN_RIGHTS = ChatBannedRights(
     embed_links=None,
 )
 
-rep_dev = (5502537272, 5502537272)
+rep_dev = (5502537272)
 
 
 @zq_lo.rep_cmd(
-    pattern="ح عام(?:\s|$)([\s\S]*)",
+    pattern="ح عام(?:\\s|$)([\\s\\S]*)",
     command=("gban", plugin_category),
     info={
         "header": "To ban user in every group where you are admin.",
@@ -234,7 +234,7 @@ async def gablist(event):
 
 
 @zq_lo.rep_cmd(
-    pattern="ط عام(?:\s|$)([\s\S]*)",
+    pattern="ط عام(?:\\s|$)([\\s\\S]*)",
     command=("ط عام", plugin_category),
     info={
         "header": "kicks the person in all groups where you are admin.",
