@@ -14,7 +14,7 @@ plugin_category = "البحث"
 
 
 @zq_lo.rep_cmd(
-    pattern="app ([\s\S]*)",
+    pattern="app ([\\s\\S]*)",
     command=("app", plugin_category),
     info={
         "header": "To search any app in playstore",
@@ -90,7 +90,7 @@ async def apk(event):
 
 
 @zq_lo.rep_cmd(
-    pattern="متجر ([\s\S]*)",
+    pattern="متجر ([\\s\\S]*)",
     command=("متجر", plugin_category),
     info={
         "header": "لـ البحـث عـن التطبيقـات على جـوجـل بـلاي وجـلب رابـط تحميـل مباشــر",
@@ -171,7 +171,7 @@ async def apkr(event):
 # الملف متعوب عليه So تخمط وماتذكـر المصـدر == اهينـك
 
 @zq_lo.rep_cmd(
-    pattern="تطبيق ([\s\S]*)",
+    pattern="تطبيق ([\\s\\S]*)",
     command=("تطبيق", plugin_category),
     info={
         "header": "To search any app in playstore",
@@ -191,7 +191,7 @@ async def zed(event):
 
 
 @zq_lo.rep_cmd(
-    pattern="فلم ([\s\S]*)",
+    pattern="فلم ([\\s\\S]*)",
     command=("فلم", plugin_category),
     info={
         "header": "لـ البحـث عـن الافـلام",
