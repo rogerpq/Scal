@@ -60,7 +60,7 @@ async def scam(results, lim):
 
 
 @zq_lo.rep_cmd(
-    pattern="جو ([\s\S]*)",
+    pattern="جو ([\\s\\S]*)",
     command=("جو", plugin_category),
     info={
         "header": "Google search command.",
@@ -143,7 +143,7 @@ async def gsearch(q_event):
 
 
 @zq_lo.rep_cmd(
-    pattern="gis ([\s\S]*)",
+    pattern="gis ([\\s\\S]*)",
     command=("gis", plugin_category),
     info={
         "header": "Google search in image format",
@@ -229,7 +229,7 @@ async def _(event):
 
 
 @zq_lo.rep_cmd(
-    pattern="تحليل(?:\s|$)([\s\S]*)",
+    pattern="تحليل(?:\\s|$)([\\s\\S]*)",
     command=("تحليل", plugin_category),
     info={
         "header": "Google reverse search command.",
@@ -297,7 +297,7 @@ async def _(img):
 
 
 @zq_lo.rep_cmd(
-    pattern="جوجل(?:\s|$)([\s\S]*)",
+    pattern="جوجل(?:\\s|$)([\\s\\S]*)",
     command=("جوجل", plugin_category),
     info={
         "header": "To get link for google search",
