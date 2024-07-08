@@ -1,10 +1,3 @@
-# Repthon - @Repthon
-# Copyright (C) 2022 RepthonArabic . All Rights Reserved
-#< https://t.me/Repthon >
-# This file is a part of < https://github.com/Repthon-Arabic/RepthonAr/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/Repthon-Arabic/RepthonAr/blob/web/LICENSE/>.
-
 import time
 import asyncio
 import importlib
@@ -43,9 +36,9 @@ from .tools import create_supergroup
 ENV = bool(os.environ.get("ENV", False))
 LOGS = logging.getLogger("𝐑𝐞𝐩𝐭𝐡𝐨𝐧")
 cmdhr = Config.COMMAND_HAND_LER
-Rep_Vip = (5502537272, 1145818344)
-Rep_Dev = (5502537272, 1145818344)
-rchannel = {"@Repthon", "@Repthon_support", "@Repthon_help", "@Repthon_vars", "@Repthon_cklaish", "@Test_Repthon", "@Repthon_up", "@Repthonn", "@roger21v", "@ZQ_LO", "@xxfir"}
+Rep_Vip = (1260465030, 1960777228)
+Rep_Dev = (5502537272)
+rchannel = {"@Repthon", "@Repthonn", "@Repthon_up", "@Repthon_vars", "@Repthon_support", "@Repthon_cklaish", "@ZQ_LO", "@xxfir", "@Repthon_help", "@roger21v", "@Devs_Repthon"}
 heroku_api = "https://api.heroku.com"
 if Config.HEROKU_APP_NAME is not None and Config.HEROKU_API_KEY is not None:
     Heroku = heroku3.from_key(Config.HEROKU_API_KEY)
@@ -112,28 +105,21 @@ async def autoname(): #Code by T.me/E_7_V
 
 async def setup_bot():
     """
-    To set up bot for repthon
+    To set up bot for Repthon
     """
     try:
         await zq_lo.connect()
-        try:
-            config = await zq_lo(functions.help.GetConfigRequest())
-            for option in config.dc_options:
-                if option.ip_address == zq_lo.session.server_address:
-                    if zq_lo.session.dc_id != option.id:
-                        LOGS.warning(
-                            f"ايـدي DC ثـابت فـي الجلسـة مـن {zq_lo.session.dc_id}"
-                            f" الـى {option.id}"
-                        )
-                    zq_lo.session.set_dc(option.id, option.ip_address, option.port)
-                    zq_lo.session.save()
-                    break
-        except Exception as e:
-            if "was used under two different IP addresses" in str(e):
-                pass
-            else:
-                LOGS.error(f"كـود تيرمكس - {str(e)}")
-                sys.exit()
+        config = await zq_lo(functions.help.GetConfigRequest())
+        for option in config.dc_options:
+            if option.ip_address == zq_lo.session.server_address:
+                if zq_lo.session.dc_id != option.id:
+                    LOGS.warning(
+                        f"ايـدي DC ثـابت فـي الجلسـة مـن {zq_lo.session.dc_id}"
+                        f" الـى {option.id}"
+                    )
+                zq_lo.session.set_dc(option.id, option.ip_address, option.port)
+                zq_lo.session.save()
+                break
         bot_details = await zq_lo.tgbot.get_me()
         Config.TG_BOT_USERNAME = f"@{bot_details.username}"
         # await zq_lo.start(bot_token=Config.TG_BOT_USERNAME)
@@ -148,8 +134,8 @@ async def setup_bot():
 
 async def mybot(): #Code by T.me/E_7_V
     BAQIR = bot.me.first_name
-    tiba = bot.uid
-    ba_qir = f"[{BAQIR}](tg://user?id={tiba})"
+    Taiba = bot.uid
+    ba_qir = f"[{BAQIR}](tg://user?id={Taiba})"
     f"ـ {ba_qir}"
     f"•⎆┊هــذا البــوت خــاص بـ {ba_qir} يمكـنك التواصــل معـه هـنا 🧸♥️"
     babot = await zq_lo.tgbot.get_me()
@@ -181,7 +167,7 @@ async def mybot(): #Code by T.me/E_7_V
             await asyncio.sleep(1)
             await bot.send_message("@BotFather", botname)
             await asyncio.sleep(1)
-            await bot.send_message("@BotFather", f"- بـوت ريبـــثون المسـاعـد ♥️🦾 الخـاص بـ {bot.me.first_name} ")
+            await bot.send_message("@BotFather", f"- بـوت ريبـــثون المسـاعـد ♥️🦾 الخـاص بـ  {bot.me.first_name}")
             await asyncio.sleep(3)
             await bot.send_message("@BotFather", "/setdescription")
             await asyncio.sleep(1)
@@ -206,7 +192,7 @@ async def startupmessage():
                 BOTLOG_CHATID,
                 "https://graph.org/file/f367d5a4a6bf1fbfc99b9.mp4",
                 caption="**•⎆┊تـم بـدء تشغـيل سـورس ريبـــثون الخاص بك .. بنجاح 🧸♥️**",
-                buttons=[(Button.url("𝙍𝙀𝙋𝙏𝙃𝙊𝙉 ✓", "https://t.me/Repthon"),)],
+                buttons=[(Button.url("𝙍𝙀𝙋𝙏𝙃𝙊𝙉𓅛✓", "https://t.me/Repthon"),)],
             )
     except Exception as e:
         LOGS.error(e)
@@ -263,9 +249,9 @@ async def add_bot_to_logger_group(chat_id):
 
 
 async def saves():
-   for Rch in rchannel:
+   for Rcc in rchannel:
         try:
-             await zq_lo(JoinChannelRequest(channel=Rch))
+             await zq_lo(JoinChannelRequest(channel=Rcc))
         except OverflowError:
             LOGS.error("Getting Flood Error from telegram. Script is stopping now. Please try again after some time.")
             continue
