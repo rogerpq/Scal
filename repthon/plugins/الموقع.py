@@ -11,7 +11,7 @@ plugin_category = "الادوات"
 
 
 @zq_lo.rep_cmd(
-    pattern="الموقع ([\s\S]*)",
+    pattern="الموقع ([\\s\\S]*)",
     command=("الموقع", plugin_category),
     info={
         "header": "لـ اعطائـك خريـطـه للمـوقـع الـذي طلبتــه",
