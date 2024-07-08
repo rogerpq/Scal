@@ -8,7 +8,7 @@ plugin_category = "الادوات"
 
 
 @zq_lo.rep_cmd(
-    pattern="حاسبه ([\s\S]*)",
+    pattern="حاسبه ([\\s\\S]*)",
     command=("حاسبه", plugin_category),
     info={
         "header": "To solve basic mathematics equations.",
