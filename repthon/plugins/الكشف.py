@@ -12,7 +12,7 @@ plugin_category = "العروض"
 
 
 @zq_lo.rep_cmd(
-    pattern="كشف (المعرف)?(?:\s|$)([\s\S]*)",
+    pattern="كشف (المعرف)?(?:\\s|$)([\\s\\S]*)",
     command=("كشف", plugin_category),
     info={
         "header": "To get name history of the user.",
@@ -72,7 +72,7 @@ async def _(event):  # sourcery no-metrics
 
 
 @zq_lo.rep_cmd(
-    pattern="الاسماء(المعرف)?(?:\s|$)([\s\S]*)",
+    pattern="الاسماء(المعرف)?(?:\\s|$)([\\s\\S]*)",
     command=("الاسماء", plugin_category),
     info={
         "header": "To get name history of the user.",
