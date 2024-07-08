@@ -90,7 +90,7 @@ def get_provider(url):
 
 
 @zq_lo.rep_cmd(
-    pattern="فلم ([\s\S]*)",
+    pattern="فلم ([\\s\\S]*)",
     command=("فلم", plugin_category),
     info={
         "header": "To search online streaming sites for that movie.",
