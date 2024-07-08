@@ -41,7 +41,7 @@ async def source(e):
 
 
 @zq_lo.rep_cmd(
-    pattern="كيثاب( -l(\d+))? ([\s\S]*)",
+    pattern="كيثاب( -l(\\d+))? ([\\s\\S]*)",
     command=("كيثاب", plugin_category),
     info={
         "header": "Shows the information about an user on GitHub of given username",
