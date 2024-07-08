@@ -266,7 +266,7 @@ async def hwo(event):
 
 
 @zq_lo.rep_cmd(
-    pattern="صورته(?:\s|$)([\s\S]*)",
+    pattern="صورته(?:\\s|$)([\\s\\S]*)",
     command=("صورته", plugin_category),
     info={
         "header": "لـ جـلب بـروفـايـلات الشخـص",
