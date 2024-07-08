@@ -46,7 +46,7 @@ def ReTrieveURL(input_url):
 
 
 @zq_lo.rep_cmd(
-    pattern="(تحلييل|تغيير)(?:\s|$)([\s\S]*)",
+    pattern="(تحلييل|تغيير)(?:\\s|$)([\\s\\S]*)",
     command=("تغيير", plugin_category),
     info={
         "header": "To remove background of a image/sticker/image link.",
