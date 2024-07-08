@@ -279,7 +279,7 @@ async def add_to_pack(
 
 
 @zq_lo.rep_cmd(
-    pattern="ملصق(?:\s|$)([\s\S]*)",
+    pattern="ملصق(?:\\s|$)([\\s\\S]*)",
     command=("ملصق", plugin_category),
     info={
         "header": "لـ صنـع ملصـق ووضعــه بـ حزمـة ملصقـات بحقـوقـك",
@@ -469,7 +469,7 @@ async def kang(args):  # sourcery no-metrics
 
 
 @zq_lo.rep_cmd(
-    pattern="حزمه(?:\s|$)([\s\S]*)",
+    pattern="حزمه(?:\\s|$)([\\s\\S]*)",
     command=("حزمه", plugin_category),
     info={
         "header": "To kang entire sticker sticker.",
@@ -732,7 +732,7 @@ async def pussycat(args):
 
 
 @zq_lo.rep_cmd(
-    pattern="حزمة(?:\s|$)([\s\S]*)",
+    pattern="حزمة(?:\\s|$)([\\s\\S]*)",
     command=("حزمة", plugin_category),
     info={
         "header": "To split the replied image and make sticker pack.",
@@ -892,7 +892,7 @@ async def get_pack_info(event):
 
 
 @zq_lo.rep_cmd(
-    pattern="ملصقات ?([\s\S]*)",
+    pattern="ملصقات ?([\\s\\S]*)",
     command=("ملصقات", plugin_category),
     info={
         "header": "To get list of sticker packs with given name.",
