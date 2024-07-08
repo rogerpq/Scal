@@ -19,7 +19,7 @@ plugin_category = "البحث"
 
 
 @zq_lo.rep_cmd(
-    pattern="ساوند(?:\s|$)([\s\S]*)",
+    pattern="ساوند(?:\\s|$)([\\s\\S]*)",
     command=("ساوند", plugin_category),
     info={
         "header": "لتحميل الاغاني من ساوند كلود عبر الرابـط",
@@ -59,7 +59,7 @@ async def _(event):
 
 
 @zq_lo.rep_cmd(
-    pattern="كلود ([\s\S]*)",
+    pattern="كلود ([\\s\\S]*)",
     command=("كلود", plugin_category),
     info={
         "header": "لتحميل الاغاني من ساوند كلود عبر الرابـط",
