@@ -11,11 +11,7 @@ Write file by Baqir t.me/E_7_V
 import os
 import random
 import string
-try: # code by t.me/E_7_V
-    import arabic_reshaper
-except ModuleNotFoundError:
-    os.system("pip3 install arabic_reshaper")
-    import arabic_reshaper
+import arabic_reshaper
 from PIL import Image, ImageDraw, ImageFont
 from telethon.tl.types import InputMessagesFilterDocument, InputMessagesFilterPhotos
 from telethon import events
