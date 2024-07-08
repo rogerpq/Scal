@@ -251,7 +251,7 @@ async def _(event):
     )
 
 
-@zq_lo.rep_cmd(pattern="اضافه ([\s\S]*)", groups_only=True)
+@zq_lo.rep_cmd(pattern="اضافه ([\\s\\S]*)", groups_only=True)
 async def get_users(event):
     legen_ = event.text[10:]
     repthon_chat = legen_.lower
@@ -697,7 +697,7 @@ async def admem(event):
 
 
 @zq_lo.rep_cmd(
-    pattern="المشرفين(?:\s|$)([\s\S]*)",
+    pattern="المشرفين(?:\\s|$)([\\s\\S]*)",
     command=("المشرفين", plugin_category),
     info={
         "header": "To get list of admins.",
@@ -751,7 +751,7 @@ async def _(event):
 
 
 @zq_lo.rep_cmd(
-    pattern="الاعضاء(?:\s|$)([\s\S]*)",
+    pattern="الاعضاء(?:\\s|$)([\\s\\S]*)",
     command=("الاعضاء", plugin_category),
     info={
         "header": "To get list of users.",
@@ -799,7 +799,7 @@ async def get_users(show):
 
 
 @zq_lo.rep_cmd(
-    pattern="المعلومات(?:\s|$)([\s\S]*)",
+    pattern="المعلومات(?:\\s|$)([\\s\\S]*)",
     command=("المعلومات", plugin_category),
     info={
         "header": "To get Group details.",
@@ -1082,7 +1082,7 @@ async def fetch_info(chat, event):  # sourcery no-metrics
 
 
 @zq_lo.rep_cmd(
-    pattern="اكسباير ?([\s\S]*)",
+    pattern="اكسباير ?([\\s\\S]*)",
     command=("اكسباير", plugin_category),
     info={
         "header": "To get breif summary of members in the group",
@@ -1437,4 +1437,4 @@ async def zed(event):
     a = await bot.get_messages(event.chat_id, 0, from_user=zzm)
     await event.edit(
         f"**❈╎لديـك هنـا ⇽**  `{a.total}`  **رسـالـه 📩**"
-    )   
+    )
