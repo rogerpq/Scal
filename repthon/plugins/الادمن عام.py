@@ -132,7 +132,7 @@ async def repgban(event):  # sourcery no-metrics
 
 
 @zq_lo.rep_cmd(
-    pattern="الغاء ح عام(?:\s|$)([\s\S]*)",
+    pattern="الغاء ح عام(?:\\s|$)([\\s\\S]*)",
     command=("الغاء ح عام", plugin_category),
     info={
         "header": "To unban the person from every group where you are admin.",
