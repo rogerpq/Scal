@@ -202,7 +202,7 @@ async def on_snip_list(event):
 
 
 @zq_lo.rep_cmd(
-    pattern="حذف رد ([\s\S]*)",
+    pattern="حذف رد ([\\s\\S]*)",
     command=("حذف رد", plugin_category),
     info={
         "header": "To delete that filter . so if user send that keyword bot will not reply",
