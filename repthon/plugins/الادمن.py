@@ -142,7 +142,7 @@ async def set_group_photo(event):  # sourcery no-metrics
         )
 
 
-@zq_lo.rep_cmd(pattern=f"{ADMZ}(?:\s|$)([\s\S]*)")
+@zq_lo.rep_cmd(pattern=f"{ADMZ}(?:\\s|$)([\\s\\S]*)")
 async def promote(event):
     chat = await event.get_chat()
     admin = chat.admin_rights
@@ -179,7 +179,7 @@ async def promote(event):
 
 
 
-@zq_lo.rep_cmd(pattern="رفع مالك(?:\s|$)([\s\S]*)")
+@zq_lo.rep_cmd(pattern="رفع مالك(?:\\s|$)([\\s\\S]*)")
 async def promote(event):
     chat = await event.get_chat()
     admin = chat.admin_rights
@@ -216,7 +216,7 @@ async def promote(event):
         )
 
 
-@zq_lo.rep_cmd(pattern="اخفاء(?:\s|$)([\s\S]*)")
+@zq_lo.rep_cmd(pattern="اخفاء(?:\\s|$)([\\s\\S]*)")
 async def promote(event):
     chat = await event.get_chat()
     admin = chat.admin_rights
@@ -254,7 +254,7 @@ async def promote(event):
         )
 
 
-@zq_lo.rep_cmd(pattern=f"{UNADMZ}(?:\s|$)([\s\S]*)")
+@zq_lo.rep_cmd(pattern=f"{UNADMZ}(?:\\s|$)([\\s\\S]*)")
 async def demote(event):
     chat = await event.get_chat()
     admin = chat.admin_rights
@@ -289,7 +289,7 @@ async def demote(event):
         )
 
 
-@zq_lo.rep_cmd(pattern=f"{BANN}(?:\s|$)([\s\S]*)")
+@zq_lo.rep_cmd(pattern=f"{BANN}(?:\\s|$)([\\s\\S]*)")
 async def _ban_person(event):
     user, reason = await get_user_from_event(event)
     if not user:
@@ -344,7 +344,7 @@ async def _ban_person(event):
             )
 
 
-@zq_lo.rep_cmd(pattern=f"{UNBANN}(?:\s|$)([\s\S]*)")
+@zq_lo.rep_cmd(pattern=f"{UNBANN}(?:\\s|$)([\\s\\S]*)")
 async def nothanos(event):
     user, _ = await get_user_from_event(event)
     if not user:
@@ -377,7 +377,7 @@ async def watcher(event):
             LOGS.info(str(e))
 
 
-@zq_lo.rep_cmd(pattern=f"{MUTE}(?:\s|$)([\s\S]*)")
+@zq_lo.rep_cmd(pattern=f"{MUTE}(?:\\s|$)([\\s\\S]*)")
 async def startmute(event):
     if event.is_private:
         replied_user = await event.client.get_entity(event.chat_id)
@@ -473,7 +473,7 @@ async def startmute(event):
             )
 
 
-@zq_lo.rep_cmd(pattern=f"{UNMUTE}(?:\s|$)([\s\S]*)")
+@zq_lo.rep_cmd(pattern=f"{UNMUTE}(?:\\s|$)([\\s\\S]*)")
 async def endmute(event):
     if event.is_private:
         replied_user = await event.client.get_entity(event.chat_id)
@@ -528,7 +528,7 @@ async def endmute(event):
             )
 
 
-@zq_lo.rep_cmd(pattern=f"{KICK}(?:\s|$)([\s\S]*)")
+@zq_lo.rep_cmd(pattern=f"{KICK}(?:\\s|$)([\\s\\S]*)")
 async def kick(event):
     user, reason = await get_user_from_event(event)
     if not user:
@@ -704,7 +704,3 @@ async def _iundlt(event):  # sourcery no-metrics
                     f"\n🖇┊{msg.old.message} \n\n**🛂┊تم ارسـالهـا بـواسطـة** {_format.mentionuser(ruser.first_name ,ruser.id)}",
                     file=msg.old.media,
                 )
-@zq_lo.rep_cmd(incoming=True)
-async def watcher(event):
-    if is_muted(event.sender_id, "كتم_مؤقت"):
-        await event.delete()
