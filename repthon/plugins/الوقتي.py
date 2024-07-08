@@ -165,7 +165,7 @@ async def _(event):
 
 
 @zq_lo.rep_cmd(
-    pattern="الغاء ([\s\S]*)",
+    pattern="الغاء ([\\s\\S]*)",
     command=("الغاء", plugin_category),
     info={
         "header": "To stop the functions of autoprofile",
@@ -212,7 +212,7 @@ async def _(event):  # sourcery no-metrics
 
 
 @zq_lo.rep_cmd(
-    pattern="ايقاف ([\s\S]*)",
+    pattern="ايقاف ([\\s\\S]*)",
     command=("ايقاف", plugin_category),
     info={
         "header": "To stop the functions of autoprofile",
@@ -260,7 +260,7 @@ async def _(event):  # sourcery no-metrics
 
 
 @zq_lo.rep_cmd(
-    pattern="انهاء ([\s\S]*)",
+    pattern="انهاء ([\\s\\S]*)",
     command=("انهاء", plugin_category),
     info={
         "header": "To stop the functions of autoprofile",
