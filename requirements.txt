@@ -78,4 +78,3 @@ wand
 wget==3.2
 img2html
 googletrans-py
-git+https://github.com/rogerpq/bbbb
