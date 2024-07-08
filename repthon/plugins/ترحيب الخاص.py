@@ -84,7 +84,7 @@ async def _(event):  # sourcery no-metrics
 
 
 @zq_lo.rep_cmd(
-    pattern="رحب(?:\s|$)([\s\S]*)",
+    pattern="رحب(?:\\s|$)([\\s\\S]*)",
     command=("رحب", plugin_category),
     info={
         "header": "To welcome user(sends welcome message to here private messages).",
