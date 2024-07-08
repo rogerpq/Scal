@@ -14,7 +14,7 @@ from ..helpers.tools import media_type
 from ..helpers.utils import _reptools, _reputils, _format, install_pip, reply_id
 from .decorators import admin_cmd, sudo_cmd
 
-LOGS = logging.getLogger("𝐑𝐞𝐩𝐭𝐡𝐨𝐧")
+LOGS = logging.getLogger("𓆩𝐑𝐞𝐩𝐭𝐡𝐨𝐧𓆪")
 inst_done = "✅ تـم تنصيب سـورس ريبـــثون .. بنجـاح ⌔\n💡 ثم ارسـل الامـر ( .مساعده ) ⌔\n♥️ قم بالذهاب الى تيليجـرام الان ⌔"
 
 def load_module(shortname, plugin_path=None):
