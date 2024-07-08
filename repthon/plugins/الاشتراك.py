@@ -29,7 +29,7 @@ plugin_category = "الادمن"
 cmdhd = Config.COMMAND_HAND_LER
 
 
-@zq_lo.rep_cmd(pattern="(ضع الاشتراك خاص|وضع الاشتراك خاص)(?:\s|$)([\s\S]*)")
+@zq_lo.rep_cmd(pattern="(ضع الاشتراك خاص|وضع الاشتراك خاص)(?:\\s|$)([\\s\\S]*)")
 async def _(event):
     if input_str := event.pattern_match.group(2):
         try:
@@ -84,7 +84,7 @@ async def _(event):
 
 
 
-@zq_lo.rep_cmd(pattern="(ضع الاشتراك كروب|وضع الاشتراك كروب)(?:\s|$)([\s\S]*)")
+@zq_lo.rep_cmd(pattern="(ضع الاشتراك كروب|وضع الاشتراك كروب)(?:\\s|$)([\\s\\S]*)")
 async def _(event):
     if input_str := event.pattern_match.group(2):
         try:
@@ -181,7 +181,7 @@ async def supc (event):
 @zq_lo.rep_cmd(incoming=True, func=lambda e: e.is_private, edited=False, forword=None)
 async def supc(event):  # Repthon - Baqir
     chat = await event.get_chat()
-    rep_dev = (5502537272, 5502537272)
+    rep_dev = (5502537272)
     baqir = (await event.get_sender()).id
     if baqir in rep_dev:
     	return
