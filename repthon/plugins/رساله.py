@@ -109,7 +109,7 @@ async def typewriter(typew):
         await asyncio.sleep(sleep_time)
 
 
-@zq_lo.rep_cmd(pattern="كرر (\d*) (.*)")
+@zq_lo.rep_cmd(pattern="كرر (\\d*) (.*)")
 async def _(event):
     if event.fwd_from:
         return
@@ -231,4 +231,3 @@ async def give(event):
     await event.edit(lp + lp + lp + lp + lp + lp + lp + lp + " ")
     await asyncio.sleep(sleepValue)
     await event.edit(lp + lp + lp + lp + lp + lp + lp + lp + lp)
-
