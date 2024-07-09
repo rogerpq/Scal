@@ -65,7 +65,7 @@ async def check_bot_started_users(user, event):
 
 
 @zq_lo.bot_cmd(
-    pattern=f"^/start({botusername})?([\s]+)?$",
+    pattern=f"^/start({botusername})?([\\s]+)?$",
     incoming=True,
     func=lambda e: e.is_private,
 )
