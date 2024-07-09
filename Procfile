@@ -1,1 +1,1 @@
-worker: python3 -m repthon
+web: bash start.sh
