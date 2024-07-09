@@ -529,7 +529,7 @@ async def rep_handler(event):
     if query.startswith("الهيروكو") and event.query.user_id == zq_lo.uid:
         baqir = f"**• عـزيـزي ** [{name_rep}](tg://user?id={user}) \n**• اليـك شـرح إنشـاء حسـاب هيـروكـو↓**"
         buttons = [[Button.url("اضـغـط هنــا", "https://t.me/Repthonn/28")]]
-        result = builder.article(title="zedub",text=zelzal,buttons=buttons,link_preview=False)
+        result = builder.article(title="zq_lo",text=baqir,buttons=buttons,link_preview=False)
         await event.answer([result] if result else None)
 @zq_lo.rep_cmd(pattern="الهيروكو(?: |$)(.*)")
 async def reporepthon(event):
