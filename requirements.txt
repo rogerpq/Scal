@@ -67,6 +67,7 @@ pydub
 programmingquotes
 qrcode
 regex
+requests
 randomstuff.py
 search-engine-parser
 selenium
