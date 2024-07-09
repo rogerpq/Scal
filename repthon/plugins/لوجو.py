@@ -1,27 +1,19 @@
-"""
-Created by @Jisan7509
-#catuserbot
-"""
-
 import asyncio
 import os
 import re
 import urllib
-
 import PIL
 import requests
 from bs4 import BeautifulSoup
 from PIL import Image, ImageDraw, ImageFont
 
-from repthon import zq_lo
-
+from . import zq_lo
 from ..core.managers import edit_delete, edit_or_reply
 from ..helpers.functions import clippy
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus
 from . import convert_toimage, reply_id
 
 # ======================================================================================================================================================================================
-
 vars_list = {
     "lbg": "LOGO_BACKGROUND",
     "lfc": "LOGO_FONT_COLOR",
@@ -32,9 +24,7 @@ vars_list = {
     "lfsc": "LOGO_FONT_STROKE_COLOR",
     "lf": "LOGO_FONT",
 }
-
 # ======================================================================================================================================================================================
-
 plugin_category = "الترفيه"
 
 
@@ -57,7 +47,7 @@ plugin_category = "الترفيه"
         ],
     },
 )
-async def very(event):  # sourcery no-metrics
+async def very(event):
     "To create a logo"
     cmd = event.pattern_match.group(1).lower()
     text = event.pattern_match.group(2)
@@ -67,7 +57,7 @@ async def very(event):  # sourcery no-metrics
     if not text:
         return await edit_delete(event, "**ಠ∀ಠ Gimmi text to make logo**")
     reply_to_id = await reply_id(event)
-    zedevent = await edit_or_reply(event, "`Processing.....`")
+    repevent = await edit_or_reply(event, "`Processing.....`")
     LOGO_FONT_SIZE = gvarstatus("LOGO_FONT_SIZE") or 220
     LOGO_FONT_WIDTH = gvarstatus("LOGO_FONT_WIDTH") or 2
     LOGO_FONT_HEIGHT = gvarstatus("LOGO_FONT_HEIGHT") or 2
@@ -130,142 +120,6 @@ async def very(event):  # sourcery no-metrics
         )
     elif cmd == "s":
         await clippy(event.client, file_name, event.chat_id, reply_to_id)
-    await zedevent.delete()
+    await repevent.delete()
     if os.path.exists(file_name):
         os.remove(file_name)
-
-
-            "{tr}lfsw <10-100>",
-            "{tr}lfsc <logo font stroke color>",
-        ],
-        "examples": [
-            "{tr}lf genau-font.ttf",
-            "{tr}lfc white",
-            "{tr}lfs 120",
-            "{tr}lfh 1",
-            "{tr}lfw 8",
-            "{tr}lfsw 5",
-            "{tr}lfsc white",
-        ],
-    },
-)
-async def pussy(event):  # sourcery no-metrics
-    "To customise logo font"
-    cmd = event.pattern_match.group(1).lower()
-    input_str = event.pattern_match.group(2)
-    if cmd == "":
-        source = requests.get("https://github.com/Jisan09/Files/tree/main/fonts")
-        soup = BeautifulSoup(source.text, features="html.parser")
-        links = soup.find_all("a", class_="js-navigation-open Link--primary")
-        logo_font = []
-        font_name = "**Available font names are here:-**\n\n"
-        for i, each in enumerate(links, start=1):
-            cat = os.path.splitext(each.text)[0]
-            logo_font.append(cat)
-            font_name += f"**{i}.**  `{cat}`\n"
-        if not input_str:
-            return await edit_delete(event, font_name, time=80)
-        if input_str not in logo_font:
-            zedevent = await edit_or_reply(event, "`Give me a correct font name...`")
-            await asyncio.sleep(1)
-            await edit_delete(zedevent, font_name, time=80)
-        else:
-            if " " in input_str:
-                input_str = str(input_str).replace(" ", "%20")
-            string = f"https://github.com/Jisan09/Files/blob/main/fonts/{input_str}.ttf?raw=true"
-            if os.path.exists("temp/logo.ttf"):
-                os.remove("temp/logo.ttf")
-                urllib.request.urlretrieve(
-                    string,
-                    "temp/logo.ttf",
-                )
-            addgvar("LOGO_FONT", string)
-            await edit_delete(
-                event, f"**Font for logo changed to :-** `{input_str}`", time=10
-            )
-    elif cmd in ["c", "sc"]:
-        fg_name = []
-        for name, code in PIL.ImageColor.colormap.items():
-            fg_name.append(name)
-            fg_list = str(fg_name).replace("'", "`")
-        if not input_str:
-            return await edit_delete(
-                event,
-                f"**Available color names are here:-**\n\n{fg_list}",
-                time=80,
-            )
-        if input_str not in fg_name:
-            zedevent = await edit_or_reply(event, "`Give me a correct color name...`")
-            await asyncio.sleep(1)
-            await edit_delete(
-                zedevent,
-                f"**Available color names are here:-**\n\n{fg_list}",
-                time=80,
-            )
-        elif cmd == "c":
-            addgvar("LOGO_FONT_COLOR", input_str)
-            await edit_delete(
-                event,
-                f"**Foreground color for logo changed to :-** `{input_str}`",
-                10,
-            )
-        else:
-            addgvar("LOGO_FONT_STROKE_COLOR", input_str)
-            await edit_delete(
-                event, f"**Stroke color for logo changed to :-** `{input_str}`", 10
-            )
-    else:
-        cat = re.compile(r"^\-?[1-9][0-9]*\.?[0-9]*")
-        isint = re.match(cat, input_str)
-        if not input_str or not isint:
-            return await edit_delete(
-                event, f"**Give an integer value to set**", time=10
-            )
-        if cmd == "s":
-            input_str = int(input_str)
-            if input_str > 0 and input_str <= 1000:
-                addgvar("LOGO_FONT_SIZE", input_str)
-                await edit_delete(
-                    event, f"**Font size is changed to :-** `{input_str}`"
-                )
-            else:
-                await edit_delete(
-                    event,
-                    f"**Font size is between 0 - 1000, You can't set limit to :** `{input_str}`",
-                )
-        elif cmd == "w":
-            input_str = float(input_str)
-            if input_str > 0 and input_str <= 100:
-                addgvar("LOGO_FONT_WIDTH", input_str)
-                await edit_delete(
-                    event, f"**Font width is changed to :-** `{input_str}`"
-                )
-            else:
-                await edit_delete(
-                    event,
-                    f"**Font width is between 0 - 100, You can't set limit to {input_str}",
-                )
-        elif cmd == "h":
-            input_str = float(input_str)
-            if input_str > 0 and input_str <= 100:
-                addgvar("LOGO_FONT_HEIGHT", input_str)
-                await edit_delete(
-                    event, f"**Font hight is changed to :-** `{input_str}`"
-                )
-            else:
-                await edit_delete(
-                    event,
-                    f"**Font hight is between 0 - 100, You can't set limit to {input_str}",
-                )
-        elif cmd == "sw":
-            input_str = int(input_str)
-            if input_str > 0 and input_str <= 100:
-                addgvar("LOGO_FONT_STROKE_WIDTH", input_str)
-                await edit_delete(
-                    event, f"**Font stroke width is changed to :-** `{input_str}`"
-                )
-            else:
-                await edit_delete(
-                    event,
-                    f"**Font stroke width size is between 0 - 100, You can't set limit to :** `{input_str}`",
-                )
