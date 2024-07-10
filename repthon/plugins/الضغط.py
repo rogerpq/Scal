@@ -53,10 +53,10 @@ async def convert_video(video_file, output_directory, crf, total_time, bot, mess
         await asyncio.sleep(3)
         with open("./temp/progress.txt", "r+") as file:
             text = file.read()
-            frame = re.findall("frame=(\d+)", text)
-            time_in_us = re.findall("out_time_ms=(\d+)", text)
-            progress = re.findall("progress=(\w+)", text)
-            speed = re.findall("speed=(\d+\.?\d*)", text)
+            frame = re.findall("frame=(\\d+)", text)
+            time_in_us = re.findall("out_time_ms=(\\d+)", text)
+            progress = re.findall("progress=(\\w+)", text)
+            speed = re.findall("speed=(\\d+\\.?\\d*)", text)
             if len(frame):
                 frame = int(frame[-1])
             else:
