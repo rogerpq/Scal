@@ -52,7 +52,7 @@ async def writer(e):
 
 
 
-@zq_lo.rep_cmd(pattern="^\:/$")
+@zq_lo.rep_cmd(pattern="^\\:/$")
 async def kek(keks):
     keks = await edit_or_reply(keks, ":\\")
     uio = ["/", "\\"]
@@ -62,7 +62,7 @@ async def kek(keks):
         await keks.edit(txt)
 
 
-@zq_lo.rep_cmd(pattern="^\-_-$")
+@zq_lo.rep_cmd(pattern="^\\-_-$")
 async def lol(lel):
     lel = await edit_or_reply(lel, "-__-")
     okay = "-__-"
@@ -72,7 +72,7 @@ async def lol(lel):
         await lel.edit(okay)
 
 
-@zq_lo.rep_cmd(pattern="^\;_;$")
+@zq_lo.rep_cmd(pattern="^\\;_;$")
 async def fun(e):
     e = await edit_or_reply(e, ";__;")
     t = ";__;"
