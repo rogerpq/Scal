@@ -47,7 +47,7 @@ try:
         connection=ConnectionTcpAbridged,
         auto_reconnect=True,
         connection_retries=None,
-    ).start(bot_token=Config.TG_BOT_TOKEN)
+    ).start(bot_token=Config.APP_TOKEN)
 except FloodWaitError as e:
     LOGS.error(f"FloodWaitError: فلود وايت - يرجى الانتظار لـ {e.seconds} ثانية.")
     time.sleep(e.seconds)
