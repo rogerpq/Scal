@@ -8,7 +8,7 @@ class Development(Config):
     ALIVE_NAME = "اسم حسابك التلي"
     DB_URI = "رابـط التخـزين الخـاص بك"
     STRING_SESSION = "كود تيرمــكس"
-    TG_BOT_TOKEN = "توكـن البـوت الخـاص بك"
+    APP_TOKEN = "توكـن البـوت الخـاص بك"
     PRIVATE_GROUP_BOT_API_ID = "-100" # ضـع ايـدي كـروب السجـل بجـانب العـدد -100 لا تمسـح العـدد هـذا
     COMMAND_HAND_LER = "."  # اتركهــا كمـا هـي
     SUDO_COMMAND_HAND_LER = "."  # اتركهــا كمـا هـي
