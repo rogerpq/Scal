@@ -99,7 +99,7 @@ async def safe_check_text(msg):  # sourcery no-metrics
         (
             (Config.STRING_SESSION in msg)
             or (Config.API_HASH in msg)
-            or (Config.TG_BOT_TOKEN in msg)
+            or (Config.APP_TOKEN in msg)
             or (Config.HEROKU_API_KEY and Config.HEROKU_API_KEY in msg)
             or (Config.OPEN_WEATHER_MAP_APPID and Config.OPEN_WEATHER_MAP_APPID in msg)
             or (Config.IBM_WATSON_CRED_URL and Config.IBM_WATSON_CRED_URL in msg)
