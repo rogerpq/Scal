@@ -120,8 +120,8 @@ async def setup_bot():
                 zq_lo.session.set_dc(option.id, option.ip_address, option.port)
                 zq_lo.session.save()
                 break
-        bot_details = await zq_lo.tgbot.get_me()
-        Config.TG_BOT_USERNAME = f"@{bot_details.username}"
+        details = await zq_lo.tgbot.get_me()
+        Config.APP_USERNAME = f"@{details.username}"
         # await zq_lo.start(bot_token=Config.APP_USERNAME)
         zq_lo.me = await zq_lo.get_me()
         zq_lo.uid = zq_lo.tgbot.uid = utils.get_peer_id(zq_lo.me)
