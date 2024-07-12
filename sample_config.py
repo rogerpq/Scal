@@ -27,7 +27,7 @@ class Config(object):
     APP_TOKEN = os.environ.get("APP_TOKEN") or os.environ.get(
         "APP_TOKEN_BF_HER", None
     )
-    TG_BOT_USERNAME = None
+    APP_USERNAME = None
     # get this value from http://www.timezoneconverter.com/cgi-bin/findzone.tzc
     TZ = os.environ.get("TZ", "Asia/Baghdad")
     # set this with required rep repo link
