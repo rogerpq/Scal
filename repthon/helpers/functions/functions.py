@@ -121,7 +121,7 @@ async def age_verification(event, reply_to_id):
     if ALLOW_NSFW.lower() == "true":
         return False
     results = await event.client.inline_query(
-        Config.TG_BOT_USERNAME, "age_verification_alert"
+        Config.APP_USERNAME, "age_verification_alert"
     )
     await results[0].click(event.chat_id, reply_to=reply_to_id, hide_via=True)
     await event.delete()
