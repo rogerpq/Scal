@@ -34,7 +34,7 @@ async def _(event):
         try:
             result = await event.client(
                 functions.messages.CreateChatRequest(
-                    users=[Config.TG_BOT_USERNAME],
+                    users=[Config.APP_USERNAME],
                     # Not enough users (to create a chat, for example)
                     # Telegram, no longer allows creating a chat with ourselves
                     title=group_name,
@@ -74,7 +74,7 @@ async def _(event):
             await edit_delete(event, f"**- خطـأ :**\n{e}")
     elif type_of_group == "خارق":
         answer = await create_supergroup(
-            group_name, event.client, Config.TG_BOT_USERNAME, descript
+            group_name, event.client, Config.APP_USERNAME, descript
         )
         if answer[0] != "error":
             await edit_or_reply(
