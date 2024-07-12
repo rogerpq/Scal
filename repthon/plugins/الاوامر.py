@@ -54,11 +54,11 @@ USERID = bot.uid if Config.OWNER_ID == 0 else Config.OWNER_ID
 ALIVE_NAME = Config.ALIVE_NAME
 thumb_image_path = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, "thumb_image.jpg")
 Tiba = f"**🖥┊لـوحـة اوامـر 𝗥𝗲𝗽𝘁𝗵𝗼𝗻 الشفـافـه **\n**🧑🏻‍💻┊المستخـدم ↶** {mention} \n\n•❶•** اوامــر الـبحـث والـتحميـل **\n•❷•** اوامــر الـبـوت **\n•❸•** اوامــر الـوقـتـي **\n•❹•** اوامــر المجمـوعـة¹ **\n•❺•** اوامــر المجمـوعـة² **\n•❻•** اوامــر الـحسـاب **\n•❼•** اوامــر الميـديـا والـصيــغ **\n•❽•** اوامــر الـفــارات **\n•❾•** اوامــر الخـدمــات العـامــه **\n•❿•** اوامــر الالعــاب **\n•⓫•** اوامــر الـتســليــه**\n•⓬•** اوامــر التحشيـش**\n•⓭•** اوامــر الستـوريات**\n•⓮•** اوامــر الآفتــارات**\n•⓯•** اوامــر الصيــد والتشيكــر **\n•⓰•** اوامــر النشــر التلقــائي **\n•⓱•** اوامــر تجميــع النقــاط **\n•⓲•** اوامــر الاشتـراك الإجبـاري **\n•⓳•** اوامــر الإضـافة والتفليــش**\n•⓴•** اوامــر النشـر العـام (الـسوبـرات)**\n\n**•❐• لعـرض الاوامـر مع الوصـف ارسـل** `.اوامري`\n**•❐• لعـرض شـروحـات الاوامـر ارسـل** `.مساعده` "
-TG_BOT = Config.TG_BOT_USERNAME
+TG = Config.APP_USERNAME
 TM = time.strftime("%I:%M")
 Channels = f"**•❐• مـرحبــاً عـزيـزي  {mention} **\n**•❐• اليـك مجمـوعــة قنـوات ريبـــثون ↵ 𝙍𝙀𝙋𝙏𝙃𝙊𝙉 ♥️🦾**\n\n**•❐• استـخـدم الازرار بالاسفــل↓**"
 Baqir = f"**•◈• اصــدار الســورس ⤽ 3.1.3**  \n**•◈• المستخــدم ⤽**  {mention}  \n**•◈• وقــت التشغيــل ⤽  {TM}  **\n**•◈• البــوت المســاعـد ⤽  {TG_BOT} **\n**•◈• قنــاة الســورس ⤽  @Repthon **"
-TGT_BOT = Config.TG_BOT_USERNAME
+TGT = Config.APP_USERNAME
 TM = time.strftime("%I:%M")
 Channels = f"**•❐• مـرحبــاً عـزيـزي  {mention} **\n**•❐• اليـك مجمـوعــة قنـوات ريبـــثون ↵ 𝙍𝙀𝙋𝙏𝙃𝙊𝙉 ♥️🦾**\n\n**•❐• استـخـدم الازرار بالاسفــل↓**"
 Baqir = f"**•◈• اصــدار الســورس ⤽ 3.1.3**  \n**•◈• المستخــدم ⤽**  {mention}  \n**•◈• وقــت التشغيــل ⤽  {TM}  **\n**•◈• البــوت المســاعـد ⤽  {TGT_BOT} **\n**•◈• قنــاة الســورس ⤽  @Repthon **"
@@ -82,7 +82,7 @@ async def reporepthon(event):
         return
     if event.reply_to_msg_id:
         await event.get_reply_message()
-    response = await event.client.inline_query(Config.TG_BOT_USERNAME, "الاوامر")
+    response = await event.client.inline_query(Config.APP_USERNAME, "الاوامر")
     await response[0].click(event.chat_id)
     await event.delete()
 
@@ -347,10 +347,10 @@ async def rep_handler(event):
 async def reporepthon(event):
     if event.fwd_from:
         return
-    TG_BOT = Config.TG_BOT_USERNAME
+    TG = Config.APP_USERNAME
     if event.reply_to_msg_id:
         await event.get_reply_message()
-    response = await zq_lo.inline_query(TG_BOT, "ريبثون")
+    response = await zq_lo.inline_query(TG, "ريبثون")
     await response[0].click(event.chat_id)
     await event.delete()
 
@@ -376,10 +376,10 @@ async def rep_handler(event):
 async def reporepthon(event):
     if event.fwd_from:
         return
-    TG_BOT = Config.TG_BOT_USERNAME
+    TG = Config.APP_USERNAME
     if event.reply_to_msg_id:
         await event.get_reply_message()
-    response = await zq_lo.inline_query(TG_BOT, "السورس")
+    response = await zq_lo.inline_query(TG, "السورس")
     await response[0].click(event.chat_id)
     await event.delete()
 
@@ -405,10 +405,10 @@ async def rep_handler(event):
 async def reporepthon(event):
     if event.fwd_from:
         return
-    TG_BOT = Config.TG_BOT_USERNAME
+    TG = Config.APP_USERNAME
     if event.reply_to_msg_id:
         await event.get_reply_message()
-    response = await zq_lo.inline_query(TG_BOT, "سورس")
+    response = await zq_lo.inline_query(TG, "سورس")
     await response[0].click(event.chat_id)
     await event.delete()
 
@@ -470,7 +470,7 @@ async def reporepthon(event):
         return
     else:
     	addgvar("who_id", user.id)
-    response = await event.client.inline_query(Config.TG_BOT_USERNAME, "اليدوي")
+    response = await event.client.inline_query(Config.APP_USERNAME, "اليدوي")
     await response[0].click(event.chat_id)
     await event.delete()
 
@@ -504,7 +504,7 @@ async def reporepthon(event):
         return
     else:
     	addgvar("who_id", user)
-    response = await event.client.inline_query(Config.TG_BOT_USERNAME, "الفيزا")
+    response = await event.client.inline_query(Config.APP_USERNAME, "الفيزا")
     await response[0].click(event.chat_id)
     await event.delete()
 
@@ -538,7 +538,7 @@ async def reporepthon(event):
         return
     else:
     	addgvar("who_id", user)
-    response = await event.client.inline_query(Config.TG_BOT_USERNAME, "الهيروكو")
+    response = await event.client.inline_query(Config.APP_USERNAME, "الهيروكو")
     await response[0].click(event.chat_id)
     await event.delete()
 
