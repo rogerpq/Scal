@@ -415,7 +415,7 @@ async def variable(event):
     elif input_str == "معرف البوت" or input_str == "معرف بوت":
         if Config.HEROKU_API_KEY is None:
             return await ed(event, "**⎉╎عـذراً .. عـزيـزي ⚠️**\n**⎉╎هـذا الفـار لا يعمـل الان ✖️**\n**⎉╎سـوف يتم تحديثه لاحقاً ع منصه ريندر 🔄**")
-        variable = "TG_BOT_USERNAME"
+        variable = "APP_USERNAME"
         await asyncio.sleep(1.5)
         if variable in heroku_var:
             await rep.edit("**⎉╎تم تغييـر {} بنجـاح ☑️**\n**⎉╎المتغيـر : ↶**\n `{}` \n**⎉╎يتم الان اعـادة تشغيـل بـوت ريبـــثون يستغـرق الامر 2-1 دقيقـه ▬▭ ...**".format(input_str, vinfo))
@@ -730,7 +730,7 @@ async def variable(event):
     elif input_str == "معرف البوت" or input_str == "معرف بوت":
         if Config.HEROKU_API_KEY is None:
             return await ed(event, "**⎉╎عـذراً .. عـزيـزي ⚠️**\n**⎉╎هـذا الفـار لا يعمـل الان ✖️**\n**⎉╎سـوف يتم تحديثه لاحقاً ع منصه ريندر 🔄**")
-        variable = "TG_BOT_USERNAME"
+        variable = "APP_USERNAME"
         await asyncio.sleep(1.5)
         if variable not in heroku_var:
         	return await rep.edit("**⎉╎عـذࢪاً عـزيـزي .. انت لـم تقـم باضـافـة فـار {} اصـلاً...**".format(input_str))
@@ -918,7 +918,7 @@ async def custom_rep(event):
     elif input_str == "معرف البوت" or input_str == "معرف بوت":
         if Config.HEROKU_API_KEY is None:
             return await ed(event, "**⎉╎عـذراً .. عـزيـزي ⚠️**\n**⎉╎هـذا الفـار لا يعمـل الان ✖️**\n**⎉╎سـوف يتم تحديثه لاحقاً ع منصه ريندر 🔄**")
-        variable = "TG_BOT_USERNAME"
+        variable = "APP_USERNAME"
         if variable not in heroku_var:
             await rep.edit("**⎉╎فـار معرف البوت غيـر موجـود ❌**\n**⎉╎لـ اضـافته بالـرد ع المعرف استخـدم الامـر : ↶**\n `.اضف فار معرف البوت` \n\n**⎉╎قنـاة السـورس : @Repthon**")
         else:
