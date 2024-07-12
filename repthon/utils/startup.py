@@ -122,7 +122,7 @@ async def setup_bot():
                 break
         bot_details = await zq_lo.tgbot.get_me()
         Config.TG_BOT_USERNAME = f"@{bot_details.username}"
-        # await zq_lo.start(bot_token=Config.TG_BOT_USERNAME)
+        # await zq_lo.start(bot_token=Config.APP_USERNAME)
         zq_lo.me = await zq_lo.get_me()
         zq_lo.uid = zq_lo.tgbot.uid = utils.get_peer_id(zq_lo.me)
         if Config.OWNER_ID == 0:
@@ -352,7 +352,7 @@ async def verifyLoggerGroup():
         descript = "لا تقم بحذف هذه المجموعة أو التغيير إلى مجموعة عامه (وظيفتهـا تخزيـن كـل سجـلات وعمليـات البـوت.)"
         photozed = await zq_lo.upload_file(file="baqir/taiba/Repthon1.jpg")
         _, groupid = await create_supergroup(
-            "كـروب السجـل ريبـــثون", zq_lo, Config.TG_BOT_USERNAME, descript, photozed
+            "كـروب السجـل ريبـــثون", zq_lo, Config.APP_USERNAME, descript, photozed
         )
         addgvar("PRIVATE_GROUP_BOT_API_ID", groupid)
         print("تم إنشاء مجموعة السجل .. بنجاح ✅")
@@ -379,7 +379,7 @@ async def verifyLoggerGroup():
         descript = "لا تقم بحذف هذه المجموعة أو التغيير إلى مجموعة عامه (وظيفتهـا تخزيـن رسـائل الخـاص.)"
         photozed = await zq_lo.upload_file(file="baqir/taiba/Repthon2.jpg")
         _, groupid = await create_supergroup(
-            "مجمـوعـة التخـزيـن", zq_lo, Config.TG_BOT_USERNAME, descript, photozed
+            "مجمـوعـة التخـزيـن", zq_lo, Config.APP_USERNAME, descript, photozed
         )
         addgvar("PM_LOGGER_GROUP_ID", groupid)
         print("تم إنشاء مجموعة التخزين .. بنجاح ✅")
