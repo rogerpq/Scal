@@ -30,7 +30,7 @@ from .botmanagers import ban_user_from_bot
 LOGS = logging.getLogger(__name__)
 
 plugin_category = "البوت"
-botusername = Config.TG_BOT_USERNAME
+botusername = Config.APP_USERNAME
 
 
 class FloodConfig:
