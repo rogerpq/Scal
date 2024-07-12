@@ -16,7 +16,7 @@ from . import BOTLOG, BOTLOG_CHATID
 LOGS = logging.getLogger(__name__)
 
 plugin_category = "البوت"
-botusername = Config.TG_BOT_USERNAME
+botusername = Config.APP_USERNAME
 
 
 async def get_user_and_reason(event):
