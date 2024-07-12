@@ -155,7 +155,7 @@ async def do_pm_permit_action(event, chat):  # sourcery no-metrics
     try:
         if gvarstatus("pmmenu") is None:
             results = await event.client.inline_query(
-                Config.TG_BOT_USERNAME, "pmpermit"
+                Config.APP_USERNAME, "pmpermit"
             )
             msg = await results[0].click(chat.id, reply_to=reply_to_id, hide_via=True)
         else:
