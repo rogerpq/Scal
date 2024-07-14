@@ -572,6 +572,6 @@ async def reporepthon(event):
         return
     else:
     	addgvar("who_id", user)
-    response = await event.client.inline_query(Config.TG_BOT_USERNAME, "التنصيب")
+    response = await event.client.inline_query(Config.APP_USERNAME, "التنصيب")
     await response[0].click(event.chat_id)
     await event.delete()
