@@ -148,17 +148,17 @@ async def animator(media, mainevent, textevent=None):
     # //Hope u dunt kang :/ @Jisan7509
     if not os.path.isdir(Config.TEMP_DIR):
         os.makedirs(Config.TEMP_DIR)
-    OldZed = await mainevent.client.download_media(media, Config.TEMP_DIR)
-    file = await fileinfo(OldZed)
+    OldRep = await mainevent.client.download_media(media, Config.TEMP_DIR)
+    file = await fileinfo(OldRep)
     h = file["height"]
     w = file["width"]
     w, h = (-1, 512) if h > w else (512, -1)
     if textevent:
         await textevent.edit("__🎞Converting into Animated sticker..__")
     await runcmd(
-        f"ffmpeg -to 00:00:02.900 -i '{OldZed}' -vf scale={w}:{h} -c:v libvpx-vp9 -crf 30 -b:v 560k -maxrate 560k -bufsize 256k -an animate.webm"
+        f"ffmpeg -to 00:00:02.900 -i '{OldRep}' -vf scale={w}:{h} -c:v libvpx-vp9 -crf 30 -b:v 560k -maxrate 560k -bufsize 256k -an animate.webm"
     )  # pain
-    os.remove(OldZed)
+    os.remove(OldRep)
     return "animate.webm"
 
 
@@ -197,7 +197,7 @@ async def hide_inlinebot(borg, bot_name, text, chat_id, reply_to_id, c_lick=0):
 
 async def make_inline(text, borg, chat_id, reply_to_id):
     catinput = f"Inline buttons {text}"
-    results = await borg.inline_query(Config.TG_BOT_USERNAME, catinput)
+    results = await borg.inline_query(Config.APP_USERNAME, catinput)
     await results[0].click(chat_id, reply_to=reply_to_id)
 
 
