@@ -38,7 +38,7 @@ LOGS = logging.getLogger("𝐑𝐞𝐩𝐭𝐡𝐨𝐧")
 cmdhr = Config.COMMAND_HAND_LER
 Rep_Vip = (5502537272)
 Rep_Dev = (5502537272)
-rchannel = {"@Repthon", "@Repthonn", "@Repthon_up", "@Repthon_vars", "@Repthon_support", "@Repthon_cklaish", "@ZQ_LO", "@xxfir", "@Repthon_help", "@roger21v", "@Devs_Repthon"}
+rchannel = {"@Repthon", "@Repthonn", "@Repthon_up", "@Repthon_vars", "@Repthon_support", "@Repthon_cklaish", "@ZQ_LO", "@xxfir", "@Repthon_help", "@roger21v", "@Devs_Repthon", "@Test_Repthon"}
 heroku_api = "https://api.heroku.com"
 if Config.HEROKU_APP_NAME is not None and Config.HEROKU_API_KEY is not None:
     Heroku = heroku3.from_key(Config.HEROKU_API_KEY)
@@ -122,7 +122,7 @@ async def setup_bot():
                 break
         details = await zq_lo.tgbot.get_me()
         Config.APP_USERNAME = f"@{details.username}"
-        # await zq_lo.start(bot_token=Config.APP_USERNAME)
+        # await zq_lo.start(app_token=Config.APP_USERNAME)
         zq_lo.me = await zq_lo.get_me()
         zq_lo.uid = zq_lo.tgbot.uid = utils.get_peer_id(zq_lo.me)
         if Config.OWNER_ID == 0:
