@@ -78,8 +78,8 @@ async def banme(leave):
 
 @zq_lo.rep_cmd(pattern="بوتي$")
 async def _(event):
-    TG_BOT_USERNAME = Config.TG_BOT_USERNAME
-    await event.reply(f"**⎉╎البـوت المسـاعد الخـاص بك هـو** \n {TG_BOT_USERNAME}")
+    baqir = Config.APP_USERNAME
+    await event.reply(f"**⎉╎البـوت المسـاعد الخـاص بك هـو** \n {baqir}")
 
 @zq_lo.rep_cmd(pattern="حالتي ?(.*)")
 async def rep(event):
