@@ -111,7 +111,7 @@ async def _(event):
 @zq_lo.on(events.NewMessage(pattern="منو عمك؟"))
 async def _(event):
     user = await event.get_sender()
-    rep_dev = (5502537272, 5502537272)
+    rep_dev = (5502537272, 7367589448)
     if user.id in rep_dev:
         await event.reply(f"**- انت عمي و تاج راسي @E_7_V**")
 
