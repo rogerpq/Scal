@@ -3,8 +3,8 @@ from sqlalchemy import Column, String, UnicodeText
 from . import BASE, SESSION
 
 
-class Bot_Starters(BASE):
-    __tablename__ = "bot_starters"
+class App_Starters(BASE):
+    __tablename__ = "app_starters"
     user_id = Column(String(14), primary_key=True)
     first_name = Column(UnicodeText)
     date = Column(UnicodeText)
@@ -17,7 +17,7 @@ class Bot_Starters(BASE):
         self.username = username
 
 
-Bot_Starters.__table__.create(bind=SESSION.get_bind(), checkfirst=True)
+App_Starters.__table__.create(bind=SESSION.get_bind(), checkfirst=True)
 
 
 def add_starter_to_db(
@@ -28,14 +28,14 @@ def add_starter_to_db(
 ):
     to_check = get_starter_details(user_id)
     if not to_check:
-        user = Bot_Starters(str(user_id), first_name, date, username)
+        user = App_Starters(str(user_id), first_name, date, username)
         SESSION.add(user)
         SESSION.commit()
         return True
-    rem = SESSION.query(Bot_Starters).get(str(user_id))
+    rem = SESSION.query(App_Starters).get(str(user_id))
     SESSION.delete(rem)
     SESSION.commit()
-    user = Bot_Starters(str(user_id), first_name, date, username)
+    user = App_Starters(str(user_id), first_name, date, username)
     SESSION.add(user)
     SESSION.commit()
     return True
@@ -45,7 +45,7 @@ def del_starter_from_db(user_id):
     to_check = get_starter_details(user_id)
     if not to_check:
         return False
-    rem = SESSION.query(Bot_Starters).get(str(user_id))
+    rem = SESSION.query(App_Starters).get(str(user_id))
     SESSION.delete(rem)
     SESSION.commit()
     return True
@@ -53,7 +53,7 @@ def del_starter_from_db(user_id):
 
 def get_starter_details(user_id):
     try:
-        if _result := SESSION.query(Bot_Starters).get(str(user_id)):
+        if _result := SESSION.query(App_Starters).get(str(user_id)):
             return _result
         return None
     finally:
@@ -62,7 +62,7 @@ def get_starter_details(user_id):
 
 def get_all_starters():
     try:
-        return SESSION.query(Bot_Starters).all()
+        return SESSION.query(App_Starters).all()
     except BaseException:
         return None
     finally:
