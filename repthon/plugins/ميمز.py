@@ -19,11 +19,11 @@ async def repthon313(therepthon313):
   await therepthon313.client.send_file(therepthon313.chat_id,url,caption="⎉╎ عظم الله لنا ولكم الاجر بهذا المُصاب الجلل 🏴",parse_mode="html")
   await therepthon313.delete()
 @zq_lo.on(admin_cmd(outgoing=True, pattern="لاتغلط$"))
-async def jepmeme(memejep):
+async def jepmeme(memerep):
   Rep = await reply_id(memerep)
   url = f"https://t.me/MemeSoundJep/4"
-  await memejep.client.send_file(memejep.chat_id,url,caption="",parse_mode="html",reply_to=Rep)
-  await memejep.delete()
+  await memerep.client.send_file(memerep.chat_id,url,caption="",parse_mode="html",reply_to=Rep)
+  await memerep.delete()
 @zq_lo.on(admin_cmd(outgoing=True, pattern="بجيت$"))
 async def jepmeme(memejep):
   Rep = await reply_id(memejep)
