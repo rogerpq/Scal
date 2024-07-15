@@ -25,7 +25,7 @@ from ..sql_helper.app_pms_sql import (
 from ..sql_helper.app_starters import add_starter_to_db, get_starter_details
 from ..sql_helper.globals import delgvar, gvarstatus
 from . import BOTLOG, BOTLOG_CHATID
-from .botmanagers import ban_user_from_bot
+from .appmanagers import ban_user_from_bot
 
 LOGS = logging.getLogger(__name__)
 
