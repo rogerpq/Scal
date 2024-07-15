@@ -9,7 +9,7 @@ from ..Config import Config
 from ..core.logger import logging
 from ..helpers import reply_id
 from ..helpers.utils import _format
-from ..sql_helper.bot_blacklists import add_user_to_bl, rem_user_from_bl
+from ..sql_helper.app_blacklists import add_user_to_bl, rem_user_from_bl
 from ..sql_helper.app_pms_sql import get_user_id
 from . import BOTLOG, BOTLOG_CHATID
 
