@@ -3,8 +3,8 @@ from sqlalchemy import Column, Integer, String, UnicodeText
 from . import BASE, SESSION
 
 
-class Bot_Users(BASE):
-    __tablename__ = "bot_pms_data"
+class App_Users(BASE):
+    __tablename__ = "app_pms_data"
     # pm logger message id
     message_id = Column(Integer, primary_key=True)
     first_name = Column(UnicodeText)
@@ -25,11 +25,11 @@ class Bot_Users(BASE):
         self.result_id = result_id
 
 
-Bot_Users.__table__.create(bind=SESSION.get_bind(), checkfirst=True)
+App_Users.__table__.create(bind=SESSION.get_bind(), checkfirst=True)
 
 
 def add_user_to_db(message_id, first_name, chat_id, reply_id, logger_id, result_id):
-    user = Bot_Users(
+    user = App_Users(
         message_id, first_name, str(chat_id), reply_id, logger_id, result_id
     )
     SESSION.add(user)
@@ -40,8 +40,8 @@ def add_user_to_db(message_id, first_name, chat_id, reply_id, logger_id, result_
 def get_user_id(message_id):
     try:
         if _result := (
-            SESSION.query(Bot_Users)
-            .filter(Bot_Users.message_id == str(message_id))
+            SESSION.query(App_Users)
+            .filter(App_Users.message_id == str(message_id))
             .all()
         ):
             return _result
@@ -53,12 +53,12 @@ def get_user_id(message_id):
 def del_user_from_db(message_id):
     try:
         if _result := (
-            SESSION.query(Bot_Users)
-            .filter(Bot_Users.message_id == str(message_id))
+            SESSION.query(App_Users)
+            .filter(App_Users.message_id == str(message_id))
             .all()
         ):
             for rst in _result:
-                rem = SESSION.query(Bot_Users).get((str(rst.message_id), rst.result_id))
+                rem = SESSION.query(App_Users).get((str(rst.message_id), rst.result_id))
                 SESSION.delete(rem)
                 SESSION.commit()
             return True
@@ -70,7 +70,7 @@ def del_user_from_db(message_id):
 def get_user_reply(reply_id):
     try:
         if _result := (
-            SESSION.query(Bot_Users).filter(Bot_Users.reply_id == str(reply_id)).all()
+            SESSION.query(App_Users).filter(App_Users.reply_id == str(reply_id)).all()
         ):
             return _result
         return None
@@ -81,7 +81,7 @@ def get_user_reply(reply_id):
 def get_user_results(result_id):
     try:
         if _result := (
-            SESSION.query(Bot_Users).filter(Bot_Users.result_id == str(result_id)).all()
+            SESSION.query(App_Users).filter(App_Users.result_id == str(result_id)).all()
         ):
             return _result
         return None
@@ -92,7 +92,7 @@ def get_user_results(result_id):
 def get_user_logging(logger_id):
     try:
         if _result := (
-            SESSION.query(Bot_Users).filter(Bot_Users.logger_id == str(logger_id)).all()
+            SESSION.query(App_Users).filter(App_Users.logger_id == str(logger_id)).all()
         ):
             return _result
         return None
