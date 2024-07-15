@@ -16,7 +16,7 @@ from ..core.session import tgbot
 from ..helpers import reply_id
 from ..helpers.utils import _format
 from ..sql_helper.bot_blacklists import check_is_black_list
-from ..sql_helper.bot_pms_sql import (
+from ..sql_helper.app_pms_sql import (
     add_user_to_db,
     get_user_id,
     get_user_logging,
