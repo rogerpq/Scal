@@ -3,8 +3,8 @@ from sqlalchemy import Column, String, UnicodeText
 from . import BASE, SESSION
 
 
-class Bot_BlackList(BASE):
-    __tablename__ = "bot_blacklist"
+class App_BlackList(BASE):
+    __tablename__ = "app_blacklist"
     chat_id = Column(String(14), primary_key=True)
     first_name = Column(UnicodeText)
     username = Column(UnicodeText)
@@ -22,7 +22,7 @@ class Bot_BlackList(BASE):
         return "<BL %s>" % self.chat_id
 
 
-Bot_BlackList.__table__.create(bind=SESSION.get_bind(), checkfirst=True)
+App_BlackList.__table__.create(bind=SESSION.get_bind(), checkfirst=True)
 
 
 def add_user_to_bl(
@@ -31,13 +31,13 @@ def add_user_to_bl(
     """add the user to the blacklist"""
     to_check = check_is_black_list(chat_id)
     if not to_check:
-        __user = Bot_BlackList(str(chat_id), first_name, username, reason, date)
+        __user = App_BlackList(str(chat_id), first_name, username, reason, date)
         SESSION.add(__user)
         SESSION.commit()
-    rem = SESSION.query(Bot_BlackList).get(str(chat_id))
+    rem = SESSION.query(App_BlackList).get(str(chat_id))
     SESSION.delete(rem)
     SESSION.commit()
-    user = Bot_BlackList(str(chat_id), first_name, username, reason, date)
+    user = App_BlackList(str(chat_id), first_name, username, reason, date)
     SESSION.add(user)
     SESSION.commit()
     return True
@@ -46,14 +46,14 @@ def add_user_to_bl(
 def check_is_black_list(chat_id: int):
     """check if user_id is blacklisted"""
     try:
-        return SESSION.query(Bot_BlackList).get(str(chat_id))
+        return SESSION.query(App_BlackList).get(str(chat_id))
     finally:
         SESSION.close()
 
 
 def rem_user_from_bl(chat_id: int):
     """remove the user from the blacklist"""
-    if s__ := SESSION.query(Bot_BlackList).get(str(chat_id)):
+    if s__ := SESSION.query(App_BlackList).get(str(chat_id)):
         SESSION.delete(s__)
         SESSION.commit()
         return True
@@ -63,7 +63,7 @@ def rem_user_from_bl(chat_id: int):
 
 def get_all_bl_users():
     try:
-        return SESSION.query(Bot_BlackList).all()
+        return SESSION.query(App_BlackList).all()
     except BaseException:
         return None
     finally:
