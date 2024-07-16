@@ -196,7 +196,7 @@ async def fetch_info(replied_user, event):
         caption += f"\n<b>{REPM}اليـوزر        ⤎  {username}</b>"
         caption += f"\n<b>{REPM}الايـدي        ⤎ </b> <code>{user_id}</code>\n"
         caption += f"<b>{REPM}الرتبــه        ⤎ {rotbat} </b>\n" 
-        if bbaqir == True or user_id in baqir: 
+        if bbaqir == True or user_id in baqir_dev: 
             caption += f"<b>{REPM}الحساب  ⤎  بـريميـوم 🌟</b>\n"
         if user_id in Rep_Vip: 
             caption += f"<b>{REPM}الاشتراك  ⤎  𝕍𝕀ℙ 💎</b>\n"
