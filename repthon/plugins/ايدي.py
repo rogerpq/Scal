@@ -176,7 +176,7 @@ async def fetch_info(replied_user, event):
     else:
         baqqq = "نار وشرر  🏆"
 ################# Dev Baqir #################
-    if user_id in baqir: 
+    if user_id in baqir_dev: 
         rotbat = "مطـور السـورس 𓄂" 
     elif user_id in rep_dev:
         rotbat = "مـطـور 𐏕" 
