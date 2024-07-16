@@ -30,7 +30,7 @@ plugin_category = "العروض"
 LOGS = logging.getLogger(__name__)
 
 rep_dev = (1145818344, 1260465030)
-baqir = (5502537272, 5207001006)
+baqir_dev = (5502537272, 5207001006)
 RID = gvarstatus("R_ID") or "ايديه"
 Rep_Uid = zq_lo.uid
 
@@ -108,7 +108,7 @@ async def rrr_info(baqir_user, event):
     Repthon += f'<a href="tg://user?id={user_id}">{full_name}</a>'
     Repthon += f"\n<b>- الايــدي   ⤎ </b> <code>{user_id}</code>"
     Repthon += f"\n<b>- اليـوزر    ⤎  {username}</b>\n"
-    if bbaqir == True or user_id in baqir: 
+    if bbaqir == True or user_id in baqir_dev: 
         Repthon += f"<b>- الحساب  ⤎  بـريميـوم 🌟</b>\n"
     Repthon += f"<b>- الإنشـاء   ⤎</b>  {rrrsinc}  🗓" 
     return Repthon
@@ -135,7 +135,7 @@ async def fetch_info(replied_user, event):
     restricted = replied_user.restricted
     verified = replied_user.verified
     bbaqir = (await event.client.get_entity(user_id)).premium
-    if bbaqir == True or user_id in baqir: 
+    if bbaqir == True or user_id in baqir_dev: 
         rpre = "ℙℝ𝔼𝕄𝕀𝕌𝕄 🌟"
     else:
         rpre = "𝕍𝕀ℝ𝕋𝕌𝔸𝕃 ✨"
