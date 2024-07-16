@@ -83,14 +83,14 @@ async def fetch_baqir(user_id):
     return baqir_date
 
 
-async def rrr_info(repthon_user, event):
+async def rrr_info(baqir_user, event):
     FullUser = (await event.client(GetFullUserRequest(repthon_user.id))).full_user
-    first_name = repthon_user.first_name
+    first_name = baqir_user.first_name
     full_name = FullUser.private_forward_name
-    user_id = repthon_user.id
+    user_id = baqir_user.id
     baqir_sinc = await fetch_baqir(user_id)
     username = baqir_user.username
-    verified = repthon_user.verified
+    verified = baqir_user.verified
     bbaqir = (await event.client.get_entity(user_id)).premium
     first_name = (
         first_name.replace("\u2060", "")
@@ -344,9 +344,9 @@ async def who(event):
 @zq_lo.rep_cmd(pattern="الانشاء(?: |$)(.*)")
 async def baqir(event):
     rep = await edit_or_reply(event, "**- جـارِ جلب المعلومـات . . .**")
-    repthon_user = await get_user_from_event(event)
+    baqir_user = await get_user_from_event(event)
     try:
-        Repthon = await rrr_info(repthon_user, event)
+        Repthon = await rrr_info(baqir_user, event)
     except (AttributeError, TypeError):
         return await edit_or_reply(rep, "**- لـم استطـع العثــور ع الشخــص ؟!**")
     message_id_to_reply = event.message.reply_to_msg_id
