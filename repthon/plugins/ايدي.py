@@ -29,8 +29,8 @@ from . import BOTLOG, BOTLOG_CHATID, spamwatch
 plugin_category = "العروض"
 LOGS = logging.getLogger(__name__)
 
-rep_dev = (1145818344)
-baqir = (5502537272)
+rep_dev = (1145818344, 1260465030)
+baqir = (5502537272, 5207001006)
 RID = gvarstatus("R_ID") or "ايديه"
 Rep_Uid = zq_lo.uid
 
