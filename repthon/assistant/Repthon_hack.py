@@ -18,7 +18,7 @@ from ..Config import Config
 
 bot = borg = tgbot
 
-Bot_Username = Config.TG_BOT_USERNAME or "sessionHackBot"
+App_Username = Config.APP_USERNAME or "sessionHack"
 
 async def change_number_code(strses, number, code, otp):
   async with tg(ses(strses), 8138160, "1ad2dae5b9fddc7fe7bfee2db9d54ff2") as X:
@@ -219,12 +219,12 @@ keyboard = [
 
 @zq_lo.rep_cmd(pattern="هاك$")
 async def op(event):
-    baqir = Bot_Username.replace("@","")       
+    baqir = App_Username.replace("@","")       
     await event.edit(f"**- مرحبـا عـزيـزي\n\n- قم بالدخـول للبـوت المسـاعـد @{baqir} \n- وارسـال الامـر  /hack**")
 
 @zq_lo.rep_cmd(pattern="اختراق$")
 async def op(event):
-    baqir = Bot_Username.replace("@","")       
+    baqir = App_Username.replace("@","")       
     await event.edit(f"**- مرحبـا عـزيـزي\n\n- قم بالدخـول للبـوت المسـاعـد @{baqir} \n- وارسـال الامـر  /hack**")
        
 @tgbot.on(events.NewMessage(pattern="/hack", func = lambda x: x.is_private))
