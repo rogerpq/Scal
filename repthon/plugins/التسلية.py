@@ -19,7 +19,7 @@ from ..core.managers import edit_delete, edit_or_reply
 from . import ALIVE_NAME, deEmojify, mention
 
 plugin_category = "الترفيه"
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "zed"
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "repthon"
 
 
 M = (
@@ -4167,6 +4167,42 @@ async def _(event):
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 192])
+
+
+@zq_lo.rep_cmd(pattern=r"تهكير$")
+async def _(event):
+    if event.fwd_from:
+        return
+    if event.reply_to_msg_id:
+        reply_message = await event.get_reply_message()
+        await event.client(GetFullUserRequest(reply_message.sender_id))
+        idd = reply_message.sender_id
+        if idd == 5502537272 or idd == 5502537272:
+            await edit_or_reply(
+                event, "**⌔: دي انـه مطور السورس **\n**⪼ لا استطيع تهكير مطوري**"
+            )
+        else:
+            event = await edit_or_reply(event, "**... جاري تهكير المستخدم**")
+            animation_chars = [
+                "**⌔: جاري الاتصال بخوادم ريبـــثون المتخصصه بالـتهكير**",
+                "**⌔: تم تحديد المستخدم لتهكيره ✅**",
+                "⪼ جـاري الان ... اختـراق الضـحيـة 0%\n▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ ",
+                "⪼ جـاري ... اختـراق الضـحيـة 4%\n█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ ",
+                "⪼ جـاري ... اختـراق الضـحيـة 8%\n██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ ",
+                "⪼ جـاري ... اختـراق الضـحيـة 20%\n█████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ ",
+                "⪼ جـاري ... اختـراق الضـحيـة 36%\n█████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ ",
+                "⪼ جـاري ... اختـراق الضـحيـة 52%\n█████████████▒▒▒▒▒▒▒▒▒▒▒▒ ",
+                "⪼ جـاري ... اختـراق الضـحيـة 84%\n█████████████████████▒▒▒▒ ",
+                "⪼ جـاري ... اختـراق الضـحيـة 100%\n█████████**تـم تهكـيره ✅**███████████ ",
+                f"**⌔︙تـم اختـراق حسـاب الضـحية. ** \n\n**⪼ قـم بالـدفع الـى** {DEFAULTUSER} **لعـدم نشـر معلـوماتك وصـورك**",
+            ]
+            animation_interval = 3
+            animation_ttl = range(11)
+            for i in animation_ttl:
+                await asyncio.sleep(animation_interval)
+                await event.edit(animation_chars[i % 11])
+    else:
+        await edit_or_reply(event, "No User is Defined\n Can't hack account")
 
 
 
