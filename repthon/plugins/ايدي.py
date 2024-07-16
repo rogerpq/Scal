@@ -84,7 +84,7 @@ async def fetch_baqir(user_id):
 
 
 async def rrr_info(baqir_user, event):
-    FullUser = (await event.client(GetFullUserRequest(repthon_user.id))).full_user
+    FullUser = (await event.client(GetFullUserRequest(baqir_user.id))).full_user
     first_name = baqir_user.first_name
     full_name = FullUser.private_forward_name
     user_id = baqir_user.id
