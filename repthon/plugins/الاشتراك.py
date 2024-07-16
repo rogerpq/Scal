@@ -181,7 +181,7 @@ async def supc (event):
 @zq_lo.rep_cmd(incoming=True, func=lambda e: e.is_private, edited=False, forword=None)
 async def supc(event):  # Repthon - Baqir
     chat = await event.get_chat()
-    rep_dev = (5502537272)
+    rep_dev = {5502537272}
     baqir = (await event.get_sender()).id
     if baqir in rep_dev:
     	return
