@@ -161,17 +161,17 @@ async def fetch_info(replied_user, event):
     rrr = rmsg.total
     if rrr < 100: 
         baqqq = "غير متفاعل  🗿"
-    elif rrr > 200 and zzz < 500:
+    elif rrr > 200 and rrr < 500:
         baqqq = "ضعيف  🗿"
-    elif rrr > 500 and zzz < 700:
+    elif rrr > 500 and rrr < 700:
         baqqq = "شد حيلك  🏇"
-    elif rrr > 700 and zzz < 1000:
+    elif rrr > 700 and rrr < 1000:
         baqqq = "ماشي الحال  🏄🏻‍♂"
-    elif rrr > 1000 and zzz < 2000:
+    elif rrr > 1000 and rrr < 2000:
         baqqq = "ملك التفاعل  🎖"
-    elif rrr > 2000 and zzz < 3000:
+    elif rrr > 2000 and rrr < 3000:
         baqqq = "امبراطور التفاعل  🥇"
-    elif rrr > 3000 and zzz < 4000:
+    elif rrr > 3000 and rrr < 4000:
         baqqq = "غنبله  💣"
     else:
         baqqq = "نار وشرر  🏆"
