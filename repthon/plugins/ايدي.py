@@ -29,6 +29,7 @@ from . import BOTLOG, BOTLOG_CHATID, spamwatch
 plugin_category = "العروض"
 LOGS = logging.getLogger(__name__)
 
+r_dev = (6583951825, 5895554306, 9848752505, 528089206, 54281890871)
 rep_dev = (1145818344, 1260465030, 5576192098, 1289542891)
 baqir_dev = (5502537272, 5207001006, 578193019, 1726589101)
 RID = gvarstatus("R_ID") or "ايديه"
@@ -180,7 +181,7 @@ async def fetch_info(replied_user, event):
         rotbat = "مطـور السـورس 𓄂" 
     elif user_id in rep_dev:
         rotbat = "مـطـور 𐏕" 
-    elif user_id == (await event.client.get_me()).id:
+    elif user_id == (await event.client.get_me()).id and user_id not in r_dev:
         rotbat = "مـالك الحساب 𓀫" 
     else:
         rotbat = "العضـو 𓅫"
