@@ -93,7 +93,7 @@ rep_temp = """
 │ ● ɴᴀᴍᴇ ➪  {mention}
 │ ● ʀᴇᴘᴛʜᴏɴ ➪ {repver}
 │ ● ᴘʏᴛʜᴏɴ ➪ {pyver}
-│ ● ᴘʟᴀᴛғᴏʀᴍ ➪ Scalingo
+│ ● ᴘʟᴀᴛғᴏʀᴍ ➪ 𐍃ᥴᥲᥣiᥒg᧐
 │ ● ᴘɪɴɢ ➪ {ping}
 │ ● ᴜᴘ ᴛɪᴍᴇ ➪ {uptime}
 │ ● ᴀʟɪᴠᴇ sɪɴᴇᴄ ➪ {reppa}
