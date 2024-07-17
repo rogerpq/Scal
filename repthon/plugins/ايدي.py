@@ -155,7 +155,7 @@ async def fetch_info(replied_user, event):
         caption += f"<b>{REPM}الـمجموعات المشتـركة ⇠  {common_chat}</b>\n"
     caption += f"<b>{REPM}البايـو     ⇠  {user_bio}</b>\n"
     caption += f"ٴ<b>{REPF}</b>"
-    else:
+else:
         rrr_caption = gvarstatus("RID_TEMPLATE")
         caption = rrr_caption.format(
             rnam=full_name,
