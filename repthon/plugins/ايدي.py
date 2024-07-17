@@ -140,7 +140,7 @@ async def fetch_info(replied_user, event):
         rpre = "ℙℝ𝔼𝕄𝕀𝕌𝕄 🌟"
     else:
         rpre = "𝕍𝕀ℝ𝕋𝕌𝔸𝕃 ✨"
-    if user_id in Zed_Vip: 
+    if user_id in Rep_Vip: 
         rvip = "𝕍𝕀ℙ 💎"
     else:
         rvip = "ℕ𝕆ℕ𝔼"
