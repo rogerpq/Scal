@@ -238,7 +238,7 @@ async def fetch_info(replied_user, event):
 )
 async def who(event):
     "Gets info of an user"
-    if {event.chat_id in REP_BLACKLIST} and {Rep_Uid not in Rep_Vip}:
+    if (event.chat_id in REP_BLACKLIST) and (Rep_Uid not in Rep_Vip):
         return await edit_or_reply(event, "**- عـذرًا .. عـزيـزي 🚷\n- لا تستطيـع استخـدام هـذا الأمـر 🚫\n- فـي مجموعـة مساعدة ريبـــثون ؟!**")
     rep = await edit_or_reply(event, "⇆")
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
@@ -295,7 +295,7 @@ async def who(event):
 )
 async def who(event):
     "Gets info of an user"
-    if {event.chat_id in REP_BLACKLIST} and {Rep_Uid not in Rep_Vip}:
+    if (event.chat_id in REP_BLACKLIST) and (Rep_Uid not in Rep_Vip):
         return await edit_or_reply(event, "**- عـذرًا .. عـزيـزي 🚷\n- لا تستطيـع استخـدام هـذا الأمـر 🚫\n- فـي مجموعـة مساعدة ريبـــثون ؟!**")
     rep = await edit_or_reply(event, "⇆")
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
