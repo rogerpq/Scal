@@ -42,7 +42,7 @@ LOGS = logging.getLogger(__name__)
 rep_dev = (1960777228, 1260465030)
 rep_dev = (1960777228, 1960777228)
 baqir = (5502537272, 5502537272)
-RIDA = gvarstatus("R_RRID") or "Rep-Thon"
+RIDA = gvarstatus("R_RRID") or "ايديه"
 
 async def get_user_from_event(event):
     if event.reply_to_msg_id:
@@ -116,7 +116,7 @@ async def fetch_info(replied_user, event):
         baqr = "ضعيف  🗿"
     elif rrr > 500 and rrr < 700:
         baqr = "شد حيلك  🏇"
-    elif rrr > 700 and rr < 1000:
+    elif rrr > 700 and rrr < 1000:
         baqr = "ماشي الحال  🏄🏻‍♂"
     elif rrr > 1000 and rrr < 2000:
         baqr = "ملك التفاعل  🎖"
