@@ -17,6 +17,8 @@ covid
 DateTime
 emoji
 ffmpeg-python
+flask
+flask_restful
 fonttools
 geopy
 gitpython
@@ -27,6 +29,7 @@ gtts
 glitch_this
 gsearch
 googletrans-py
+gunicorn
 hachoir
 heroku3
 html-telegraph-poster
