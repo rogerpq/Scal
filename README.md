@@ -1,38 +1,21 @@
-<a href="https://ibb.co/M2Tp5CN"><img src="https://i.ibb.co/M2Tp5CN/IMG_20230626_144851_124.jpg" alt="Repthon" border="0"></a>
+### Scalingo Compliance
 
-**〔 سـورس ريبـــثون - 𝗥𝗲𝗽𝘁𝗵𝗼𝗻 〕**
+This project is developed and maintained with strict adherence to Scalingo's General Terms of Use ([https://scalingo.com/general-terms-of-use](https://scalingo.com/general-terms-of-use)). We are committed to ensuring that this project:
 
-**افضـل سـورسـات يـوزر بـوت العربيـة**
+- *Respects Acceptable Use:* This project does not engage in any activity prohibited by Scalingo's Terms of Use, including but not limited to:
+    - Activities that violate any local, state, national, or international law or regulation.
+    - Any attempts to gain unauthorized access to the Scalingo platform or its users' accounts.
+    - Transmission of any harmful content, including malware, viruses, or phishing attempts.
+    - Activities that could be considered abusive, harmful, threatening, defamatory, obscene, or otherwise objectionable.
+- *Uses Resources Responsibly:* This project is designed to be resource-efficient and minimize its impact on the Scalingo platform. We encourage users to deploy and use this project responsibly and within the limits outlined in Scalingo's plans.
+- *Prioritizes Security:* We take security seriously and strive to follow best practices to protect user data and ensure the integrity of this project. 
 
-**› عربـي بالكـامل › تحديثـات متواصـله › فـارات تلقـائيـه بسهولـه〔 حصريـاً 〕** 
+We encourage users to report any security vulnerabilities or concerns they encounter. Your cooperation helps us maintain a secure and compliant environment for all. 
 
-#**By:** https://t.me/Repthon
+If you have any questions or concerns about this project's compliance with Scalingo's terms, please don't hesitate to open an issue or contact us directly.
 
-## التنصيب على مسؤليتك 
+Let's build great things responsibly!
 
+## Deploy in One Click
 
-```console
-      ⚠️ WARNING FOR YOU ⚠️
-       Your Telegram account may get banned.
-   I am not responsible for any improper use of this bot
-This bot is intended for the purpose of having fun with memes,
-      as well as efficiently managing groups.
-You ended up spamming groups, getting reported left and right,
-and you ended up in a Finale Battle with Telegram and at the end
-       Telegram Team deleted your account?
-  And after that, then you pointed your fingers at us
-        for getting your acoount deleted?
-    I will be rolling on the floor laughing at you.
-```
-
-``` المطورين 💖
-- BAQIR
-- TELETHON ⚓️
-```
-
-## مجموعة المساعده / قناة السورس
-
-<p align="center">𝐒𝐮𝐩𝐩𝐨𝐫𝐭 / 𝐂𝐡𝐚𝐧𝐧𝐞𝐥 ----> </p>
-
-<p align="center"><a href="https://t.me/Repthon_support"><img src="https://img.shields.io/badge/ᴛᴇʟᴇɢʀᴀᴍ-𝐒𝐮𝐩𝐩𝐨𝐫𝐭-black?&style=for-the-badge&logo=telegram" width="220" height="38.45"></a></p>
-<p align="center"><a href="https://t.me/Repthon"><img src="https://img.shields.io/badge/ᴛᴇʟᴇɢʀᴀᴍ-𝐔𝐩𝐝𝐚𝐭𝐞𝐬-black?&style=for-the-badge&logo=telegram" width="220" height="38.45"></a></p>
+[![Deploy to Scalingo](https://cdn.scalingo.com/deploy/button.svg)](https://my.osc-fr1.scalingo.com/deploy?source=https://github.com/Repthon-Arabic/B)
