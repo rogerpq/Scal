@@ -65,11 +65,9 @@ python-dotenv
 pytz
 pydub
 programmingquotes
-pyquery
 qrcode
 regex
 randomstuff.py
-ShazamAPI
 search-engine-parser
 selenium
 spamwatch
@@ -89,7 +87,3 @@ vcsi
 wand
 wget
 wikipedia
-youtube_dl
-youtube-search
-youtube-search-python==1.4.9
-yt_dlp==2024.07.25
