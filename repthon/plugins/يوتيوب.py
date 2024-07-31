@@ -153,7 +153,7 @@ async def fix_attributes(
 
 
 @zq_lo.rep_cmd(
-    pattern="تحميل صوت(?:\s|$)([\s\S]*)",
+    pattern="تحميل صوت(?:\\s|$)([\\s\\S]*)",
     command=("تحميل صوت", plugin_category),
     info={
         "header": "تحميـل الاغـاني مـن يوتيوب .. فيسبوك .. انستا .. الـخ عـبر الرابـط",
@@ -238,7 +238,7 @@ async def download_audio(event):
 
 
 @zq_lo.rep_cmd(
-    pattern="تحميل فيديو(?:\s|$)([\s\S]*)",
+    pattern="تحميل فيديو(?:\\s|$)([\\s\\S]*)",
     command=("تحميل فيديو", plugin_category),
     info={
         "header": "تحميـل مقـاطـع الفيـديــو مـن يوتيوب .. فيسبوك .. انستا .. الـخ عـبر الرابـط",
@@ -310,7 +310,7 @@ async def download_video(event):
 
 
 @zq_lo.rep_cmd(
-    pattern="فيس(?:\s|$)([\s\S]*)",
+    pattern="فيس(?:\\s|$)([\\s\\S]*)",
     command=("فيسبوك", plugin_category),
     info={
         "header": "تحميـل مقـاطـع الفيـديــو مـن فيـس بــوك عـبر الرابـط",
@@ -382,7 +382,7 @@ async def download_video(event):
 
 
 @zq_lo.rep_cmd(
-    pattern="سناب(?:\s|$)([\s\S]*)",
+    pattern="سناب(?:\\s|$)([\\s\\S]*)",
     command=("سناب شات", plugin_category),
     info={
         "header": "تحميـل مقـاطـع الفيـديــو مـن سنـاب_شـات عـبر الرابـط",
@@ -454,7 +454,7 @@ async def download_video(event):
 
 
 @zq_lo.rep_cmd(
-    pattern="تيك(?:\s|$)([\s\S]*)",
+    pattern="تيك(?:\\s|$)([\\s\\S]*)",
     command=("تيك", plugin_category),
     info={
         "header": "تحميـل مقـاطـع الفيـديــو مـن تيـك تـوك عـبر الرابـط",
@@ -526,7 +526,7 @@ async def download_video(event):
 
 
 @zq_lo.rep_cmd(
-    pattern="ساوند(?:\s|$)([\s\S]*)",
+    pattern="ساوند(?:\\s|$)([\\s\\S]*)",
     command=("ساوند", plugin_category),
     info={
         "header": "تحميـل الاغـاني مـن سـاونـد كـلاود الـخ عـبر الرابـط",
@@ -611,7 +611,7 @@ async def download_audio(event):
 
 
 #Code by T.me/E_7_V
-@zq_lo.rep_cmd(pattern="انستا(?: |$)([\s\S]*)")
+@zq_lo.rep_cmd(pattern="انستا(?: |$)([\\s\\S]*)")
 async def zelzal_gif(event):
     link = event.pattern_match.group(1)
     reply = await event.get_reply_message()
@@ -658,7 +658,7 @@ async def zelzal_gif(event):
 
 
 #Code by T.me/E_7_V
-@zq_lo.rep_cmd(pattern="لايكي(?: |$)([\s\S]*)")
+@zq_lo.rep_cmd(pattern="لايكي(?: |$)([\\s\\S]*)")
 async def zelzal_lik(event):
     link = event.pattern_match.group(1)
     reply = await event.get_reply_message()
@@ -705,7 +705,7 @@ async def zelzal_lik(event):
 
 
 #Code by T.me/E_7_V
-@zq_lo.rep_cmd(pattern="بنترست(?: |$)([\s\S]*)")
+@zq_lo.rep_cmd(pattern="بنترست(?: |$)([\\s\\S]*)")
 async def zelzal_pin(event):
     link = event.pattern_match.group(1)
     reply = await event.get_reply_message()
@@ -752,7 +752,7 @@ async def zelzal_pin(event):
 
 
 @zq_lo.rep_cmd(
-    pattern="يوتيوب(?: |$)(\d*)? ?([\s\S]*)",
+    pattern="يوتيوب(?: |$)(\\d*)? ?([\\s\\S]*)",
     command=("يوتيوب", plugin_category),
     info={
         "header": "لـ البحـث عـن روابــط بالكلمــه المحــدده علـى يـوتيــوب",
