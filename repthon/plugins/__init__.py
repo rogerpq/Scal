@@ -17,7 +17,6 @@ from ..core.session import zq_lo
 from ..helpers import *
 from ..helpers.utils import _reptools, _reputils, _format, install_pip, reply_id
 from ..sql_helper.globals import gvarstatus
-from ..helpers.functions.musictool import song_download
 
 # =================== CONSTANT ===================
 bot = zq_lo
