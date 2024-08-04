@@ -1,10 +1,19 @@
 # Repthon 🙈🔥
 
+import requests
 import asyncio
+import os
+import sys
+import urllib.request
+from datetime import timedelta
 from telethon import events
+from telethon.errors import FloodWaitError
+from telethon.tl.functions.messages import GetHistoryRequest, ImportChatInviteRequest
+from telethon.tl.functions.channels import JoinChannelRequest
+from telethon.tl.functions.messages import ImportChatInviteRequest
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.contacts import UnblockRequest as unblock
-
+from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 from . import zq_lo
 from ..Config import Config
 from ..core.managers import edit_delete, edit_or_reply
